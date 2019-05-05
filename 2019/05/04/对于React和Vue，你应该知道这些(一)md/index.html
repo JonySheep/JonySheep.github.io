@@ -87,13 +87,14 @@
 <meta property="og:site_name" content="YikuYang">
 <meta property="og:description" content="​    在软件工程的发展过程中，从前后端不分的时代，到MVC中视图的分离，再到如今前端已经完全分离成独立的项目进行开发。前端技术正在飞速发展，而不同框架的诞生和繁荣则是最佳的见证者。  ​    React是一个JavaScript的框架，而Vue是一个MVVM的模型，这两者各有优劣，也有不同的适用环境。这里有一个在知乎上看到的尤大神对React和Vue的看法，我们没必要对他们分出个上下来，作">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://pic3.zhimg.com/v2-74bc56f26f8fe554ffc7d14f6ffadbc2_b.jpg">
-<meta property="og:image" content="https://pic2.zhimg.com/v2-09196ef473645c77df988ba6b20bd97d_b.jpg">
-<meta property="og:updated_time" content="2019-05-05T09:34:38.591Z">
+<meta property="og:image" content="http://pqx4iz0f9.bkt.clouddn.com/virtualdom1.png">
+<meta property="og:image" content="http://pqx4iz0f9.bkt.clouddn.com/virtualdom2.png">
+<meta property="og:image" content="http://pqx4iz0f9.bkt.clouddn.com/virtualdom3.png">
+<meta property="og:updated_time" content="2019-05-05T10:03:18.156Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="对于React和Vue，你应该知道这些:P(一)——React Virtual DOM">
 <meta name="twitter:description" content="​    在软件工程的发展过程中，从前后端不分的时代，到MVC中视图的分离，再到如今前端已经完全分离成独立的项目进行开发。前端技术正在飞速发展，而不同框架的诞生和繁荣则是最佳的见证者。  ​    React是一个JavaScript的框架，而Vue是一个MVVM的模型，这两者各有优劣，也有不同的适用环境。这里有一个在知乎上看到的尤大神对React和Vue的看法，我们没必要对他们分出个上下来，作">
-<meta name="twitter:image" content="https://pic3.zhimg.com/v2-74bc56f26f8fe554ffc7d14f6ffadbc2_b.jpg">
+<meta name="twitter:image" content="http://pqx4iz0f9.bkt.clouddn.com/virtualdom1.png">
 
 
 
@@ -164,7 +165,7 @@
       </a>
     </div>
       
-        <p class="site-subtitle">Welcome to my blog~</p>
+        <h1 class="site-subtitle" itemprop="description">Welcome to my blog~</h1>
       
   </div>
 
@@ -184,22 +185,22 @@
     <ul id="menu" class="menu">
       
         
-        <li class="menu-item menu-item-home">
+        <li class="menu-item menu-item-主页">
           <a href="/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
             
-            Home
+            主页
           </a>
         </li>
       
         
-        <li class="menu-item menu-item-archives">
+        <li class="menu-item menu-item-全部文字">
           <a href="/archives/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
             
-            Archives
+            全部文字
           </a>
         </li>
       
@@ -239,7 +240,7 @@
     <link itemprop="mainEntityOfPage" href="http://yikuyang.cn/2019/05/04/对于React和Vue，你应该知道这些(一)md/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="John Doe">
+      <meta itemprop="name" content="Yiku Yang">
       <meta itemprop="description" content>
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
@@ -253,7 +254,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">对于React和Vue，你应该知道这些:P(一)——React Virtual DOM</h1>
+          <h2 class="post-title" itemprop="name headline">对于React和Vue，你应该知道这些:P(一)——React Virtual DOM</h2>
         
 
         <div class="post-meta">
@@ -318,30 +319,21 @@
 <li>利用Proxy实现Vue的双向绑定（Vue3.0）</li>
 <li>Vue Router</li>
 </ul>
-<h2 id="React-Virtual-DOM"><a href="#React-Virtual-DOM" class="headerlink" title="React Virtual DOM"></a>React Virtual DOM</h2><ol>
-<li><p>真实DOM和虚拟DOM的区别</p>
-<p>| 真实DOM               | 虚拟DOM                                                    |<br>| ——————— | ———————————————————- |<br>| 更新速度慢            | 更新速度快(why? 使用js对象模拟DOM元素，仅更新修改过的元素) |<br>| 内存消耗多            | 内存消耗少(仅保留DOM的部分属性)                            |<br>| 元素更新时创建新的DOM | 元素更新时更新JSX                                          |</p>
-</li>
-<li><p>作用</p>
-<ul>
+<a id="more"></a>
+<h1 id="React-Virtual-DOM"><a href="#React-Virtual-DOM" class="headerlink" title="React Virtual DOM"></a>React Virtual DOM</h1><h2 id="真实DOM和虚拟DOM的区别"><a href="#真实DOM和虚拟DOM的区别" class="headerlink" title="真实DOM和虚拟DOM的区别"></a>真实DOM和虚拟DOM的区别</h2><p><img src="http://pqx4iz0f9.bkt.clouddn.com/virtualdom1.png" alt></p>
+<h2 id="虚拟DOM的作用"><a href="#虚拟DOM的作用" class="headerlink" title="虚拟DOM的作用"></a>虚拟DOM的作用</h2><ul>
 <li>提升性能，极大加快元素的更新渲染速度</li>
 <li>抽象出了DOM概念，使得跨端应用得以实现，由此产生了React-Native，以及服务器端React应用</li>
 </ul>
-</li>
-<li><p>实现</p>
-<p>每当react中的state和props发生改变，便会触发组件中的render函数，虚拟DOM即是在render函数中被创建，例如以下这段JSX代码：</p>
+<h2 id="虚拟DOM的实现"><a href="#虚拟DOM的实现" class="headerlink" title="虚拟DOM的实现"></a>虚拟DOM的实现</h2><p>每当react中的state和props发生改变，便会触发组件中的render函数，虚拟DOM即是在render函数中被创建，例如以下这段JSX代码：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">render() &#123;</span><br><span class="line">	return &lt;div id=&apos;root&apos;&gt;&lt;p&gt;Hello world!&lt;/p&gt;&lt;/div&gt;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>由于JSX只是JavaScript的语法糖，实际上是通过return一个JSX元素来返回组件，而JSX元素则是通过<code>React.createElement(tagName, props, children)​</code>进行创建，所以上面的代码可以转化为：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">render() &#123;</span><br><span class="line">	return React.createElement(&apos;div&apos;, &#123;id: &apos;root&apos;&#125;, </span><br><span class="line">		React.createElement(&apos;p&apos;,&#123;&#125;, &apos;Hello world!&apos;)</span><br><span class="line">	);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>因此每次更新时，引擎就会根据创建的JSX元素构造一颗虚拟的DOM树，创建完成后与旧的DOM树进行比对，找出差异部分进行更新，这个步骤就需要用到diff算法。下图是一个简单的比较更新示意图（来自知乎）：</p>
-<p><img src="https://pic3.zhimg.com/v2-74bc56f26f8fe554ffc7d14f6ffadbc2_b.jpg" alt></p>
+<p><img src="http://pqx4iz0f9.bkt.clouddn.com/virtualdom2.png" alt></p>
 <p>实质上虚拟DOM的作用只需要两行代码就能表示</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let patchs = diff(oldTree, newTree); // 获取两颗DOM树的差异</span><br><span class="line">patch(realDom, patchs); // 找到真实DOM进行部分渲染</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<ol start="4">
-<li><p>diff算法（讲一下基本实现）</p>
-<ul>
+<h2 id="diff算法（讲一下基本实现）"><a href="#diff算法（讲一下基本实现）" class="headerlink" title="diff算法（讲一下基本实现）"></a>diff算法（讲一下基本实现）</h2><ul>
 <li><p>diff算法中<strong>只比较同级元素</strong>，这也是diff的算法复杂度只有O(n)的原因。因为DOM是多叉树的结构，若需要完整对比差异则需要O(n^3)的复杂度。因此在比较过程中若发现某个元素发生改变，则会舍弃它的所有子元素，直接进行替换，会造成相同元素复用性降低，这也是复杂度优化带来的一个缺陷。</p>
 </li>
 <li><p>算法实现：</p>
@@ -365,11 +357,9 @@
 </ol>
 </li>
 </ol>
-<p><img src="https://pic2.zhimg.com/v2-09196ef473645c77df988ba6b20bd97d_b.jpg" alt="函数调用图解"></p>
+<p><img src="http://pqx4iz0f9.bkt.clouddn.com/virtualdom3.png" alt="函数调用图解"></p>
 </li>
 </ul>
-</li>
-</ol>
 <p>：-D 回顾完了知识点，我们来回答一下在某次面试中面试官问我的问题：</p>
 <blockquote>
 <p>如果一个元素的color属性发生了更改，那么真实的DOM和虚拟DOM哪个更新得更快？如果更改的是width或height属性呢？</p>
@@ -377,6 +367,7 @@
 <p>​    更改元素的color属性只会引起<strong>重绘</strong>，因此并不会触发整个页面的重排，需要重新计算的部分也很少，所以引发的性能开销也是很小的。而更改width或height属性会改变元素节点的位置和几何信息，甚至会影响到其他节点元素，这样渲染树中需要重新计算的部分就会很大。</p>
 <p>​    但是我觉得这个问题其实没有太大意义，因为虚拟DOM的作用也只是减少参与DOM更新的元素，他并不能影响真实DOM的布局和绘制，不管是修改了color还是width，都会将这一差异传给真实DOM对该元素进行重新渲染。从这个方面来讲这个问题中比较两种DOM的性能是没有意义的吧。</p>
 <p>​    对这个问题有什么更好的解答，可以在Github上联系我鸭！也可以通过邮箱 <a href="mailto:yyqyang222@163.com" target="_blank" rel="noopener">yyqyang222@163.com</a> 与我交流∠( ᐛ 」∠)＿</p>
+<p>参考：两张图片来自知乎作者@<a href="https://www.zhihu.com/people/qiu-chen-27-12-14" target="_blank" rel="noopener">秋尘</a>，@<a href="https://www.zhihu.com/people/dykliy" target="_blank" rel="noopener">dykliy</a></p>
 
       
     </div>
@@ -481,7 +472,7 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <p class="site-author-name" itemprop="name">John Doe</p>
+              <p class="site-author-name" itemprop="name">Yiku Yang</p>
               <p class="site-description motion-element" itemprop="description"></p>
           </div>
 
@@ -490,7 +481,7 @@
             
               <div class="site-state-item site-state-posts">
               
-                <a href="/archives/">
+                <a href="/archives">
               
                   <span class="site-state-item-count">2</span>
                   <span class="site-state-item-name">posts</span>
@@ -538,7 +529,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#React-Virtual-DOM"><span class="nav-number">1.</span> <span class="nav-text">React Virtual DOM</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#React-Virtual-DOM"><span class="nav-number">1.</span> <span class="nav-text">React Virtual DOM</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#真实DOM和虚拟DOM的区别"><span class="nav-number">1.1.</span> <span class="nav-text">真实DOM和虚拟DOM的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#虚拟DOM的作用"><span class="nav-number">1.2.</span> <span class="nav-text">虚拟DOM的作用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#虚拟DOM的实现"><span class="nav-number">1.3.</span> <span class="nav-text">虚拟DOM的实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#diff算法（讲一下基本实现）"><span class="nav-number">1.4.</span> <span class="nav-text">diff算法（讲一下基本实现）</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -562,21 +553,15 @@
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">John Doe</span>
+  <span class="author" itemprop="copyrightHolder">解释权归作者所有，欢迎和我交流鸭～</span>
 
   
 </div>
 
 
-  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
 
 
 
-  <span class="post-meta-divider">|</span>
-
-
-
-  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
 
 
 
