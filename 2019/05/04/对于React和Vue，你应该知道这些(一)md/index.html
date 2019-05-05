@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="前端学习,">
 
 
 
@@ -79,13 +79,21 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="YikuYang">
-<meta property="og:url" content="http://yikuyang.cn/index.html">
+<meta name="description" content="​    在软件工程的发展过程中，从前后端不分的时代，到MVC中视图的分离，再到如今前端已经完全分离成独立的项目进行开发。前端技术正在飞速发展，而不同框架的诞生和繁荣则是最佳的见证者。  ​    React是一个JavaScript的框架，而Vue是一个MVVM的模型，这两者各有优劣，也有不同的适用环境。这里有一个在知乎上看到的尤大神对React和Vue的看法，我们没必要对他们分出个上下来，作">
+<meta name="keywords" content="前端学习">
+<meta property="og:type" content="article">
+<meta property="og:title" content="对于React和Vue，你应该知道这些:P(一)——React Virtual DOM">
+<meta property="og:url" content="http://yikuyang.cn/2019/05/04/对于React和Vue，你应该知道这些(一)md/index.html">
 <meta property="og:site_name" content="YikuYang">
+<meta property="og:description" content="​    在软件工程的发展过程中，从前后端不分的时代，到MVC中视图的分离，再到如今前端已经完全分离成独立的项目进行开发。前端技术正在飞速发展，而不同框架的诞生和繁荣则是最佳的见证者。  ​    React是一个JavaScript的框架，而Vue是一个MVVM的模型，这两者各有优劣，也有不同的适用环境。这里有一个在知乎上看到的尤大神对React和Vue的看法，我们没必要对他们分出个上下来，作">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="https://pic3.zhimg.com/v2-74bc56f26f8fe554ffc7d14f6ffadbc2_b.jpg">
+<meta property="og:image" content="https://pic2.zhimg.com/v2-09196ef473645c77df988ba6b20bd97d_b.jpg">
+<meta property="og:updated_time" content="2019-05-05T09:34:38.591Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="YikuYang">
+<meta name="twitter:title" content="对于React和Vue，你应该知道这些:P(一)——React Virtual DOM">
+<meta name="twitter:description" content="​    在软件工程的发展过程中，从前后端不分的时代，到MVC中视图的分离，再到如今前端已经完全分离成独立的项目进行开发。前端技术正在飞速发展，而不同框架的诞生和繁荣则是最佳的见证者。  ​    React是一个JavaScript的框架，而Vue是一个MVVM的模型，这两者各有优劣，也有不同的适用环境。这里有一个在知乎上看到的尤大神对React和Vue的看法，我们没必要对他们分出个上下来，作">
+<meta name="twitter:image" content="https://pic3.zhimg.com/v2-74bc56f26f8fe554ffc7d14f6ffadbc2_b.jpg">
 
 
 
@@ -115,13 +123,13 @@
 
 
 
-  <link rel="canonical" href="http://yikuyang.cn/">
+  <link rel="canonical" href="http://yikuyang.cn/2019/05/04/对于React和Vue，你应该知道这些(一)md/">
 
 
 
 
 
-  <title>YikuYang</title>
+  <title>对于React和Vue，你应该知道这些:P(一)——React Virtual DOM | YikuYang</title>
   
 
 
@@ -140,8 +148,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -214,9 +221,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -246,9 +253,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/05/04/对于React和Vue，你应该知道这些(一)md/" itemprop="url">对于React和Vue，你应该知道这些:P(一)——React Virtual DOM</a></h1>
+          <h1 class="post-title" itemprop="name headline">对于React和Vue，你应该知道这些:P(一)——React Virtual DOM</h1>
         
 
         <div class="post-meta">
@@ -298,9 +303,7 @@
       
 
       
-        
-          
-            <blockquote>
+        <blockquote>
 <p>​    在软件工程的发展过程中，从前后端不分的时代，到MVC中视图的分离，再到如今前端已经完全分离成独立的项目进行开发。前端技术正在飞速发展，而不同框架的诞生和繁荣则是最佳的见证者。</p>
 </blockquote>
 <p>​    React是一个JavaScript的框架，而Vue是一个MVVM的模型，这两者各有优劣，也有不同的适用环境。这里有一个在知乎上看到的<a href="https://www.zhihu.com/question/301860721/answer/545031906" target="_blank" rel="noopener">尤大神对React和Vue的看法</a>，我们没必要对他们分出个上下来，作为一个前端开发者，对这两个框架的原理和使用都应该有清晰的认识:-P，不能只会写代码写项目，对其内部实现一窍不通，虽然这是现在大部分前端初学者的一大弊病。</p>
@@ -375,8 +378,6 @@
 <p>​    但是我觉得这个问题其实没有太大意义，因为虚拟DOM的作用也只是减少参与DOM更新的元素，他并不能影响真实DOM的布局和绘制，不管是修改了color还是width，都会将这一差异传给真实DOM对该元素进行重新渲染。从这个方面来讲这个问题中比较两种DOM的性能是没有意义的吧。</p>
 <p>​    对这个问题有什么更好的解答，可以在Github上联系我鸭！也可以通过邮箱 <a href="mailto:yyqyang222@163.com" target="_blank" rel="noopener">yyqyang222@163.com</a> 与我交流∠( ᐛ 」∠)＿</p>
 
-          
-        
       
     </div>
     
@@ -391,140 +392,36 @@
 
     <footer class="post-footer">
       
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yikuyang.cn/2019/05/02/前端学习知识架构/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="YikuYang">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/05/02/前端学习知识架构/" itemprop="url">前端学习知识架构</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-05-02T14:33:33+08:00">
-                2019-05-02
-              </time>
-            
-
-            
-
-            
-          </span>
-
+        <div class="post-tags">
           
-
+            <a href="/tags/前端学习/" rel="tag"># 前端学习</a>
           
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
         </div>
-      </header>
-    
+      
 
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
+      
       
       
 
       
-        
-          <p>​    </p>
-<p>在面试的过程中，面试官常常会就一个知识点发散性的引出下一个问题，例如：让你说一说浏览器的请求响应过程，然后接着问就这个响应过程，如何优化前端性能，这就引出了浏览器缓存这一知识点。因此不管是准备面试，还是日常的学习，都应该对一个大知识点进行归纳整理，并与其他知识点进行联系，有一个大局观的概念。</p>
-<p>​    所以我自己整理了一些前端的知识架构，包括基础的JavaScript、CSS、HTML，以及浏览器的原理与前端性能相关的知识。我也只是一个入门一年的前端小白，这个知识架构图在我持续学习的过程中仍会继续完善٩(˃̶͈̀௰˂̶͈́)و</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/05/02/前端学习知识架构/#more" rel="contents">
-              Read more &raquo;
-            </a>
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/05/02/前端学习知识架构/" rel="next" title="前端学习知识架构">
+                <i class="fa fa-chevron-left"></i> 前端学习知识架构
+              </a>
+            
           </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
 
-    
+          <span class="post-nav-divider"></span>
 
-    
-
-    
-
-    <footer class="post-footer">
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
       
 
       
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -534,10 +431,11 @@
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -545,6 +443,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -565,8 +467,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -617,6 +528,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#React-Virtual-DOM"><span class="nav-number">1.</span> <span class="nav-text">React Virtual DOM</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -750,6 +677,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
