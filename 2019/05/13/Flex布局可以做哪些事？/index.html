@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="前端学习,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="​     ​    网页的布局是CSS的重要研究方向，布局的传统解决方案是基于盒子模型的，但盒子模型对于垂直居中、左侧定宽右侧自适应、两列等高等布局问题的解决方案较为繁琐。2009年，W3C提出了新的解决方案——Flex布局。这篇文章对于Flex的介绍将会涉及以下几个方面，但主要针对的是CSS3最新版本的Flex布局：  Flex布局的三种版本（2009、2011、当前） Flex布局的特性 F">
+<meta name="keywords" content="前端学习">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Flex布局可以做哪些事？">
+<meta property="og:url" content="http://yikuyang.cn/2019/05/13/Flex布局可以做哪些事？/index.html">
+<meta property="og:site_name" content="YikuYang">
+<meta property="og:description" content="​     ​    网页的布局是CSS的重要研究方向，布局的传统解决方案是基于盒子模型的，但盒子模型对于垂直居中、左侧定宽右侧自适应、两列等高等布局问题的解决方案较为繁琐。2009年，W3C提出了新的解决方案——Flex布局。这篇文章对于Flex的介绍将会涉及以下几个方面，但主要针对的是CSS3最新版本的Flex布局：  Flex布局的三种版本（2009、2011、当前） Flex布局的特性 F">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://pqx4iz0f9.bkt.clouddn.com/flex/flex1.png">
+<meta property="og:image" content="http://pqx4iz0f9.bkt.clouddn.com/flex/flex2.png">
+<meta property="og:image" content="http://pqx4iz0f9.bkt.clouddn.com/flex/flex3.png">
+<meta property="og:image" content="http://pqx4iz0f9.bkt.clouddn.com/flex/flex4.png">
+<meta property="og:image" content="http://pqx4iz0f9.bkt.clouddn.com/flex/flex5.png">
+<meta property="og:updated_time" content="2019-05-13T11:58:35.010Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Flex布局可以做哪些事？">
+<meta name="twitter:description" content="​     ​    网页的布局是CSS的重要研究方向，布局的传统解决方案是基于盒子模型的，但盒子模型对于垂直居中、左侧定宽右侧自适应、两列等高等布局问题的解决方案较为繁琐。2009年，W3C提出了新的解决方案——Flex布局。这篇文章对于Flex的介绍将会涉及以下几个方面，但主要针对的是CSS3最新版本的Flex布局：  Flex布局的三种版本（2009、2011、当前） Flex布局的特性 F">
+<meta name="twitter:image" content="http://pqx4iz0f9.bkt.clouddn.com/flex/flex1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yikuyang.cn/2019/05/13/Flex布局可以做哪些事？/">
+
+
+
+
+
+  <title>Flex布局可以做哪些事？ | YikuYang</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">YikuYang</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">Welcome to my blog~</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-主页">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            主页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-全部文字">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            全部文字
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yikuyang.cn/2019/05/13/Flex布局可以做哪些事？/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yiku Yang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="YikuYang">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">Flex布局可以做哪些事？</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-05-13T14:38:38+08:00">
+                2019-05-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>​    </p>
+<p>​    网页的布局是CSS的重要研究方向，布局的传统解决方案是基于盒子模型的，但盒子模型对于<u>垂直居中</u>、<u>左侧定宽右侧自适应</u>、<u>两列等高</u>等布局问题的解决方案较为繁琐。2009年，W3C提出了新的解决方案——Flex布局。这篇文章对于Flex的介绍将会涉及以下几个方面，但主要针对的是CSS3最新版本的Flex布局：</p>
+<ol>
+<li>Flex布局的三种版本（2009、2011、当前）</li>
+<li>Flex布局的特性</li>
+<li>Flex布局的相关元素属性</li>
+<li>Flex布局的应用</li>
+<li>（附）Flex布局的兼容性方案</li>
+</ol>
+<a id="more"></a>
+<h1 id="1-Flex布局的三种版本"><a href="#1-Flex布局的三种版本" class="headerlink" title="1. Flex布局的三种版本"></a>1. Flex布局的三种版本</h1><ol>
+<li>旧版本（2009年）<ul>
+<li><code>display: box|inline-box</code></li>
+<li>支持浏览器：Windows下的Safari</li>
+<li>需要添加-webkit-前缀</li>
+<li>要求子元素（伸缩项目）必须是块元素，不支持伸缩流换行</li>
+<li>主轴对齐属性中没有<code>space-around</code>属性</li>
+<li>顺序属性<code>order</code>的默认值为1</li>
+</ul>
+</li>
+<li>混合版本（2011年）<ul>
+<li><code>display: flexbox|inline-flexbox</code></li>
+<li>支持浏览器：IE10</li>
+<li>需要添加-ms-前缀</li>
+</ul>
+</li>
+<li>新版本<ul>
+<li><code>display: flex|inline-flex</code></li>
+<li>支持浏览器：目前主流浏览器均支持，但移动端ios7.1-8.4需要添加前缀-webkit-</li>
+</ul>
+</li>
+</ol>
+<p>详细的属性对比可参考：<a href="[http://www.cnblogs.com/xiaohuochai/p/5323146.html]">深入理解CSS弹性盒模型</a>，并且网页中可以进行实时操作</p>
+<h1 id="2-Flex布局特性"><a href="#2-Flex布局特性" class="headerlink" title="2. Flex布局特性"></a>2. Flex布局特性</h1><ul>
+<li>float、clear、vertical-align属性在子元素上没有效果</li>
+<li>容器的margin不会与子元素margin重叠</li>
+<li>text-align和columns属性在容器上没有效果</li>
+<li>inline-flex和flex的区别是前者不独占一行，后者会填满整行</li>
+</ul>
+<h1 id="3-Flex元素属性"><a href="#3-Flex元素属性" class="headerlink" title="3. Flex元素属性"></a>3. Flex元素属性</h1><ul>
+<li><p>容器相关属性：</p>
+<ul>
+<li>伸缩流方向：<code>flex-direction: row(default) | row-reverse | column | column-reverse</code>（主轴方向）</li>
+<li>伸缩流换行：<code>flex-wrap: nowrap(default) | wrap | wrap-reverse</code></li>
+<li>伸缩流：<code>flex-flow: &lt;flex-direction&gt; | &lt;flex-wrap&gt;</code></li>
+<li>主轴对齐方式：<code>justify-content: flex-start(default) | center | flex-end | space-between | space-around</code></li>
+<li>侧轴对齐方式：<code>align-items: stretch(default) | flex-start | flex-end | center | baseline</code></li>
+<li>多行侧轴对齐方式：<code>align-items: stretch(default) | flex-start | flex-end | center | baseline</code></li>
+</ul>
+</li>
+<li><p>伸缩项目相关属性：</p>
+<ul>
+<li>自身侧轴对齐：<code>align-self: auto(default) | flex-start | center | flex-end | baseline | stretch</code></li>
+<li>伸缩基准值（伸缩项目在主轴方向上的初始大小）: <code>flex-basis: &lt;length&gt;(px/em/%) | auto(default)</code></li>
+<li>扩展比率（若有额外空间，此伸缩项目相对其他项目的扩展比例）：<code>flex-grow: &lt;number&gt; (default=0)</code></li>
+<li>收缩比率（若无额外空间，此伸缩项目相对其他项目的收缩比例）：<code>flex-shrink: &lt;number&gt; (default=1)</code></li>
+<li>伸缩性：<code>flex: none | [&lt;flex-grow&gt; &lt;flex-shrink&gt; ? || &lt;flex-basis&gt;]</code><ul>
+<li><code>flex：0</code> 表示收缩为最小宽度</li>
+<li><code>flex：1</code> 表示分配所有宽度</li>
+</ul>
+</li>
+<li>显示顺序：<code>order: &lt;number&gt;(default=0)</code></li>
+</ul>
+</li>
+<li>ps: IDE中可以看到CSS3.0中也有<code>justify-align</code>和<code>justify-self</code>的相关属性，但是如果使用的话是没有效果的！！</li>
+</ul>
+<h1 id="4-Flex布局的应用"><a href="#4-Flex布局的应用" class="headerlink" title="4. Flex布局的应用"></a>4. Flex布局的应用</h1><h2 id="垂直居中"><a href="#垂直居中" class="headerlink" title="垂直居中"></a>垂直居中</h2><p>这就非常简单了，直接看代码！两个属性就能搞定～</p>
+<p><img src="http://pqx4iz0f9.bkt.clouddn.com/flex/flex1.png" alt></p>
+<p>并且我们还可以使用align-self属性和wrap属性，达到不同的排列效果。可以利用flex布局出三筒和八筒（麻将上头？？🤯）</p>
+<p><img src="http://pqx4iz0f9.bkt.clouddn.com/flex/flex2.png" alt></p>
+<p><img src="http://pqx4iz0f9.bkt.clouddn.com/flex/flex3.png" alt></p>
+<h2 id="左栏定宽，右栏自适应"><a href="#左栏定宽，右栏自适应" class="headerlink" title="左栏定宽，右栏自适应"></a>左栏定宽，右栏自适应</h2><p>需要使用到flex-basis属性和flex属性，看代码</p>
+<p><img src="http://pqx4iz0f9.bkt.clouddn.com/flex/flex4.png" alt></p>
+<p>甚至两边定宽，中间自适应也可以非常简单的实现（ps：这样写的话如果宽度变很窄，最后中间部分将会被隐藏）</p>
+<p><img src="http://pqx4iz0f9.bkt.clouddn.com/flex/flex5.png" alt></p>
+<p>Flex布局还可应用于多列等高（使用stretch）、流式排列自动换行等场景，具体使用还需要自己在实践中摸索～</p>
+<h1 id="5-（附）Flex布局的兼容性方案"><a href="#5-（附）Flex布局的兼容性方案" class="headerlink" title="5. （附）Flex布局的兼容性方案"></a>5. （附）Flex布局的兼容性方案</h1><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*display*/</span></span><br><span class="line"><span class="selector-class">.display_flex</span>&#123;</span><br><span class="line">    <span class="attribute">display</span>: -webkit-box; <span class="comment">/*旧版本*/</span></span><br><span class="line">    <span class="attribute">display</span>: -ms-flexbox; <span class="comment">/*混合版本*/</span></span><br><span class="line">    <span class="attribute">display</span>: -webkit-flex; <span class="comment">/*新版本*/</span></span><br><span class="line">    <span class="attribute">display</span>: flex; <span class="comment">/*新版本*/</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*伸缩流方向*/</span></span><br><span class="line"><span class="selector-class">.flex-direction_column</span>&#123;</span><br><span class="line">    <span class="attribute">-webkit-box-orient</span>: vertical; </span><br><span class="line">    <span class="attribute">-ms-flex-direction</span>: column;</span><br><span class="line">    <span class="attribute">-webkit-flex-direction</span>: column;</span><br><span class="line">    <span class="attribute">flex-direction</span>: column;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*主轴对齐*/</span></span><br><span class="line"><span class="selector-class">.justify-content_flex-center</span>&#123;</span><br><span class="line">    <span class="attribute">-webkit-box-pack</span>: center;</span><br><span class="line">    <span class="attribute">-ms-flex-pack</span>: center;</span><br><span class="line">    <span class="attribute">-webkit-justify-content</span>: center;</span><br><span class="line">    <span class="attribute">justify-content</span>: center;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*侧轴对齐*/</span></span><br><span class="line"><span class="selector-class">.align-items_center</span>&#123;</span><br><span class="line">    <span class="attribute">-webkit-box-align</span>: center;</span><br><span class="line">    <span class="attribute">-ms-flex-align</span>: center;</span><br><span class="line">    <span class="attribute">-webkit-align-items</span>: center;</span><br><span class="line">    <span class="attribute">align-items</span>: center;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*伸缩性*/</span></span><br><span class="line"><span class="selector-class">.flex_auto</span>&#123;</span><br><span class="line">    <span class="attribute">-webkit-box-flex</span>: <span class="number">1</span>;</span><br><span class="line">    <span class="attribute">-ms-flex</span>: auto;</span><br><span class="line">    <span class="attribute">-webkit-flex</span>: auto;</span><br><span class="line">    <span class="attribute">flex</span>: auto;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*显示顺序*/</span></span><br><span class="line"><span class="selector-class">.order_2</span>&#123;</span><br><span class="line">    <span class="attribute">-webkit-box-ordinal-group</span>: <span class="number">2</span>;</span><br><span class="line">    <span class="attribute">-ms-flex-order</span>: <span class="number">2</span>;</span><br><span class="line">    <span class="attribute">-webkit-order</span>: <span class="number">2</span>;</span><br><span class="line">    <span class="attribute">order</span>: <span class="number">2</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>代码摘自<a href="https://www.cnblogs.com/zhangkeyu/p/6645183.html" target="_blank" rel="noopener">CSS旧版flex及兼容</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/前端学习/" rel="tag"># 前端学习</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/05/11/面试问题-何时会发送图片资源请求？/" rel="next" title="[面试问题]何时会发送图片资源请求？">
+                <i class="fa fa-chevron-left"></i> [面试问题]何时会发送图片资源请求？
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Yiku Yang</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-Flex布局的三种版本"><span class="nav-number">1.</span> <span class="nav-text">1. Flex布局的三种版本</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-Flex布局特性"><span class="nav-number">2.</span> <span class="nav-text">2. Flex布局特性</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-Flex元素属性"><span class="nav-number">3.</span> <span class="nav-text">3. Flex元素属性</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-Flex布局的应用"><span class="nav-number">4.</span> <span class="nav-text">4. Flex布局的应用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#垂直居中"><span class="nav-number">4.1.</span> <span class="nav-text">垂直居中</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#左栏定宽，右栏自适应"><span class="nav-number">4.2.</span> <span class="nav-text">左栏定宽，右栏自适应</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-（附）Flex布局的兼容性方案"><span class="nav-number">5.</span> <span class="nav-text">5. （附）Flex布局的兼容性方案</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">解释权归作者所有，欢迎和我交流鸭～</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
