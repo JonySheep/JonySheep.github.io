@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="前端学习,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="​    数组是我们在开发过程中最常用的数据结构，利用数组我们可以进行多个数据的集中处理，例如数据排序、数据增删改查等操作，也可以使用数组来进行字符串处理。 ​    在JavaScript中数组对应的内置对象是Array，它的原型是Object对象。因此数组不属于JS中的基本数据类型，而是对象类型。本篇博客将涉及以下内容：  判断Array对象的方法 Array对象相关操作API总结">
+<meta name="keywords" content="前端学习">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript操作数组方法总结">
+<meta property="og:url" content="http://yikuyang.cn/2019/05/18/JavaScript操作数组方法总结/index.html">
+<meta property="og:site_name" content="YikuYang">
+<meta property="og:description" content="​    数组是我们在开发过程中最常用的数据结构，利用数组我们可以进行多个数据的集中处理，例如数据排序、数据增删改查等操作，也可以使用数组来进行字符串处理。 ​    在JavaScript中数组对应的内置对象是Array，它的原型是Object对象。因此数组不属于JS中的基本数据类型，而是对象类型。本篇博客将涉及以下内容：  判断Array对象的方法 Array对象相关操作API总结">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-05-18T10:28:25.736Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaScript操作数组方法总结">
+<meta name="twitter:description" content="​    数组是我们在开发过程中最常用的数据结构，利用数组我们可以进行多个数据的集中处理，例如数据排序、数据增删改查等操作，也可以使用数组来进行字符串处理。 ​    在JavaScript中数组对应的内置对象是Array，它的原型是Object对象。因此数组不属于JS中的基本数据类型，而是对象类型。本篇博客将涉及以下内容：  判断Array对象的方法 Array对象相关操作API总结">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yikuyang.cn/2019/05/18/JavaScript操作数组方法总结/">
+
+
+
+
+
+  <title>JavaScript操作数组方法总结 | YikuYang</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">YikuYang</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">Welcome to my blog~</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-主页">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            主页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-全部文字">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            全部文字
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yikuyang.cn/2019/05/18/JavaScript操作数组方法总结/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yiku Yang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="YikuYang">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">JavaScript操作数组方法总结</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-05-18T14:36:41+08:00">
+                2019-05-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>​    数组是我们在开发过程中最常用的数据结构，利用数组我们可以进行多个数据的集中处理，例如数据排序、数据增删改查等操作，也可以使用数组来进行字符串处理。</p>
+<p>​    在JavaScript中数组对应的内置对象是<strong>Array</strong>，它的原型是<strong>Object</strong>对象。因此数组不属于JS中的基本数据类型，而是对象类型。本篇博客将涉及以下内容：</p>
+<ol>
+<li>判断Array对象的方法</li>
+<li>Array对象相关操作API总结</li>
+</ol>
+<a id="more"></a>
+<h1 id="判断Array对象的方法"><a href="#判断Array对象的方法" class="headerlink" title="判断Array对象的方法"></a>判断Array对象的方法</h1><ol>
+<li><p><code>array instanceof Array</code></p>
+<ul>
+<li><p>这种方法在DOM跨域时可能会有问题！若代码中有多个frame，而每个frame的执行环境互不相同，所以他们的内置对象Array本质上不是同一个Array。看下面的代码就可以理解了：</p>
+</li>
+<li><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> iframe = <span class="built_in">document</span>.createElement(<span class="string">'iframe'</span>);</span><br><span class="line"><span class="built_in">document</span>.body.appendChild(iframe);</span><br><span class="line">FrameArray = <span class="built_in">window</span>.frames[<span class="built_in">window</span>.frames.length - <span class="number">1</span>].Array;</span><br><span class="line"><span class="keyword">var</span> arr = <span class="keyword">new</span> FrameArray(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>);</span><br><span class="line"><span class="built_in">console</span>.log(arr <span class="keyword">instanceof</span> <span class="built_in">Array</span>); <span class="comment">// print "false"</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p><code>array.constructor === Array</code></p>
+<ul>
+<li>存在的问题与<strong>1</strong>相同</li>
+</ul>
+</li>
+<li><p><code>Object.prototype.toString.call(arr) === &#39;[Object Array]&#39;</code></p>
+<ul>
+<li>完全没毛病的方法！</li>
+</ul>
+</li>
+<li><p><code>Array.isArray(arr)</code></p>
+<ul>
+<li>ES5中引入的新方法，但IE8以及之前的浏览器不支持=(</li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<p>ps : typeof 不能用于数组，因为它只能用于基本数据类型和Object</p>
+</blockquote>
+<h1 id="Array对象相关操作API总结"><a href="#Array对象相关操作API总结" class="headerlink" title="Array对象相关操作API总结"></a>Array对象相关操作API总结</h1><h2 id="插入"><a href="#插入" class="headerlink" title="插入"></a>插入</h2><h3 id="push-…items-T"><a href="#push-…items-T" class="headerlink" title="push(…items: T[])"></a>push(…items: T[])</h3><ul>
+<li>功能：从尾部插入元素</li>
+<li>Param：一个或多个元素值</li>
+<li>Return：插入后的数组长度值</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> length = array.push(<span class="number">1</span>, <span class="number">2</span>); <span class="comment">// 从末尾插入元素1和2</span></span><br><span class="line"><span class="comment">// return 3</span></span><br></pre></td></tr></table></figure>
+<h3 id="unshift-…items-T"><a href="#unshift-…items-T" class="headerlink" title="unshift(…items: T[])"></a>unshift(…items: T[])</h3><ul>
+<li>从头部插入元素</li>
+<li>Param：一个或多个元素值</li>
+<li>Return：插入后的数组长度值</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> length = array.unshift(<span class="number">-1</span>); <span class="comment">// 从头部插入元素-1</span></span><br><span class="line"><span class="comment">// return 4</span></span><br></pre></td></tr></table></figure>
+<h3 id="splice-start-number-0-…items-T"><a href="#splice-start-number-0-…items-T" class="headerlink" title="splice(start: number, 0, …items: T[])"></a>splice(start: number, 0, …items: T[])</h3><ul>
+<li>从某个位置插入元素</li>
+<li>Param：<ul>
+<li>start：插入位置</li>
+<li>…items：插入的一个或多个元素值</li>
+</ul>
+</li>
+<li>Return：[] （本来应该返回删除的元素列表，但这里没有进行删除，所以返回空数组）</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> delectItems = array.splice(<span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>) <span class="comment">// 在下标为1的元素后插入1，2，3</span></span><br><span class="line"><span class="comment">// return []</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>插入时直接对堆中的数组对象进行操作，不会进行拷贝</p>
+</blockquote>
+<h2 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h2><h3 id="pop"><a href="#pop" class="headerlink" title="pop()"></a>pop()</h3><ul>
+<li>从尾部删除一个元素</li>
+<li>Param：无</li>
+<li>Return：被删除的元素值</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> array = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>];</span><br><span class="line"><span class="keyword">let</span> deleteNum = array.pop(); <span class="comment">// 从末尾删除一个元素 </span></span><br><span class="line"><span class="comment">// return 4</span></span><br></pre></td></tr></table></figure>
+<h3 id="shift"><a href="#shift" class="headerlink" title="shift()"></a>shift()</h3><ul>
+<li>从头部删除一个元素</li>
+<li>Param：无</li>
+<li>Return：被删除的元素值</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> array = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>];</span><br><span class="line"><span class="keyword">let</span> deleteNum = array.shift(); <span class="comment">// 从头部删除一个元素</span></span><br><span class="line"><span class="comment">// return 0</span></span><br></pre></td></tr></table></figure>
+<h3 id="splice-start-number-deleteCount-number-…items-T"><a href="#splice-start-number-deleteCount-number-…items-T" class="headerlink" title="splice(start: number, deleteCount: number, …items: T[])"></a>splice(start: <strong>number</strong>, deleteCount: <strong>number</strong>, …items: T[])</h3><ul>
+<li>从某个位置删除一个或多个元素，并且可以在删除位置插入元素</li>
+<li>Param：<ul>
+<li>start：被删除元素的位置</li>
+<li>deleteCount：被删除元素的数量</li>
+<li>…items：插入的一个或多个元素值</li>
+</ul>
+</li>
+<li>Return：被删除的元素列表</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> array = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>];</span><br><span class="line"><span class="keyword">let</span> delectItems = array.splice(<span class="number">0</span>, <span class="number">2</span>); <span class="comment">// 在下标为0的位置删除2个元素 </span></span><br><span class="line"><span class="comment">// return [0, 1]</span></span><br></pre></td></tr></table></figure>
+<h2 id="查询"><a href="#查询" class="headerlink" title="查询"></a>查询</h2><h3 id="indexOf-searchElement-T-fromIndex-number"><a href="#indexOf-searchElement-T-fromIndex-number" class="headerlink" title="indexOf(searchElement: T, fromIndex?: number)"></a>indexOf(searchElement: T, fromIndex?: number)</h3><ul>
+<li>查询某个元素第一次出现的位置，若没有这个元素则返回<strong>-1</strong></li>
+<li>Param：<ul>
+<li>searchElement: 查询的元素值</li>
+<li>fromIndex：从指定位置开始查询</li>
+</ul>
+</li>
+<li>Return：第一次出现的元素下标</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> array = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>];</span><br><span class="line"><span class="keyword">let</span> indexOf = array.indexOf(<span class="number">2</span>, <span class="number">1</span>); <span class="comment">// return 2</span></span><br></pre></td></tr></table></figure>
+<h3 id="lastIndexOf-searchElement-T-fromIndex-number"><a href="#lastIndexOf-searchElement-T-fromIndex-number" class="headerlink" title="lastIndexOf(searchElement: T, fromIndex?: number)"></a>lastIndexOf(searchElement: T, fromIndex?: number)</h3><ul>
+<li>查询某个元素最后一次出现的位置，若没有这个元素则返回<strong>-1</strong></li>
+<li>Param：<ul>
+<li>searchElement: 查询的元素值</li>
+<li>fromIndex：从指定位置开始查询</li>
+</ul>
+</li>
+<li>Return：最后一次出现的元素下标</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> array = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>];</span><br><span class="line"><span class="keyword">let</span> lastIndexOf = array.lastIndexOf(<span class="number">2</span>); <span class="comment">// return 3</span></span><br></pre></td></tr></table></figure>
+<h3 id="includes-searchElement-number-fromIndex-number"><a href="#includes-searchElement-number-fromIndex-number" class="headerlink" title="includes(searchElement: number, fromIndex?: number)"></a>includes(searchElement: number, fromIndex?: number)</h3><ul>
+<li>查询数组中是否包含指定元素，若没有这个元素则返回<strong>false</strong></li>
+<li><strong>ES6中的新方法！</strong></li>
+<li>Param：<ul>
+<li>searchElement: 查询的元素值</li>
+<li>fromIndex：从指定位置开始查询</li>
+</ul>
+</li>
+<li>Return：true | false</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> array = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>];</span><br><span class="line"><span class="keyword">let</span> include = array.includes(<span class="number">5</span>); <span class="comment">// return false</span></span><br></pre></td></tr></table></figure>
+<h3 id="find-predicate-value-number-index-number-obj-Int8Array-gt-boolean-thisArg-any"><a href="#find-predicate-value-number-index-number-obj-Int8Array-gt-boolean-thisArg-any" class="headerlink" title="find(predicate: (value: number, index: number, obj: Int8Array) =&gt; boolean, thisArg?: any)"></a>find(predicate: (value: number, index: number, obj: Int8Array) =&gt; boolean, thisArg?: any)</h3><ul>
+<li>查询第一个满足回调函数中指定条件的元素，若没有这个元素则返回<strong>undefined</strong></li>
+<li>Param：<ul>
+<li>predicate: 指定条件的回调函数</li>
+<li>thisArg：执行回调时用作<code>this</code> 的对象</li>
+</ul>
+</li>
+<li>Return：第一次满足条件的元素<strong>值</strong></li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> array = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>];</span><br><span class="line"><span class="keyword">let</span> find = array.find(<span class="function">(<span class="params">v, index</span>)=&gt;</span>&#123;<span class="keyword">return</span> v&gt;<span class="number">0</span>&#125;); <span class="comment">// return 1</span></span><br></pre></td></tr></table></figure>
+<h3 id="findIndex-predicate-value-number-index-number-obj-Int8Array-gt-boolean-thisArg-any"><a href="#findIndex-predicate-value-number-index-number-obj-Int8Array-gt-boolean-thisArg-any" class="headerlink" title="findIndex(predicate: (value: number, index: number, obj: Int8Array) =&gt; boolean, thisArg?: any)"></a>findIndex(predicate: (value: number, index: number, obj: Int8Array) =&gt; boolean, thisArg?: any)</h3><ul>
+<li>查询第一个满足回调函数中指定条件的元素的下标，若没有这个元素则返回<strong>-1</strong></li>
+<li>Param：<ul>
+<li>predicate: 指定条件的回调函数</li>
+<li>thisArg：执行回调时用作<code>this</code> 的对象</li>
+</ul>
+</li>
+<li>Return：第一次满足条件的元素<strong>下标</strong></li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> array = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>];</span><br><span class="line"><span class="keyword">let</span> findIndex = array.findIndex(<span class="function">(<span class="params">v, index</span>)=&gt;</span>&#123;<span class="keyword">return</span> v&gt;<span class="number">3</span>&#125;); <span class="comment">// return 5</span></span><br></pre></td></tr></table></figure>
+<h3 id="every-callbackfn-value-number-index-number-array-Int8Array-gt-boolean-thisArg-any"><a href="#every-callbackfn-value-number-index-number-array-Int8Array-gt-boolean-thisArg-any" class="headerlink" title="every(callbackfn: (value: number, index: number, array: Int8Array) =&gt; boolean, thisArg?: any)"></a>every(callbackfn: (value: number, index: number, array: Int8Array) =&gt; boolean, thisArg?: any)</h3><ul>
+<li>查询是否数组中<strong>所有元素</strong>都满足回调函数中的条件</li>
+<li>Param：<ul>
+<li>callbackfn: 指定条件的回调函数</li>
+<li>thisArg：执行回调时用作<code>this</code> 的对象</li>
+</ul>
+</li>
+<li>Return：true | false</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> array = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>];</span><br><span class="line"><span class="keyword">let</span> every = array.every(<span class="function">(<span class="params">v, index</span>)=&gt;</span>&#123;<span class="keyword">return</span> v &gt; <span class="number">3</span>&#125;); <span class="comment">// return false</span></span><br></pre></td></tr></table></figure>
+<h3 id="some-callbackfn-value-number-index-number-array-Int8Array-gt-boolean-thisArg-any"><a href="#some-callbackfn-value-number-index-number-array-Int8Array-gt-boolean-thisArg-any" class="headerlink" title="some(callbackfn: (value: number, index: number, array: Int8Array) =&gt; boolean, thisArg?: any)"></a>some(callbackfn: (value: number, index: number, array: Int8Array) =&gt; boolean, thisArg?: any)</h3><ul>
+<li>查询是否数组中<strong>存在一个元素</strong>满足回调函数中的条件</li>
+<li>Param：<ul>
+<li>callbackfn: 指定条件的回调函数</li>
+<li>thisArg：执行回调时用作<code>this</code> 的对象</li>
+</ul>
+</li>
+<li>Return：true | false</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> array = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>];</span><br><span class="line"><span class="keyword">let</span> some = array.some(<span class="function">(<span class="params">v, index</span>)=&gt;</span>&#123;<span class="keyword">return</span> v &gt; <span class="number">3</span>&#125;); <span class="comment">// return true</span></span><br></pre></td></tr></table></figure>
+<h3 id="filter-callbackfn-value-T-index-number-array-T-gt-any-thisArg-any"><a href="#filter-callbackfn-value-T-index-number-array-T-gt-any-thisArg-any" class="headerlink" title="filter(callbackfn: (value: T, index: number, array: T[]) =&gt; any, thisArg?: any)"></a>filter(callbackfn: (value: T, index: number, array: T[]) =&gt; any, thisArg?: any)</h3><ul>
+<li>查询数组中所有满足回调函数条件的元素</li>
+<li>Param：<ul>
+<li>callbackfn: 指定条件的回调函数</li>
+<li>thisArg：执行回调时用作<code>this</code> 的对象</li>
+</ul>
+</li>
+<li>Return：所有满足回调函数条件的元素</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> array = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>];</span><br><span class="line"><span class="keyword">let</span> filter = array.filter(<span class="function">(<span class="params">v, index</span>)=&gt;</span>&#123;<span class="keyword">return</span> v &gt;= <span class="number">3</span>&#125;); <span class="comment">// return [3, 4]</span></span><br></pre></td></tr></table></figure>
+<h2 id="遍历"><a href="#遍历" class="headerlink" title="遍历"></a>遍历</h2><h3 id="keys"><a href="#keys" class="headerlink" title="keys()"></a>keys()</h3><ul>
+<li>获得数组索引值的迭代器，使用迭代器进行元素遍历，与<code>Object.keys(arr)</code>的区别是会包含空元素的索引</li>
+<li>IE浏览器不兼容！</li>
+<li>Param：无</li>
+<li>Return：数组索引值的迭代器</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> keys = array.keys();</span><br></pre></td></tr></table></figure>
+<h3 id="values"><a href="#values" class="headerlink" title="values()"></a>values()</h3><ul>
+<li>获得数组元素值的迭代器，使用迭代器进行元素遍历</li>
+<li>IE浏览器不兼容！</li>
+<li>Param：无</li>
+<li>Return：数组元素值的迭代器</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> values = array.values();</span><br></pre></td></tr></table></figure>
+<h3 id="entries"><a href="#entries" class="headerlink" title="entries()"></a>entries()</h3><ul>
+<li>获得包含数组键/值对的迭代器，使用迭代器进行元素遍历</li>
+<li>IE浏览器不兼容！</li>
+<li>Param：无</li>
+<li>Return：数组索引值和元素值的迭代器</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> array = [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>]</span><br><span class="line"><span class="keyword">let</span> entries = array.entries(); </span><br><span class="line"><span class="built_in">console</span>.log(...entries);</span><br><span class="line"><span class="comment">// print "[0, 'a'][1, 'b'][2, 'c']"</span></span><br></pre></td></tr></table></figure>
+<h3 id="forEach-callbackfn-value-T-index-number-array-T-gt-void-thisArg-any"><a href="#forEach-callbackfn-value-T-index-number-array-T-gt-void-thisArg-any" class="headerlink" title="forEach(callbackfn: (value: T, index: number, array: T[]) =&gt; void, thisArg?: any)"></a>forEach(callbackfn: (value: T, index: number, array: T[]) =&gt; void, thisArg?: any)</h3><ul>
+<li>遍历数组，在回调函数中对每一个数组元素进行操作</li>
+<li>不在原数组上进行操作，进行了拷贝</li>
+<li>Param：<ul>
+<li>callbackfn: 指定条件的回调函数</li>
+<li>thisArg：执行回调时用作<code>this</code> 的对象</li>
+</ul>
+</li>
+<li>Return：无</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr.forEach(<span class="function">(<span class="params">value, index</span>) =&gt;</span> &#123;value*=<span class="number">2</span>; <span class="built_in">console</span>.log(value, index)&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="map-callbackfn-value-T-index-number-array-T-gt-U-thisArg-any"><a href="#map-callbackfn-value-T-index-number-array-T-gt-U-thisArg-any" class="headerlink" title="map(callbackfn: (value: T, index: number, array: T[]) =&gt; U, thisArg?: any)"></a>map<u>(callbackfn: (value: T, index: number, array: T[]) =&gt; U, thisArg?: any)</u></h3><ul>
+<li>创建一个新数组，其结果是该数组中的每个元素都调用一个提供的回调函数后返回的结果。</li>
+<li>不在原数组上进行操作，进行了拷贝</li>
+<li>Param：<ul>
+<li>callbackfn: 指定条件的回调函数</li>
+<li>thisArg：执行回调时用作<code>this</code> 的对象</li>
+</ul>
+</li>
+<li>Return：执行操作后的新数组</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> map = arr.map(<span class="function">(<span class="params">v</span>)=&gt;</span>&#123;<span class="keyword">return</span> v*<span class="number">2</span>&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="flatMap-callback-this-This-value-T-index-number-array-T-gt-U-ReadonlyArray-thisArg-This"><a href="#flatMap-callback-this-This-value-T-index-number-array-T-gt-U-ReadonlyArray-thisArg-This" class="headerlink" title="flatMap (callback: (this: This, value: T, index: number, array: T[]) =&gt; U|ReadonlyArray,thisArg?: This)"></a>flatMap (callback: (this: This, value: T, index: number, array: T[]) =&gt; U|ReadonlyArray<u>,thisArg?: This)</u></h3><ul>
+<li>与深度为1的<code>map</code>方法基本相同！只是会对结果数组执行一次扁平化</li>
+<li>IE浏览器不兼容！</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="string">"今天天气不错"</span>, <span class="string">""</span>, <span class="string">"早上好"</span>]</span><br><span class="line"></span><br><span class="line">arr.map(<span class="function"><span class="params">s</span> =&gt;</span> s.split(<span class="string">""</span>))</span><br><span class="line"><span class="comment">// [["今", "天", "天", "气", "不", "错"],[""],["早", "上", "好"]]</span></span><br><span class="line"></span><br><span class="line">arr.flatMap(<span class="function"><span class="params">s</span> =&gt;</span> s.split(<span class="string">''</span>));</span><br><span class="line"><span class="comment">// ["今", "天", "天", "气", "不", "错", "", "早", "上", "好"]</span></span><br></pre></td></tr></table></figure>
+<h3 id="reduce-callback-accumulator-currentValue-index-array-initialValue"><a href="#reduce-callback-accumulator-currentValue-index-array-initialValue" class="headerlink" title="reduce(callback(accumulator, currentValue[, index[, array]])[, initialValue])"></a>reduce(callback(accumulator, currentValue[, index[, array]])[, initialValue])</h3><ul>
+<li>对数组中的每一个函数执行定义的reducer函数（回调函数），将其结果汇总为单个返回值</li>
+<li>从左至右进行处理</li>
+<li>Param：<ul>
+<li>callback：reducer函数<ul>
+<li>accumulator：上一次累加的结果</li>
+<li>currentValue：当前值</li>
+<li>currentIndex：当前索引</li>
+</ul>
+</li>
+<li>initialValue：初始累加值，若不写则默认为第0个元素</li>
+</ul>
+</li>
+<li>Return：处理结果</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> array = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>];</span><br><span class="line"><span class="keyword">const</span> reducer = <span class="function">(<span class="params">accumulator, currentValue</span>) =&gt;</span> accumulator + currentValue;</span><br><span class="line"><span class="keyword">let</span> res = array.reduce(reducer, <span class="number">5</span>);</span><br><span class="line"><span class="comment">// return 5 + 1 + 2 + 3 + 4 = 15</span></span><br></pre></td></tr></table></figure>
+<h3 id="reduceRight-callback-accumulator-currentValue-index-array-initialValue"><a href="#reduceRight-callback-accumulator-currentValue-index-array-initialValue" class="headerlink" title="reduceRight(callback(accumulator, currentValue[, index[, array]])[, initialValue])"></a>reduceRight(callback(accumulator, currentValue[, index[, array]])[, initialValue])</h3><ul>
+<li>与<code>reduce</code>作用相同，只是处理顺序不同，reduceRight从右至左进行处理</li>
+</ul>
+<h2 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h2><h3 id="sort-compareFn-a-T-b-T-gt-number"><a href="#sort-compareFn-a-T-b-T-gt-number" class="headerlink" title="sort(compareFn?: (a: T, b: T) =&gt; number)"></a>sort(compareFn?: (a: T, b: T) =&gt; number)</h3><ul>
+<li>在<strong>原地</strong>进行数组排序，并且可以指定比较函数。对数字数组和字符串数组都可进行排序。</li>
+<li>Param：<ul>
+<li>compareFn：比较函数<ul>
+<li>若返回的number&lt;0，a、b位置不变</li>
+<li>若返回的number=0，a、b位置不变（因此这个排序是稳定的：冒泡排序）</li>
+<li>若返回的number&gt;0，a、b交换位置</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Return：<code>this</code></li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">arr.sort(<span class="function">(<span class="params">a, b</span>) =&gt;</span> a-b); <span class="comment">// 升序排列（默认）</span></span><br><span class="line">arr.sort(<span class="function">(<span class="params">a, b</span>) =&gt;</span> b-a); <span class="comment">// 降序排列</span></span><br></pre></td></tr></table></figure>
+<h2 id="反转"><a href="#反转" class="headerlink" title="反转"></a>反转</h2><h3 id="reverse"><a href="#reverse" class="headerlink" title="reverse()"></a>reverse()</h3><ul>
+<li>在<strong>原地</strong>进行数组反转</li>
+<li>Param：无</li>
+<li>Return：该数组的引用，指向原数组</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> reverse = arr.reverse();</span><br></pre></td></tr></table></figure>
+<h2 id="拼接"><a href="#拼接" class="headerlink" title="拼接"></a>拼接</h2><h3 id="concat-…items-T-ConcatArray"><a href="#concat-…items-T-ConcatArray" class="headerlink" title="concat(…items: (T | ConcatArray)[])"></a>concat(…items: (T | ConcatArray<t>)[])</t></h3><ul>
+<li>拼接一个或多个数组/值，并返回一个<strong>新数组</strong>，浅复制！</li>
+<li>Param：多个数组/值</li>
+<li>Return：拼接后的数组</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [ <span class="number">0</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">5</span>];</span><br><span class="line"><span class="keyword">let</span> concat = arr.concat(<span class="number">100</span>, [<span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>], <span class="string">'string'</span>);</span><br><span class="line"><span class="comment">// concat:  [ 0, 2, 3, 4, 5, 5, 100, 6, 7, 8, 'string' ]</span></span><br></pre></td></tr></table></figure>
+<h2 id="扁平化"><a href="#扁平化" class="headerlink" title="扁平化"></a>扁平化</h2><h3 id="flat-depth-number"><a href="#flat-depth-number" class="headerlink" title="flat(depth?: number)"></a>flat(depth?: number)</h3><ul>
+<li>以指定的深度递归遍历数组，达到扁平化的目的，返回一个新数组</li>
+<li>IE浏览器不兼容！可使用<code>reduce</code>和<code>concat</code>函数替代</li>
+<li>Param：遍历深度，默认为1，若为Infinity则为展开任意深度</li>
+<li>Return：扁平化后的新数组</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>, <span class="number">2</span>, [<span class="number">3</span>, <span class="number">4</span>, [<span class="number">5</span>, <span class="number">6</span>]]];</span><br><span class="line">arr.flat(<span class="number">2</span>);</span><br><span class="line"><span class="comment">// [1, 2, 3, 4, 5, 6]</span></span><br></pre></td></tr></table></figure>
+<h2 id="部分替换"><a href="#部分替换" class="headerlink" title="部分替换"></a>部分替换</h2><h3 id="copyWithin-target-number-start-number-end-number"><a href="#copyWithin-target-number-start-number-end-number" class="headerlink" title="copyWithin(target: number, start: number, end?: number)"></a>copyWithin(target: number, start: number, end?: number)</h3><ul>
+<li><strong>浅复制</strong>数组的一部分到同一数组的指定位置，会改变这个数组对象，但长度不变</li>
+<li>IE浏览器不兼容！</li>
+<li>Param：<ul>
+<li>target：指定复制的目标位置</li>
+<li>start：指定被复制子序列的开始位置</li>
+<li>end：可选，指定被复制子序列的结束位置-1，默认为数组长度</li>
+</ul>
+</li>
+<li>Return：<code>this</code></li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> array = [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>, <span class="string">'d'</span>, <span class="string">'e'</span>];</span><br><span class="line"><span class="built_in">console</span>.log(array.copyWithin(<span class="number">0</span>, <span class="number">3</span>, <span class="number">4</span>));</span><br><span class="line"><span class="comment">// expected output: Array ["d", "b", "c", "d", "e"]</span></span><br></pre></td></tr></table></figure>
+<h3 id="fill-value-T-start-number-end-number"><a href="#fill-value-T-start-number-end-number" class="headerlink" title="fill(value: T, start?: number, end?: number)"></a>fill(value: T, start?: number, end?: number)</h3><ul>
+<li><strong>在原地</strong>以指定元素替换某个区间的所有元素</li>
+<li>IE浏览器不兼容！</li>
+<li>Param：<ul>
+<li>target：用以替换的元素值</li>
+<li>start：指定被替换子序列的开始位置，默认为0</li>
+<li>end：可选，指定被替换子序列的结束位置-1，默认为数组长度</li>
+</ul>
+</li>
+<li><code>this</code></li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> array = [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>, <span class="string">'d'</span>, <span class="string">'e'</span>];</span><br><span class="line"><span class="built_in">console</span>.log(array.copyWithin(<span class="number">0</span>, <span class="number">3</span>, <span class="number">4</span>));</span><br><span class="line"><span class="comment">// expected output: Array ["a", "b", "c", 0, "e"]</span></span><br></pre></td></tr></table></figure>
+<h2 id="截取"><a href="#截取" class="headerlink" title="截取"></a>截取</h2><h3 id="slice-begin-number-end-number"><a href="#slice-begin-number-end-number" class="headerlink" title="slice(begin? number,  end? number)"></a>slice(begin? number,  end? number)</h3><ul>
+<li>截取数组中某个指定区间内的元素，并返回一个新数组。若不传入参数，则作用为对数组进行浅拷贝。</li>
+<li>Param：<ul>
+<li>start：可选，指定开始位置，默认为0</li>
+<li>end：可选，指定结束位置-1，默认为数组长度</li>
+</ul>
+</li>
+<li>Return：截取后的新数组</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> array = [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>, <span class="string">'d'</span>, <span class="string">'e'</span>];</span><br><span class="line"><span class="built_in">console</span>.log(array.slice(<span class="number">0</span>, <span class="number">3</span>));</span><br><span class="line"><span class="comment">// expected output: Array ["a", "b", "c"]</span></span><br></pre></td></tr></table></figure>
+<h2 id="转化为字符串"><a href="#转化为字符串" class="headerlink" title="转化为字符串"></a>转化为字符串</h2><h3 id="toString-NaN"><a href="#toString-NaN" class="headerlink" title="toString()"></a>toString()</h3><ul>
+<li>将数组转化为字符串，默认使用 <code>,</code> 进行连接</li>
+<li>Return：字符串</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [ <span class="number">0</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">5</span>];</span><br><span class="line"><span class="keyword">let</span> toString = arr.toString();</span><br><span class="line"><span class="comment">// toString:  0,2,3,4,5,5</span></span><br></pre></td></tr></table></figure>
+<h3 id="toLocaleString-NaN"><a href="#toLocaleString-NaN" class="headerlink" title="toLocaleString()"></a>toLocaleString()</h3><ul>
+<li>与<code>toString</code>作用相同，只是使用本地字符编码进行转换</li>
+</ul>
+<h3 id="join-separator-string"><a href="#join-separator-string" class="headerlink" title="join(separator?: string)"></a>join(separator?: string)</h3><ul>
+<li>以指定的分隔符连接数组中的各个元素</li>
+<li>Param：指定分隔符</li>
+<li>Return：各个元素拼接后的字符串</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [ <span class="number">0</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">5</span>];</span><br><span class="line"><span class="keyword">let</span> join = arr.join(<span class="string">" | "</span>);</span><br><span class="line"><span class="comment">// join:  0 | 2 | 3 | 4 | 5 | 5</span></span><br></pre></td></tr></table></figure>
+<h2 id="转化为数组"><a href="#转化为数组" class="headerlink" title="转化为数组"></a>转化为数组</h2><h3 id="Array-from-lt-T-U-gt-iterable-Iterable-ArrayLike-mapfn-v-T-k-number-gt-U-thisArg-any"><a href="#Array-from-lt-T-U-gt-iterable-Iterable-ArrayLike-mapfn-v-T-k-number-gt-U-thisArg-any" class="headerlink" title="Array.from&lt;T, U&gt;(iterable: Iterable | ArrayLike, mapfn: (v: T, k: number) =&gt; U, thisArg?: any)"></a>Array.from&lt;T, U&gt;(iterable: Iterable<t> | ArrayLike<t>, mapfn: (v: T, k: number) =&gt; U, thisArg?: any)</t></t></h3><ul>
+<li>将传入的数据转化为数组，可传入的数据类型有<ul>
+<li>String</li>
+<li>Set</li>
+<li>Map</li>
+<li>ArrayLike（伪数组，如arguments）</li>
+</ul>
+</li>
+<li>ES6新特性！IE浏览器不兼容！</li>
+<li>Param：<ul>
+<li>iterable：需转化的数据</li>
+<li>mapfn：可选，对数组中各个元素进行处理的回调函数</li>
+<li>thisArg：可选，执行回调时用作<code>this</code> 的对象</li>
+</ul>
+</li>
+<li>Return：转化后的数组</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Array</span>.from(<span class="keyword">new</span> <span class="built_in">Set</span>([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]), x =&gt; x + x); </span><br><span class="line"><span class="comment">// [2, 4, 6]</span></span><br><span class="line"><span class="built_in">Array</span>.from(<span class="built_in">arguments</span>);</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/前端学习/" rel="tag"># 前端学习</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/05/13/Flex布局可以做哪些事？/" rel="next" title="Flex布局可以做哪些事？">
+                <i class="fa fa-chevron-left"></i> Flex布局可以做哪些事？
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Yiku Yang</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#判断Array对象的方法"><span class="nav-number">1.</span> <span class="nav-text">判断Array对象的方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Array对象相关操作API总结"><span class="nav-number">2.</span> <span class="nav-text">Array对象相关操作API总结</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#插入"><span class="nav-number">2.1.</span> <span class="nav-text">插入</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#push-…items-T"><span class="nav-number">2.1.1.</span> <span class="nav-text">push(…items: T[])</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#unshift-…items-T"><span class="nav-number">2.1.2.</span> <span class="nav-text">unshift(…items: T[])</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#splice-start-number-0-…items-T"><span class="nav-number">2.1.3.</span> <span class="nav-text">splice(start: number, 0, …items: T[])</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#删除"><span class="nav-number">2.2.</span> <span class="nav-text">删除</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#pop"><span class="nav-number">2.2.1.</span> <span class="nav-text">pop()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#shift"><span class="nav-number">2.2.2.</span> <span class="nav-text">shift()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#splice-start-number-deleteCount-number-…items-T"><span class="nav-number">2.2.3.</span> <span class="nav-text">splice(start: number, deleteCount: number, …items: T[])</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查询"><span class="nav-number">2.3.</span> <span class="nav-text">查询</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#indexOf-searchElement-T-fromIndex-number"><span class="nav-number">2.3.1.</span> <span class="nav-text">indexOf(searchElement: T, fromIndex?: number)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#lastIndexOf-searchElement-T-fromIndex-number"><span class="nav-number">2.3.2.</span> <span class="nav-text">lastIndexOf(searchElement: T, fromIndex?: number)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#includes-searchElement-number-fromIndex-number"><span class="nav-number">2.3.3.</span> <span class="nav-text">includes(searchElement: number, fromIndex?: number)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#find-predicate-value-number-index-number-obj-Int8Array-gt-boolean-thisArg-any"><span class="nav-number">2.3.4.</span> <span class="nav-text">find(predicate: (value: number, index: number, obj: Int8Array) =&gt; boolean, thisArg?: any)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#findIndex-predicate-value-number-index-number-obj-Int8Array-gt-boolean-thisArg-any"><span class="nav-number">2.3.5.</span> <span class="nav-text">findIndex(predicate: (value: number, index: number, obj: Int8Array) =&gt; boolean, thisArg?: any)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#every-callbackfn-value-number-index-number-array-Int8Array-gt-boolean-thisArg-any"><span class="nav-number">2.3.6.</span> <span class="nav-text">every(callbackfn: (value: number, index: number, array: Int8Array) =&gt; boolean, thisArg?: any)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#some-callbackfn-value-number-index-number-array-Int8Array-gt-boolean-thisArg-any"><span class="nav-number">2.3.7.</span> <span class="nav-text">some(callbackfn: (value: number, index: number, array: Int8Array) =&gt; boolean, thisArg?: any)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#filter-callbackfn-value-T-index-number-array-T-gt-any-thisArg-any"><span class="nav-number">2.3.8.</span> <span class="nav-text">filter(callbackfn: (value: T, index: number, array: T[]) =&gt; any, thisArg?: any)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#遍历"><span class="nav-number">2.4.</span> <span class="nav-text">遍历</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#keys"><span class="nav-number">2.4.1.</span> <span class="nav-text">keys()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#values"><span class="nav-number">2.4.2.</span> <span class="nav-text">values()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#entries"><span class="nav-number">2.4.3.</span> <span class="nav-text">entries()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#forEach-callbackfn-value-T-index-number-array-T-gt-void-thisArg-any"><span class="nav-number">2.4.4.</span> <span class="nav-text">forEach(callbackfn: (value: T, index: number, array: T[]) =&gt; void, thisArg?: any)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#map-callbackfn-value-T-index-number-array-T-gt-U-thisArg-any"><span class="nav-number">2.4.5.</span> <span class="nav-text">map(callbackfn: (value: T, index: number, array: T[]) =&gt; U, thisArg?: any)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#flatMap-callback-this-This-value-T-index-number-array-T-gt-U-ReadonlyArray-thisArg-This"><span class="nav-number">2.4.6.</span> <span class="nav-text">flatMap (callback: (this: This, value: T, index: number, array: T[]) =&gt; U|ReadonlyArray,thisArg?: This)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#reduce-callback-accumulator-currentValue-index-array-initialValue"><span class="nav-number">2.4.7.</span> <span class="nav-text">reduce(callback(accumulator, currentValue[, index[, array]])[, initialValue])</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#reduceRight-callback-accumulator-currentValue-index-array-initialValue"><span class="nav-number">2.4.8.</span> <span class="nav-text">reduceRight(callback(accumulator, currentValue[, index[, array]])[, initialValue])</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#排序"><span class="nav-number">2.5.</span> <span class="nav-text">排序</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#sort-compareFn-a-T-b-T-gt-number"><span class="nav-number">2.5.1.</span> <span class="nav-text">sort(compareFn?: (a: T, b: T) =&gt; number)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#反转"><span class="nav-number">2.6.</span> <span class="nav-text">反转</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#reverse"><span class="nav-number">2.6.1.</span> <span class="nav-text">reverse()</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#拼接"><span class="nav-number">2.7.</span> <span class="nav-text">拼接</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#concat-…items-T-ConcatArray"><span class="nav-number">2.7.1.</span> <span class="nav-text">concat(…items: (T | ConcatArray)[])</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#扁平化"><span class="nav-number">2.8.</span> <span class="nav-text">扁平化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#flat-depth-number"><span class="nav-number">2.8.1.</span> <span class="nav-text">flat(depth?: number)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#部分替换"><span class="nav-number">2.9.</span> <span class="nav-text">部分替换</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#copyWithin-target-number-start-number-end-number"><span class="nav-number">2.9.1.</span> <span class="nav-text">copyWithin(target: number, start: number, end?: number)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#fill-value-T-start-number-end-number"><span class="nav-number">2.9.2.</span> <span class="nav-text">fill(value: T, start?: number, end?: number)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#截取"><span class="nav-number">2.10.</span> <span class="nav-text">截取</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#slice-begin-number-end-number"><span class="nav-number">2.10.1.</span> <span class="nav-text">slice(begin? number,  end? number)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#转化为字符串"><span class="nav-number">2.11.</span> <span class="nav-text">转化为字符串</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#toString-NaN"><span class="nav-number">2.11.1.</span> <span class="nav-text">toString()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#toLocaleString-NaN"><span class="nav-number">2.11.2.</span> <span class="nav-text">toLocaleString()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#join-separator-string"><span class="nav-number">2.11.3.</span> <span class="nav-text">join(separator?: string)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#转化为数组"><span class="nav-number">2.12.</span> <span class="nav-text">转化为数组</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Array-from-lt-T-U-gt-iterable-Iterable-ArrayLike-mapfn-v-T-k-number-gt-U-thisArg-any"><span class="nav-number">2.12.1.</span> <span class="nav-text">Array.from&lt;T, U&gt;(iterable: Iterable | ArrayLike, mapfn: (v: T, k: number) =&gt; U, thisArg?: any)</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">解释权归作者所有，欢迎和我交流鸭～</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
