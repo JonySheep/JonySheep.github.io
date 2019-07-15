@@ -87,16 +87,16 @@
 <meta property="og:site_name" content="YikuYang">
 <meta property="og:description" content="​     ​    网页的布局是CSS的重要研究方向，布局的传统解决方案是基于盒子模型的，但盒子模型对于垂直居中、左侧定宽右侧自适应、两列等高等布局问题的解决方案较为繁琐。2009年，W3C提出了新的解决方案——Flex布局。这篇文章对于Flex的介绍将会涉及以下几个方面，但主要针对的是CSS3最新版本的Flex布局：  Flex布局的三种版本（2009、2011、当前） Flex布局的特性 F">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://pqx4iz0f9.bkt.clouddn.com/flex/flex1.png">
-<meta property="og:image" content="http://pqx4iz0f9.bkt.clouddn.com/flex/flex2.png">
-<meta property="og:image" content="http://pqx4iz0f9.bkt.clouddn.com/flex/flex3.png">
-<meta property="og:image" content="http://pqx4iz0f9.bkt.clouddn.com/flex/flex4.png">
-<meta property="og:image" content="http://pqx4iz0f9.bkt.clouddn.com/flex/flex5.png">
-<meta property="og:updated_time" content="2019-05-13T11:58:35.010Z">
+<meta property="og:image" content="http://ww4.sinaimg.cn/large/006tNc79gy1g3o7yfq2mtj31g40qg0xc.jpg">
+<meta property="og:image" content="http://ww2.sinaimg.cn/large/006tNc79gy1g3o7yex8agj30zh0u0dkh.jpg">
+<meta property="og:image" content="http://ww3.sinaimg.cn/large/006tNc79gy1g3o7yfa6f8j311l0u0tex.jpg">
+<meta property="og:image" content="http://ww2.sinaimg.cn/large/006tNc79gy1g3o7yfgo21j31fk0qajvi.jpg">
+<meta property="og:image" content="http://ww3.sinaimg.cn/large/006tNc79gy1g3o7yeli59j318e0lsq6b.jpg">
+<meta property="og:updated_time" content="2019-06-03T12:04:13.106Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Flex布局可以做哪些事？">
 <meta name="twitter:description" content="​     ​    网页的布局是CSS的重要研究方向，布局的传统解决方案是基于盒子模型的，但盒子模型对于垂直居中、左侧定宽右侧自适应、两列等高等布局问题的解决方案较为繁琐。2009年，W3C提出了新的解决方案——Flex布局。这篇文章对于Flex的介绍将会涉及以下几个方面，但主要针对的是CSS3最新版本的Flex布局：  Flex布局的三种版本（2009、2011、当前） Flex布局的特性 F">
-<meta name="twitter:image" content="http://pqx4iz0f9.bkt.clouddn.com/flex/flex1.png">
+<meta name="twitter:image" content="http://ww4.sinaimg.cn/large/006tNc79gy1g3o7yfq2mtj31g40qg0xc.jpg">
 
 
 
@@ -373,14 +373,14 @@
 <li>ps: IDE中可以看到CSS3.0中也有<code>justify-align</code>和<code>justify-self</code>的相关属性，但是如果使用的话是没有效果的！！</li>
 </ul>
 <h1 id="4-Flex布局的应用"><a href="#4-Flex布局的应用" class="headerlink" title="4. Flex布局的应用"></a>4. Flex布局的应用</h1><h2 id="垂直居中"><a href="#垂直居中" class="headerlink" title="垂直居中"></a>垂直居中</h2><p>这就非常简单了，直接看代码！两个属性就能搞定～</p>
-<p><img src="http://pqx4iz0f9.bkt.clouddn.com/flex/flex1.png" alt></p>
+<p><img src="http://ww4.sinaimg.cn/large/006tNc79gy1g3o7yfq2mtj31g40qg0xc.jpg" alt></p>
 <p>并且我们还可以使用align-self属性和wrap属性，达到不同的排列效果。可以利用flex布局出三筒和八筒（麻将上头？？🤯）</p>
-<p><img src="http://pqx4iz0f9.bkt.clouddn.com/flex/flex2.png" alt></p>
-<p><img src="http://pqx4iz0f9.bkt.clouddn.com/flex/flex3.png" alt></p>
+<p><img src="http://ww2.sinaimg.cn/large/006tNc79gy1g3o7yex8agj30zh0u0dkh.jpg" alt></p>
+<p><img src="http://ww3.sinaimg.cn/large/006tNc79gy1g3o7yfa6f8j311l0u0tex.jpg" alt></p>
 <h2 id="左栏定宽，右栏自适应"><a href="#左栏定宽，右栏自适应" class="headerlink" title="左栏定宽，右栏自适应"></a>左栏定宽，右栏自适应</h2><p>需要使用到flex-basis属性和flex属性，看代码</p>
-<p><img src="http://pqx4iz0f9.bkt.clouddn.com/flex/flex4.png" alt></p>
+<p><img src="http://ww2.sinaimg.cn/large/006tNc79gy1g3o7yfgo21j31fk0qajvi.jpg" alt></p>
 <p>甚至两边定宽，中间自适应也可以非常简单的实现（ps：这样写的话如果宽度变很窄，最后中间部分将会被隐藏）</p>
-<p><img src="http://pqx4iz0f9.bkt.clouddn.com/flex/flex5.png" alt></p>
+<p><img src="http://ww3.sinaimg.cn/large/006tNc79gy1g3o7yeli59j318e0lsq6b.jpg" alt></p>
 <p>Flex布局还可应用于多列等高（使用stretch）、流式排列自动换行等场景，具体使用还需要自己在实践中摸索～</p>
 <h1 id="5-（附）Flex布局的兼容性方案"><a href="#5-（附）Flex布局的兼容性方案" class="headerlink" title="5. （附）Flex布局的兼容性方案"></a>5. （附）Flex布局的兼容性方案</h1><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*display*/</span></span><br><span class="line"><span class="selector-class">.display_flex</span>&#123;</span><br><span class="line">    <span class="attribute">display</span>: -webkit-box; <span class="comment">/*旧版本*/</span></span><br><span class="line">    <span class="attribute">display</span>: -ms-flexbox; <span class="comment">/*混合版本*/</span></span><br><span class="line">    <span class="attribute">display</span>: -webkit-flex; <span class="comment">/*新版本*/</span></span><br><span class="line">    <span class="attribute">display</span>: flex; <span class="comment">/*新版本*/</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*伸缩流方向*/</span></span><br><span class="line"><span class="selector-class">.flex-direction_column</span>&#123;</span><br><span class="line">    <span class="attribute">-webkit-box-orient</span>: vertical; </span><br><span class="line">    <span class="attribute">-ms-flex-direction</span>: column;</span><br><span class="line">    <span class="attribute">-webkit-flex-direction</span>: column;</span><br><span class="line">    <span class="attribute">flex-direction</span>: column;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*主轴对齐*/</span></span><br><span class="line"><span class="selector-class">.justify-content_flex-center</span>&#123;</span><br><span class="line">    <span class="attribute">-webkit-box-pack</span>: center;</span><br><span class="line">    <span class="attribute">-ms-flex-pack</span>: center;</span><br><span class="line">    <span class="attribute">-webkit-justify-content</span>: center;</span><br><span class="line">    <span class="attribute">justify-content</span>: center;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*侧轴对齐*/</span></span><br><span class="line"><span class="selector-class">.align-items_center</span>&#123;</span><br><span class="line">    <span class="attribute">-webkit-box-align</span>: center;</span><br><span class="line">    <span class="attribute">-ms-flex-align</span>: center;</span><br><span class="line">    <span class="attribute">-webkit-align-items</span>: center;</span><br><span class="line">    <span class="attribute">align-items</span>: center;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*伸缩性*/</span></span><br><span class="line"><span class="selector-class">.flex_auto</span>&#123;</span><br><span class="line">    <span class="attribute">-webkit-box-flex</span>: <span class="number">1</span>;</span><br><span class="line">    <span class="attribute">-ms-flex</span>: auto;</span><br><span class="line">    <span class="attribute">-webkit-flex</span>: auto;</span><br><span class="line">    <span class="attribute">flex</span>: auto;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*显示顺序*/</span></span><br><span class="line"><span class="selector-class">.order_2</span>&#123;</span><br><span class="line">    <span class="attribute">-webkit-box-ordinal-group</span>: <span class="number">2</span>;</span><br><span class="line">    <span class="attribute">-ms-flex-order</span>: <span class="number">2</span>;</span><br><span class="line">    <span class="attribute">-webkit-order</span>: <span class="number">2</span>;</span><br><span class="line">    <span class="attribute">order</span>: <span class="number">2</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>代码摘自<a href="https://www.cnblogs.com/zhangkeyu/p/6645183.html" target="_blank" rel="noopener">CSS旧版flex及兼容</a></p>
@@ -503,7 +503,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -516,7 +516,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">tags</span>
                 
               </div>

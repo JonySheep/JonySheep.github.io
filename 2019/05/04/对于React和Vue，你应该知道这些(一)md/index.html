@@ -87,14 +87,14 @@
 <meta property="og:site_name" content="YikuYang">
 <meta property="og:description" content="​    在软件工程的发展过程中，从前后端不分的时代，到MVC中视图的分离，再到如今前端已经完全分离成独立的项目进行开发。前端技术正在飞速发展，而不同框架的诞生和繁荣则是最佳的见证者。  ​    React是一个JavaScript的框架，而Vue是一个MVVM的模型，这两者各有优劣，也有不同的适用环境。这里有一个在知乎上看到的尤大神对React和Vue的看法，我们没必要对他们分出个上下来，作">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://pqx4iz0f9.bkt.clouddn.com/virtualdom1.png">
-<meta property="og:image" content="http://pqx4iz0f9.bkt.clouddn.com/virtualdom2.png">
-<meta property="og:image" content="http://pqx4iz0f9.bkt.clouddn.com/virtualdom3.png">
-<meta property="og:updated_time" content="2019-05-05T10:03:18.156Z">
+<meta property="og:image" content="http://ww4.sinaimg.cn/large/006tNc79gy1g3o85gfyj5j30zk0buq8l.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/006tNc79gy1g3o85g04axj30x40cogsz.jpg">
+<meta property="og:image" content="http://ww3.sinaimg.cn/large/006tNc79gy1g3o85fbdh3j30x60gujwx.jpg">
+<meta property="og:updated_time" content="2019-06-03T12:09:53.312Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="对于React和Vue，你应该知道这些:P(一)——React Virtual DOM">
 <meta name="twitter:description" content="​    在软件工程的发展过程中，从前后端不分的时代，到MVC中视图的分离，再到如今前端已经完全分离成独立的项目进行开发。前端技术正在飞速发展，而不同框架的诞生和繁荣则是最佳的见证者。  ​    React是一个JavaScript的框架，而Vue是一个MVVM的模型，这两者各有优劣，也有不同的适用环境。这里有一个在知乎上看到的尤大神对React和Vue的看法，我们没必要对他们分出个上下来，作">
-<meta name="twitter:image" content="http://pqx4iz0f9.bkt.clouddn.com/virtualdom1.png">
+<meta name="twitter:image" content="http://ww4.sinaimg.cn/large/006tNc79gy1g3o85gfyj5j30zk0buq8l.jpg">
 
 
 
@@ -320,7 +320,7 @@
 <li>Vue Router</li>
 </ul>
 <a id="more"></a>
-<h1 id="React-Virtual-DOM"><a href="#React-Virtual-DOM" class="headerlink" title="React Virtual DOM"></a>React Virtual DOM</h1><h2 id="真实DOM和虚拟DOM的区别"><a href="#真实DOM和虚拟DOM的区别" class="headerlink" title="真实DOM和虚拟DOM的区别"></a>真实DOM和虚拟DOM的区别</h2><p><img src="http://pqx4iz0f9.bkt.clouddn.com/virtualdom1.png" alt></p>
+<h1 id="React-Virtual-DOM"><a href="#React-Virtual-DOM" class="headerlink" title="React Virtual DOM"></a>React Virtual DOM</h1><h2 id="真实DOM和虚拟DOM的区别"><a href="#真实DOM和虚拟DOM的区别" class="headerlink" title="真实DOM和虚拟DOM的区别"></a>真实DOM和虚拟DOM的区别</h2><p><img src="http://ww4.sinaimg.cn/large/006tNc79gy1g3o85gfyj5j30zk0buq8l.jpg" alt></p>
 <h2 id="虚拟DOM的作用"><a href="#虚拟DOM的作用" class="headerlink" title="虚拟DOM的作用"></a>虚拟DOM的作用</h2><ul>
 <li>提升性能，极大加快元素的更新渲染速度</li>
 <li>抽象出了DOM概念，使得跨端应用得以实现，由此产生了React-Native，以及服务器端React应用</li>
@@ -330,7 +330,7 @@
 <p>由于JSX只是JavaScript的语法糖，实际上是通过return一个JSX元素来返回组件，而JSX元素则是通过<code>React.createElement(tagName, props, children)​</code>进行创建，所以上面的代码可以转化为：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">render() &#123;</span><br><span class="line">	return React.createElement(&apos;div&apos;, &#123;id: &apos;root&apos;&#125;, </span><br><span class="line">		React.createElement(&apos;p&apos;,&#123;&#125;, &apos;Hello world!&apos;)</span><br><span class="line">	);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>因此每次更新时，引擎就会根据创建的JSX元素构造一颗虚拟的DOM树，创建完成后与旧的DOM树进行比对，找出差异部分进行更新，这个步骤就需要用到diff算法。下图是一个简单的比较更新示意图（来自知乎）：</p>
-<p><img src="http://pqx4iz0f9.bkt.clouddn.com/virtualdom2.png" alt></p>
+<p><img src="http://ww1.sinaimg.cn/large/006tNc79gy1g3o85g04axj30x40cogsz.jpg" alt></p>
 <p>实质上虚拟DOM的作用只需要两行代码就能表示</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let patchs = diff(oldTree, newTree); // 获取两颗DOM树的差异</span><br><span class="line">patch(realDom, patchs); // 找到真实DOM进行部分渲染</span><br></pre></td></tr></table></figure>
 <h2 id="diff算法（讲一下基本实现）"><a href="#diff算法（讲一下基本实现）" class="headerlink" title="diff算法（讲一下基本实现）"></a>diff算法（讲一下基本实现）</h2><ul>
@@ -357,7 +357,7 @@
 </ol>
 </li>
 </ol>
-<p><img src="http://pqx4iz0f9.bkt.clouddn.com/virtualdom3.png" alt="函数调用图解"></p>
+<p><img src="http://ww3.sinaimg.cn/large/006tNc79gy1g3o85fbdh3j30x60gujwx.jpg" alt="函数调用图解"></p>
 </li>
 </ul>
 <p>：-D 回顾完了知识点，我们来回答一下在某次面试中面试官问我的问题：</p>
@@ -487,7 +487,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -500,7 +500,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">tags</span>
                 
               </div>

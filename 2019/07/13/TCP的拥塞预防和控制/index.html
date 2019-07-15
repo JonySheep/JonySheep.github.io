@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="基础知识,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="​    在学习计算机网络知识的过程中，我们知道对所有网络通信都有决定性影响的两个方面分别是延迟和带宽。而TCP（Transmission Control Protocol 传输控制协议）作为因特网中的核心协议，其负责在不可靠的传输信道之上提供可靠的抽象层，为了确保可靠性，TCP协议会产生大量的连接延迟，并且由于发送端与接收端中数据传输的不可控性，将会产生拥塞问题。">
+<meta name="keywords" content="基础知识">
+<meta property="og:type" content="article">
+<meta property="og:title" content="TCP的拥塞预防和控制">
+<meta property="og:url" content="http://yikuyang.cn/2019/07/13/TCP的拥塞预防和控制/index.html">
+<meta property="og:site_name" content="YikuYang">
+<meta property="og:description" content="​    在学习计算机网络知识的过程中，我们知道对所有网络通信都有决定性影响的两个方面分别是延迟和带宽。而TCP（Transmission Control Protocol 传输控制协议）作为因特网中的核心协议，其负责在不可靠的传输信道之上提供可靠的抽象层，为了确保可靠性，TCP协议会产生大量的连接延迟，并且由于发送端与接收端中数据传输的不可控性，将会产生拥塞问题。">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://ww2.sinaimg.cn/large/006tNc79gy1g4ydy35xloj316b0u0h0q.jpg">
+<meta property="og:image" content="http://ww4.sinaimg.cn/large/006tNc79gy1g4zb4ij3m5j31re0u01ky.jpg">
+<meta property="og:image" content="http://ww2.sinaimg.cn/large/006tNc79gy1g50x48e9p9j31040hmdq1.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/006tNc79gy1g50xlrsjy1j30vq0fwwny.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/006tNc79gy1g50y3s4w2sj310e0gk13o.jpg">
+<meta property="og:updated_time" content="2019-07-15T15:44:04.498Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="TCP的拥塞预防和控制">
+<meta name="twitter:description" content="​    在学习计算机网络知识的过程中，我们知道对所有网络通信都有决定性影响的两个方面分别是延迟和带宽。而TCP（Transmission Control Protocol 传输控制协议）作为因特网中的核心协议，其负责在不可靠的传输信道之上提供可靠的抽象层，为了确保可靠性，TCP协议会产生大量的连接延迟，并且由于发送端与接收端中数据传输的不可控性，将会产生拥塞问题。">
+<meta name="twitter:image" content="http://ww2.sinaimg.cn/large/006tNc79gy1g4ydy35xloj316b0u0h0q.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yikuyang.cn/2019/07/13/TCP的拥塞预防和控制/">
+
+
+
+
+
+  <title>TCP的拥塞预防和控制 | YikuYang</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">YikuYang</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">Welcome to my blog~</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-主页">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            主页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-全部文字">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            全部文字
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yikuyang.cn/2019/07/13/TCP的拥塞预防和控制/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yiku Yang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="YikuYang">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">TCP的拥塞预防和控制</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-13T18:10:46+08:00">
+                2019-07-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>​    在学习计算机网络知识的过程中，我们知道对所有网络通信都有决定性影响的两个方面分别是<strong>延迟</strong>和<strong>带宽</strong>。而TCP（Transmission Control Protocol 传输控制协议）作为因特网中的核心协议，其负责在不可靠的传输信道之上提供可靠的抽象层，为了确保可靠性，TCP协议会产生大量的连接延迟，并且由于发送端与接收端中数据传输的不可控性，将会产生拥塞问题。</p>
+<a id="more"></a>
+<h3 id="回顾：TCP三次握手"><a href="#回顾：TCP三次握手" class="headerlink" title="回顾：TCP三次握手"></a>回顾：TCP三次握手</h3><p><img src="http://ww2.sinaimg.cn/large/006tNc79gy1g4ydy35xloj316b0u0h0q.jpg" alt></p>
+<blockquote>
+<p>可能是往返时间超过了所有主机的最大中断间隔，于是相应的主机会在网络中制造越来越多的数据报副本，使得整个网络陷入瘫痪。最终，所有交换节点的缓冲区都将被填满，多出来的分组必须删掉。目前的分组往返时间已经设定为最大值，主机会把每个分组都发送好几次，结果某个分组的某个副本会抵达目标，这就是拥塞崩溃。</p>
+</blockquote>
+<p>首先我们需要了解两个概念：</p>
+<ul>
+<li>接收窗口(rwnd)：发送方/接收方能够保存数据的缓冲区空间大小，在第一次建立连接时，两端使用自身系统的默认设置来发送rwnd。</li>
+<li>拥塞窗口(cwnd)：发送方对从客户端接受确认（ACK）之前可以发送数据量的限制大小。是由接收方维护的私有变量。</li>
+</ul>
+<h3 id="流量控制"><a href="#流量控制" class="headerlink" title="流量控制"></a>流量控制</h3><p>流量控制是一种预防发送方过多向接收方发送数据的机制，其实现方法就是TCP连接的双方通告自己的接收窗口(rwnd)。如下图，可以理解为进行了四次握手。并且双方通告各自rwnd的过程贯穿了每个TCP连接的整个生命周期，每个ACK分组都会携带相应的最新rwnd值，以便两端动态调整数据流速。</p>
+<p><img src="http://ww4.sinaimg.cn/large/006tNc79gy1g4zb4ij3m5j31re0u01ky.jpg" alt></p>
+<p>流量控制确实可以防止发送方向接收方过多发送数据，但却没有机制来预防任何一端向潜在网络发送数据。换句话说，数据传输还会收到网络中例如带宽等因素的影响。因此需要一个动态的估算机制，根据网络中不断变换的条件来动态调整速度。慢启动就是这种动态机制。</p>
+<h3 id="慢启动"><a href="#慢启动" class="headerlink" title="慢启动"></a>慢启动</h3><blockquote>
+<p>例如你在家里观看一个大型流视频，若此时家中恰好有人打开一个新连接下载某个软件的升级包，则可供视频流使用的下行带宽一下少了许多，视频服务器必须调整它的发送速度。否则如果保持同样速度，那么数据就会很快在某个网关中越积越多，最终导致分组被删除，降低传输效率。</p>
+</blockquote>
+<p>首先，服务器通过TCP连接初始化一个新的拥塞窗口变量(cwnd)，将其值设置为一个保守值。此时客户端与服务器之间最大可以传输数据量取<strong>rwnd和cwnd中的最小值</strong>。</p>
+<p>收到第一个ACK时，服务器可以向客户端发送Min(rwnd, cwnd)个TCP段。此后，每收到一个ACK，慢启动算法就会告诉服务器可以将它的cwnd窗口增加，并且这种增加是指数级的(2^n)，因此这个阶段通常被称为“指数增长”阶段，因为客户端和服务器都在向两者之间网络路径的有效带宽迅速靠拢。</p>
+<p>无论带宽多大，每个TCP连接必须经过慢启动阶段，因为我们不可能一开始就完全利用连接的最大带宽！</p>
+<h3 id="拥塞控制（拥塞避免）"><a href="#拥塞控制（拥塞避免）" class="headerlink" title="拥塞控制（拥塞避免）"></a>拥塞控制（拥塞避免）</h3><p>为了防止拥塞窗口cwnd增长过大引起网络拥塞，需要设置一个慢开始门限ssthresh状态变量。当cwnd&lt;ssthresh时，使用慢开始，当cwnd&gt;ssthresh时，开始使用拥塞避免算法。</p>
+<p>拥塞避免算法：每经过一个传输轮次，发送方的拥塞窗口cwnd加一。按线性规律缓慢增长，可以避免因数据过多而引起的传输拥塞。</p>
+<p><img src="http://ww2.sinaimg.cn/large/006tNc79gy1g50x48e9p9j31040hmdq1.jpg" alt></p>
+<h3 id="快重传"><a href="#快重传" class="headerlink" title="快重传"></a>快重传</h3><p>快重传算法要求接收方每收到一个失序的报文段就立即发出重复确认，使发送方尽快知道有报文段有没有到达接收方。算法规定，发送方只要一连收到3个重复确认就应当立即重传对方尚未收到的报文段，而不必继续等待其重传计时器到期。</p>
+<p><img src="http://ww1.sinaimg.cn/large/006tNc79gy1g50xlrsjy1j30vq0fwwny.jpg" alt></p>
+<h3 id="快恢复"><a href="#快恢复" class="headerlink" title="快恢复"></a>快恢复</h3><p>当发送方连续收到三个重复确认时（即开始执行快重传算法时），将慢开始门限ssthresh减半，这是为了预防网络发生拥塞。快恢复后将cwnd值设为ssthresh减半后的值，然后开始执行拥塞避免算法，使拥塞窗口缓慢地线性增大。</p>
+<p><img src="http://ww1.sinaimg.cn/large/006tNc79gy1g50y3s4w2sj310e0gk13o.jpg" alt></p>
+<h3 id="服务器中TCP的优化建议"><a href="#服务器中TCP的优化建议" class="headerlink" title="服务器中TCP的优化建议"></a>服务器中TCP的优化建议</h3><ul>
+<li>增大TCP的初始拥塞窗口</li>
+<li>慢启动重启：在连接空闲时禁用慢启动可以改善瞬时发送数据的长TCP连接的性能</li>
+<li>窗口缩放</li>
+<li>TCP快速打开（TFO）：在某些条件下，允许在第一个SYN分组中发送应用程序数据</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/基础知识/" rel="tag"># 基础知识</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/05/18/JavaScript操作数组方法总结/" rel="next" title="JavaScript操作数组方法总结">
+                <i class="fa fa-chevron-left"></i> JavaScript操作数组方法总结
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Yiku Yang</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#回顾：TCP三次握手"><span class="nav-number">1.</span> <span class="nav-text">回顾：TCP三次握手</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#流量控制"><span class="nav-number">2.</span> <span class="nav-text">流量控制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#慢启动"><span class="nav-number">3.</span> <span class="nav-text">慢启动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#拥塞控制（拥塞避免）"><span class="nav-number">4.</span> <span class="nav-text">拥塞控制（拥塞避免）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#快重传"><span class="nav-number">5.</span> <span class="nav-text">快重传</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#快恢复"><span class="nav-number">6.</span> <span class="nav-text">快恢复</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#服务器中TCP的优化建议"><span class="nav-number">7.</span> <span class="nav-text">服务器中TCP的优化建议</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">解释权归作者所有，欢迎和我交流鸭～</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
