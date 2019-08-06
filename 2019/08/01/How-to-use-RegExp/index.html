@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="前端, JavaScript, CSS, HTML, React, Vue">
+  <meta name="keywords" content="基础知识,">
 
 
 
@@ -79,22 +79,18 @@
 
 
 
-<meta name="description" content="​     在面试的过程中，面试官常常会就一个知识点发散性的引出下一个问题，例如：让你说一说浏览器的请求响应过程，然后接着问就这个响应过程，如何优化前端性能，这就引出了浏览器缓存这一知识点。因此不管是准备面试，还是日常的学习，都应该对一个大知识点进行归纳整理，并与其他知识点进行联系，有一个大局观的概念。 ​    所以我自己整理了一些前端的知识架构，包括基础的JavaScript、CSS、HTML">
+<meta name="description" content="Regular Expressions is a designed string that can be used in Java, JavaScript, Python and other language, It helps us to find different pattern in given string text. Regular Expressions first appeared">
+<meta name="keywords" content="基础知识">
 <meta property="og:type" content="article">
-<meta property="og:title" content="前端学习知识架构">
-<meta property="og:url" content="http://yikuyang.cn/2019/05/02/前端学习知识架构/index.html">
+<meta property="og:title" content="How to use Regular Expressions?">
+<meta property="og:url" content="http://yikuyang.cn/2019/08/01/How-to-use-RegExp/index.html">
 <meta property="og:site_name" content="YikuYang">
-<meta property="og:description" content="​     在面试的过程中，面试官常常会就一个知识点发散性的引出下一个问题，例如：让你说一说浏览器的请求响应过程，然后接着问就这个响应过程，如何优化前端性能，这就引出了浏览器缓存这一知识点。因此不管是准备面试，还是日常的学习，都应该对一个大知识点进行归纳整理，并与其他知识点进行联系，有一个大局观的概念。 ​    所以我自己整理了一些前端的知识架构，包括基础的JavaScript、CSS、HTML">
+<meta property="og:description" content="Regular Expressions is a designed string that can be used in Java, JavaScript, Python and other language, It helps us to find different pattern in given string text. Regular Expressions first appeared">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/006tNc79gy1g3o81ib8hbj315c0u0k9f.jpg">
-<meta property="og:image" content="http://ww4.sinaimg.cn/large/006tNc79gy1g3o81hgiqpj31670u0k2c.jpg">
-<meta property="og:image" content="http://ww4.sinaimg.cn/large/006tNc79gy1g3o81hqxysj315f0u0dn6.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/006tNc79gy1g3o8232babj317k0u0h7j.jpg">
-<meta property="og:updated_time" content="2019-06-03T12:07:12.663Z">
+<meta property="og:updated_time" content="2019-08-06T13:09:17.640Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="前端学习知识架构">
-<meta name="twitter:description" content="​     在面试的过程中，面试官常常会就一个知识点发散性的引出下一个问题，例如：让你说一说浏览器的请求响应过程，然后接着问就这个响应过程，如何优化前端性能，这就引出了浏览器缓存这一知识点。因此不管是准备面试，还是日常的学习，都应该对一个大知识点进行归纳整理，并与其他知识点进行联系，有一个大局观的概念。 ​    所以我自己整理了一些前端的知识架构，包括基础的JavaScript、CSS、HTML">
-<meta name="twitter:image" content="http://ww1.sinaimg.cn/large/006tNc79gy1g3o81ib8hbj315c0u0k9f.jpg">
+<meta name="twitter:title" content="How to use Regular Expressions?">
+<meta name="twitter:description" content="Regular Expressions is a designed string that can be used in Java, JavaScript, Python and other language, It helps us to find different pattern in given string text. Regular Expressions first appeared">
 
 
 
@@ -124,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yikuyang.cn/2019/05/02/前端学习知识架构/">
+  <link rel="canonical" href="http://yikuyang.cn/2019/08/01/How-to-use-RegExp/">
 
 
 
 
 
-  <title>前端学习知识架构 | YikuYang</title>
+  <title>How to use Regular Expressions? | YikuYang</title>
   
 
 
@@ -237,7 +233,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yikuyang.cn/2019/05/02/前端学习知识架构/">
+    <link itemprop="mainEntityOfPage" href="http://yikuyang.cn/2019/08/01/How-to-use-RegExp/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Yiku Yang">
@@ -254,7 +250,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">前端学习知识架构</h2>
+          <h2 class="post-title" itemprop="name headline">How to use Regular Expressions?</h2>
         
 
         <div class="post-meta">
@@ -266,8 +262,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-05-02T14:33:33+08:00">
-                2019-05-02
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-01T23:05:14+08:00">
+                2019-08-01
               </time>
             
 
@@ -304,16 +300,30 @@
       
 
       
-        <p>​    </p>
-<p>在面试的过程中，面试官常常会就一个知识点发散性的引出下一个问题，例如：让你说一说浏览器的请求响应过程，然后接着问就这个响应过程，如何优化前端性能，这就引出了浏览器缓存这一知识点。因此不管是准备面试，还是日常的学习，都应该对一个大知识点进行归纳整理，并与其他知识点进行联系，有一个大局观的概念。</p>
-<p>​    所以我自己整理了一些前端的知识架构，包括基础的JavaScript、CSS、HTML，以及浏览器的原理与前端性能相关的知识。我也只是一个入门一年的前端小白，这个知识架构图在我持续学习的过程中仍会继续完善٩(˃̶͈̀௰˂̶͈́)و</p>
+        <p>Regular Expressions is a designed string that can be used in Java, JavaScript, Python and other language, It helps us to find different pattern in given string text. Regular Expressions first appeared in Books <em>Introduction to Metamathematics</em> written by Stephen Cole Kleene. </p>
+<p>Regular Expressions always be supposed to a complex grammar, and I also learned it more than three times but still could not remember the detail usage. After thinking it over, it’s a wrong method to learn by searching but summarizing. Therefore, I summarize some Regular Expressions usages with JavaScript in this blog.</p>
 <a id="more"></a>
-<h4 id="JavaScript知识架构图"><a href="#JavaScript知识架构图" class="headerlink" title="JavaScript知识架构图"></a>JavaScript知识架构图</h4><p><img src="http://ww1.sinaimg.cn/large/006tNc79gy1g3o81ib8hbj315c0u0k9f.jpg" alt="JavaScript知识架构图"></p>
-<h4 id="CSS知识架构图"><a href="#CSS知识架构图" class="headerlink" title="CSS知识架构图"></a>CSS知识架构图</h4><p><img src="http://ww4.sinaimg.cn/large/006tNc79gy1g3o81hgiqpj31670u0k2c.jpg" alt="CSS知识架构图"></p>
-<h4 id="HTML知识架构图"><a href="#HTML知识架构图" class="headerlink" title="HTML知识架构图"></a>HTML知识架构图</h4><p><img src="http://ww4.sinaimg.cn/large/006tNc79gy1g3o81hqxysj315f0u0dn6.jpg" alt="HTML知识架构图"></p>
-<h4 id="浏览器与前端性能"><a href="#浏览器与前端性能" class="headerlink" title="浏览器与前端性能"></a>浏览器与前端性能</h4><p><img src="http://ww1.sinaimg.cn/large/006tNc79gy1g3o8232babj317k0u0h7j.jpg" alt="浏览器与前端性能知识架构图"></p>
-<p>架构归纳方法参考自《重学前端》winter大神</p>
-<p>有写错的地方欢迎指正！也可以联系我交流一下鸭∠( ᐛ 」∠)＿</p>
+<h3 id="Validate——use-as-a-RegExp-object"><a href="#Validate——use-as-a-RegExp-object" class="headerlink" title="Validate——use as a RegExp object"></a>Validate——use as a RegExp object</h3><ol>
+<li><p>Validate email.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> regMail = <span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="regexp">/^[0-9a-zA-Z]+@[0-9a-zA-Z]+(\.com|\.cn|\.org)*$/</span>);</span><br><span class="line"><span class="comment">// you can add more email postfix using '|' to split</span></span><br><span class="line"><span class="comment">// regMail.test('yyqyang222@163.com.cn') or 'yyqyang222@163.com.cn'.match(regMail)</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Validate American phone number .</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> phoneReg = <span class="regexp">/^(\(\d&#123;3&#125;\)|^\d&#123;3&#125;[.-]?)?\d&#123;3&#125;[.-]?\d&#123;4&#125;$/</span>;</span><br><span class="line"><span class="comment">// supports XXX-XXX-XXXX and (XXX)-XXX-XXXX and XXX.XXX.XXXX format</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="Replace——use-as-a-parameter"><a href="#Replace——use-as-a-parameter" class="headerlink" title="Replace——use as a parameter"></a>Replace——use as a parameter</h3><ol>
+<li><p>If you have a date in YYYY-MM-DD format and want to change into YYYYMMDD format, so you can use Regular Expressions in replace() method as a parameter.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">date = date.replace(<span class="string">'/-/g'</span>, <span class="string">''</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Delete all special characters in a string.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">str = str.replace(<span class="string">'/[^a-zA-Z0-9 \n]/g'</span>, <span class="string">''</span>);</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="Slice——use-its-inner-parameter"><a href="#Slice——use-its-inner-parameter" class="headerlink" title="Slice——use its inner parameter"></a>Slice——use its inner parameter</h3><ol>
+<li><p>If you have a date in YYYYMMDD format and want to change into YYYY-MM-DD format, you can also use replace there and the difference is using () to extract parameters.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">date = date.replace(<span class="string">'/(\d&#123;4&#125;)(\d&#123;2&#125;)(\d&#123;2&#125;)/'</span>, <span class="string">'$1-$2-$3'</span>);</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
 
       
     </div>
@@ -329,6 +339,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/基础知识/" rel="tag"># 基础知识</a>
+          
+        </div>
+      
 
       
       
@@ -338,15 +354,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2019/07/13/TCP的拥塞预防和控制/" rel="next" title="TCP的拥塞预防和控制">
+                <i class="fa fa-chevron-left"></i> TCP的拥塞预防和控制
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/05/04/对于React和Vue，你应该知道这些(一)md/" rel="prev" title="对于React和Vue，你应该知道这些:P(一)——React Virtual DOM">
-                对于React和Vue，你应该知道这些:P(一)——React Virtual DOM <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -469,7 +485,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#JavaScript知识架构图"><span class="nav-number">1.</span> <span class="nav-text">JavaScript知识架构图</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CSS知识架构图"><span class="nav-number">2.</span> <span class="nav-text">CSS知识架构图</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#HTML知识架构图"><span class="nav-number">3.</span> <span class="nav-text">HTML知识架构图</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#浏览器与前端性能"><span class="nav-number">4.</span> <span class="nav-text">浏览器与前端性能</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Validate——use-as-a-RegExp-object"><span class="nav-number">1.</span> <span class="nav-text">Validate——use as a RegExp object</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Replace——use-as-a-parameter"><span class="nav-number">2.</span> <span class="nav-text">Replace——use as a parameter</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Slice——use-its-inner-parameter"><span class="nav-number">3.</span> <span class="nav-text">Slice——use its inner parameter</span></a></li></ol></div>
             
 
           </div>
