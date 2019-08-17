@@ -937,47 +937,14 @@
 
       
         
-          
-            <p>​    </p>
-<p>​    面试中遇到这样一道题，分别给了几段代码，问这几种情况下是否会发起图片资源的请求。来，上题目！ʕ •ᴥ•ʔ</p>
-<ol>
-<li>正常情况</li>
-</ol>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"background: url('http://pqx4iz0f9.bkt.clouddn.com/CSS.png')"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span>A Picture<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>​    <strong>结果：会发起请求 Easy</strong>！</p>
-<p>​    很显然，这边把一张图片作为div元素的背景，并且其高度被子元素撑开了，所以不仅能发起请求，在界面也是可见的。</p>
-<ol start="2">
-<li><strong>display：none</strong></li>
-</ol>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"background: url('http://pqx4iz0f9.bkt.clouddn.com/CSS.png'); display: none"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span>A Picture<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>​    <strong>结果：会发起请求，不占用空间，也不显示！</strong>    </p>
-<p>​    这一题非常容易弄错，了解过浏览器渲染机制的同学会知道设置了 <code>display: none</code> 的元素是不会被构建到渲染树当中的，就会认为不会请求这张图片。</p>
-<p><img src="http://taligarsiel.com/Projects/image008.jpg" alt></p>
-<p>​    但从上图我们可以看出，不管是内联的style元素还是外部引入的样式文件，都会被组织起来构造成一颗CSS Rules Tree，在这个过程中就会对设置的背景图片资源进行请求了！</p>
-<ol start="3">
-<li>visibility：hidden</li>
-</ol>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"background: url('http://pqx4iz0f9.bkt.clouddn.com/CSS.png'); visibility: hidden"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span>A Picture<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>​    <strong>结果：会发起请求，会占用空间，但不显示！Easy！</strong>    </p>
-<ol start="4">
-<li><strong>DOM操作</strong></li>
-</ol>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> div = <span class="built_in">document</span>.createElement(<span class="string">'div'</span>);</span><br><span class="line"><span class="keyword">var</span> text = <span class="built_in">document</span>.createTextNode(<span class="string">"child!!"</span>);</span><br><span class="line">div.appendChild(text);</span><br><span class="line">div.style.background = <span class="string">'url(http://pqx4iz0f9.bkt.clouddn.com/JS.png)'</span>;</span><br><span class="line"><span class="built_in">document</span>.body.appendChild(div);</span><br><span class="line"><span class="built_in">document</span>.body.removeChild(div);</span><br></pre></td></tr></table></figure>
-<p>​    <strong>结果：不会发起请求，也不显示！DOM树上没有这个元素</strong>    </p>
-<p>​    这一题我做的时候非常纠结，最后我的回答也是”不确定”是否会发出请求。面试结束后我自己写代码验证了一下，发现这样做是不会发起请求的，并且最后的DOM树上也没有这个元素。</p>
-<p>​    JavaScript对DOM的操作是非常消耗性能的，所以它也不会傻到每一条语句都直接执行，浏览器的JS引擎在内部进行了优化，将所有的DOM操作进行了整合，最终根据合成策略进行绘制。（还需要进步一了解）</p>
-<ol start="5">
-<li><strong>div.style.background</strong></li>
-</ol>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> div = <span class="built_in">document</span>.createElement(<span class="string">'div'</span>);</span><br><span class="line"><span class="keyword">var</span> text = <span class="built_in">document</span>.createTextNode(<span class="string">"child!!"</span>);</span><br><span class="line">div.appendChild(text);</span><br><span class="line">div.style.background = <span class="string">'url(http://pqx4iz0f9.bkt.clouddn.com/JS.png)'</span>;</span><br><span class="line"><span class="built_in">document</span>.body.appendChild(div);</span><br><span class="line">div.style.background;</span><br><span class="line"><span class="built_in">document</span>.body.removeChild(div);</span><br></pre></td></tr></table></figure>
-<p>​    <strong>结果：与4相同，不会发起请求，也不显示！DOM树上没有这个元素</strong>    </p>
-<ol start="6">
-<li><strong>div.style.offsetWidth</strong></li>
-</ol>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> div = <span class="built_in">document</span>.createElement(<span class="string">'div'</span>);</span><br><span class="line"><span class="keyword">var</span> text = <span class="built_in">document</span>.createTextNode(<span class="string">"child!!"</span>);</span><br><span class="line">div.appendChild(text);</span><br><span class="line">div.style.background = <span class="string">'url(http://pqx4iz0f9.bkt.clouddn.com/JS.png)'</span>;</span><br><span class="line"><span class="built_in">document</span>.body.appendChild(div);</span><br><span class="line">div.style.offsetWidth;</span><br><span class="line"><span class="built_in">document</span>.body.removeChild(div);</span><br></pre></td></tr></table></figure>
-<p>​    <strong>结果：会发起请求，并且会显示！Σ（ﾟдﾟlll）？！！</strong>    </p>
-
-          
+          <p>​        面试中遇到这样一道题，分别给了几段代码，问这几种情况下是否会发起图片资源的请求。来，上题目！ʕ •ᴥ•ʔ</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/05/11/面试问题-何时会发送图片资源请求？/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
