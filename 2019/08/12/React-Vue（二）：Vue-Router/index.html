@@ -279,6 +279,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/08/12/React-Vue（二）：Vue-Router/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/08/12/React-Vue（二）：Vue-Router/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -408,6 +418,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2019/08/17/React-Vue-三-：vue-cli是如何为我们初始化Vue项目的？/" rel="prev" title="React&Vue(三)：vue-cli是如何为我们初始化Vue项目的？">
+                React&Vue(三)：vue-cli是如何为我们初始化Vue项目的？ <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -435,6 +449,9 @@
 
           
 
+  
+    <div class="comments" id="comments">
+    </div>
   
 
 
@@ -483,7 +500,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -704,6 +721,28 @@
 
 
 
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: true,
+        appId: 'S5lxTXykdLyqQY4C0Ck2r89c-gzGzoHsz',
+        appKey: 'XJn3bqNJqCB4GNPbr2QAPHvw',
+        placeholder: 'Write some comment to this article ~',
+        avatar:'wavatar',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
 
 
 
