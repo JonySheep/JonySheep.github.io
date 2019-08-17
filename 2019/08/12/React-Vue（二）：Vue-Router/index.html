@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="基础知识,">
+  <meta name="keywords" content="前端学习,">
 
 
 
@@ -79,18 +79,21 @@
 
 
 
-<meta name="description" content="Regular Expressions is a designed string that can be used in Java, JavaScript, Python and other language, It helps us to find different pattern in given string text. Regular Expressions first appeared">
-<meta name="keywords" content="基础知识">
+<meta name="description" content="随着前端技术的发展，大部分web应用都采用了单页(SPA)的形式进行页面跳转。与多页web应用不同，SPA使得用户能够减少页面切换的开销，提升使用专注度与使用效率。而在实现机制上，浏览器引擎提供了History和Hash两种跳转模式。 Vue-Router作为封装在Vue框架内部的跳转模块，在源文件中以router.js的文件形式存在，使得用户能够以一种更直接而集中的方式，对SPA应用的路由进行管">
+<meta name="keywords" content="前端学习">
 <meta property="og:type" content="article">
-<meta property="og:title" content="How to use Regular Expressions?">
-<meta property="og:url" content="http://yikuyang.cn/2019/08/01/How-to-use-RegExp/index.html">
+<meta property="og:title" content="React&amp;Vue（二）：Vue-Router">
+<meta property="og:url" content="http://yikuyang.cn/2019/08/12/React-Vue（二）：Vue-Router/index.html">
 <meta property="og:site_name" content="YikuYang">
-<meta property="og:description" content="Regular Expressions is a designed string that can be used in Java, JavaScript, Python and other language, It helps us to find different pattern in given string text. Regular Expressions first appeared">
+<meta property="og:description" content="随着前端技术的发展，大部分web应用都采用了单页(SPA)的形式进行页面跳转。与多页web应用不同，SPA使得用户能够减少页面切换的开销，提升使用专注度与使用效率。而在实现机制上，浏览器引擎提供了History和Hash两种跳转模式。 Vue-Router作为封装在Vue框架内部的跳转模块，在源文件中以router.js的文件形式存在，使得用户能够以一种更直接而集中的方式，对SPA应用的路由进行管">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-08-06T13:09:17.640Z">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/006tNc79gy1g5xa6nyr3uj311a0u078u.jpg">
+<meta property="og:image" content="http://ww4.sinaimg.cn/large/006tNc79gy1g5xa77qwljj30yo0bc3zn.jpg">
+<meta property="og:updated_time" content="2019-08-17T08:42:07.235Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="How to use Regular Expressions?">
-<meta name="twitter:description" content="Regular Expressions is a designed string that can be used in Java, JavaScript, Python and other language, It helps us to find different pattern in given string text. Regular Expressions first appeared">
+<meta name="twitter:title" content="React&amp;Vue（二）：Vue-Router">
+<meta name="twitter:description" content="随着前端技术的发展，大部分web应用都采用了单页(SPA)的形式进行页面跳转。与多页web应用不同，SPA使得用户能够减少页面切换的开销，提升使用专注度与使用效率。而在实现机制上，浏览器引擎提供了History和Hash两种跳转模式。 Vue-Router作为封装在Vue框架内部的跳转模块，在源文件中以router.js的文件形式存在，使得用户能够以一种更直接而集中的方式，对SPA应用的路由进行管">
+<meta name="twitter:image" content="http://ww1.sinaimg.cn/large/006tNc79gy1g5xa6nyr3uj311a0u078u.jpg">
 
 
 
@@ -120,13 +123,13 @@
 
 
 
-  <link rel="canonical" href="http://yikuyang.cn/2019/08/01/How-to-use-RegExp/">
+  <link rel="canonical" href="http://yikuyang.cn/2019/08/12/React-Vue（二）：Vue-Router/">
 
 
 
 
 
-  <title>How to use Regular Expressions? | YikuYang</title>
+  <title>React&Vue（二）：Vue-Router | YikuYang</title>
   
 
 
@@ -233,7 +236,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yikuyang.cn/2019/08/01/How-to-use-RegExp/">
+    <link itemprop="mainEntityOfPage" href="http://yikuyang.cn/2019/08/12/React-Vue（二）：Vue-Router/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Yiku Yang">
@@ -250,7 +253,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">How to use Regular Expressions?</h2>
+          <h2 class="post-title" itemprop="name headline">React&Vue（二）：Vue-Router</h2>
         
 
         <div class="post-meta">
@@ -262,8 +265,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-01T23:05:14+08:00">
-                2019-08-01
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-12T22:45:56+08:00">
+                2019-08-12
               </time>
             
 
@@ -300,30 +303,71 @@
       
 
       
-        <p>Regular Expressions is a designed string that can be used in Java, JavaScript, Python and other language, It helps us to find different pattern in given string text. Regular Expressions first appeared in Books <em>Introduction to Metamathematics</em> written by Stephen Cole Kleene. </p>
-<p>Regular Expressions always be supposed to a complex grammar, and I also learned it more than three times but still could not remember the detail usage. After thinking it over, it’s a wrong method to learn by searching but summarizing. Therefore, I summarize some Regular Expressions usages with JavaScript in this blog.</p>
+        <p>随着前端技术的发展，大部分web应用都采用了单页(SPA)的形式进行页面跳转。与多页web应用不同，SPA使得用户能够减少页面切换的开销，提升使用专注度与使用效率。而在实现机制上，浏览器引擎提供了History和Hash两种跳转模式。</p>
+<p>Vue-Router作为封装在Vue框架内部的跳转模块，在源文件中以router.js的文件形式存在，使得用户能够以一种更直接而集中的方式，对SPA应用的路由进行管理。</p>
 <a id="more"></a>
-<h3 id="Validate——use-as-a-RegExp-object"><a href="#Validate——use-as-a-RegExp-object" class="headerlink" title="Validate——use as a RegExp object"></a>Validate——use as a RegExp object</h3><ol>
-<li><p>Validate email.</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> regMail = <span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="regexp">/^[0-9a-zA-Z]+@[0-9a-zA-Z]+(\.com|\.cn|\.org)*$/</span>);</span><br><span class="line"><span class="comment">// you can add more email postfix using '|' to split</span></span><br><span class="line"><span class="comment">// regMail.test('yyqyang222@163.com.cn') or 'yyqyang222@163.com.cn'.match(regMail)</span></span><br></pre></td></tr></table></figure>
+<h3 id="History和Hash"><a href="#History和Hash" class="headerlink" title="History和Hash"></a>History和Hash</h3><p>Hash和History是浏览器引擎中提供的两种前端路由跳转方式，History是在HTML5中才提出的新模式。Vue-Router内部支持了两种模式以供用户灵活选择，下面我们2种方式进行一个对比：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Hash</th>
+<th>History</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Url中有无锚点(#)</td>
+<td>有</td>
+<td>无</td>
+</tr>
+<tr>
+<td>Url改变时是否重载</td>
+<td>否</td>
+<td>是</td>
+</tr>
+<tr>
+<td>事件监听函数</td>
+<td>hashchange</td>
+<td>popstate</td>
+</tr>
+<tr>
+<td>相关api</td>
+<td>无</td>
+<td>直接通过修改location.hash实现跳转 go(n); back(); forward(); pushState(object)；</td>
+</tr>
+</tbody>
+</table>
+<p>从功能上来说，history作为较新的跳转方式，api更完整，易用性更高，因此在大多数情况下，我们会选用history mode。然而hash模式也有它特定的选型背景，因此在实际使用时，需要灵活选用。</p>
+<h3 id="Vue-Router"><a href="#Vue-Router" class="headerlink" title="Vue-Router"></a>Vue-Router</h3><h4 id="route包含的对象属性"><a href="#route包含的对象属性" class="headerlink" title="route包含的对象属性"></a>route包含的对象属性</h4><ul>
+<li><p>path：路由路径</p>
 </li>
-<li><p>Validate American phone number .</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> phoneReg = <span class="regexp">/^(\(\d&#123;3&#125;\)|^\d&#123;3&#125;[.-]?)?\d&#123;3&#125;[.-]?\d&#123;4&#125;$/</span>;</span><br><span class="line"><span class="comment">// supports XXX-XXX-XXXX and (XXX)-XXX-XXXX and XXX.XXX.XXXX format</span></span><br></pre></td></tr></table></figure>
+<li><p>name：路由名称</p>
 </li>
-</ol>
-<h3 id="Replace——use-as-a-parameter"><a href="#Replace——use-as-a-parameter" class="headerlink" title="Replace——use as a parameter"></a>Replace——use as a parameter</h3><ol>
-<li><p>If you have a date in YYYY-MM-DD format and want to change into YYYYMMDD format, so you can use Regular Expressions in replace() method as a parameter.</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">date = date.replace(<span class="string">'/-/g'</span>, <span class="string">''</span>);</span><br></pre></td></tr></table></figure>
+<li><p>component：渲染组件</p>
 </li>
-<li><p>Delete all special characters in a string.</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">str = str.replace(<span class="string">'/[^a-zA-Z0-9 \n]/g'</span>, <span class="string">''</span>);</span><br></pre></td></tr></table></figure>
+<li><p>children：子路由列表</p>
 </li>
-</ol>
-<h3 id="Slice——use-its-inner-parameter"><a href="#Slice——use-its-inner-parameter" class="headerlink" title="Slice——use its inner parameter"></a>Slice——use its inner parameter</h3><ol>
-<li><p>If you have a date in YYYYMMDD format and want to change into YYYY-MM-DD format, you can also use replace there and the difference is using () to extract parameters.</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">date = date.replace(<span class="string">'/(\d&#123;4&#125;)(\d&#123;2&#125;)(\d&#123;2&#125;)/'</span>, <span class="string">'$1-$2-$3'</span>);</span><br></pre></td></tr></table></figure>
+<li><p>props：传递到组件中的参数,可以以函数返回值的形式定义 (route) =&gt; ({ query: route.query.q }) } </p>
 </li>
-</ol>
+<li><p>redirect：重定向路径</p>
+</li>
+<li><p>alias：路径别名，当/a的路径设置了/b的别名时，打开/b时将会渲染/a对应的页面</p>
+</li>
+<li><p>meta：路径元数据 </p>
+</li>
+<li><p>beforeEach(to, from, next) 导航守卫函数，用来捕获每一次路径跳转，定义在跳转前进行的操作</p>
+</li>
+</ul>
+<h4 id="html-tag"><a href="#html-tag" class="headerlink" title="html-tag"></a>html-tag</h4><p><router-view> 定义了一个路由视图，在这个路由视图内的<router-link>只会在这个视图区域内进行切换跳转。因此<router-view>除了在App.vue中使用外，还可以用来固定导航栏，自定义切换页面。</router-view></router-link></router-view></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">nav</span>&gt;</span>This is nav<span class="tag">&lt;/<span class="name">nav</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">router-view</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">router-link</span> <span class="attr">to</span>=<span class="string">"/page1"</span>&gt;</span>Page1<span class="tag">&lt;/<span class="name">router-link</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">router-link</span> <span class="attr">to</span>=<span class="string">"/page2"</span>&gt;</span>Page2<span class="tag">&lt;/<span class="name">router-link</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">router-view</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><router-link></router-link></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">router-link</span> <span class="attr">to</span>=<span class="string">"/foo"</span>&gt;</span>Go to Foo<span class="tag">&lt;/<span class="name">router-link</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>可以看作是<a>的一种框架内部封装，点击后将直接跳转到指定页面。并且在:to属性中可以绑定变量，或使用正则表达式实现匹配跳转。</a></p>
+<h4 id="内部对象"><a href="#内部对象" class="headerlink" title="内部对象"></a>内部对象</h4><p>$router：访问路由列表实例，通过console可以看出该实例包含了history对象，matcher对象以及options中的routes数组。并且实例中包含2个重要的跳转函数push和replace，2个函数的参数都是路由对象，二者的区别在于：push是将新的页面加入路由栈中，而replace是直接替换当前页面。</p>
+<p><img src="http://ww1.sinaimg.cn/large/006tNc79gy1g5xa6nyr3uj311a0u078u.jpg" alt></p>
+<p>$route：访问当前页面的路由实例，其属性(path, name, params, query)与push时传入的对象相对应。</p>
+<p><img src="http://ww4.sinaimg.cn/large/006tNc79gy1g5xa77qwljj30yo0bc3zn.jpg" alt></p>
 
       
     </div>
@@ -341,7 +385,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/基础知识/" rel="tag"># 基础知识</a>
+            <a href="/tags/前端学习/" rel="tag"># 前端学习</a>
           
         </div>
       
@@ -354,8 +398,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/07/13/TCP的拥塞预防和控制/" rel="next" title="TCP的拥塞预防和控制">
-                <i class="fa fa-chevron-left"></i> TCP的拥塞预防和控制
+              <a href="/2019/08/01/How-to-use-RegExp/" rel="next" title="How to use Regular Expressions?">
+                <i class="fa fa-chevron-left"></i> How to use Regular Expressions?
               </a>
             
           </div>
@@ -363,10 +407,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/08/12/React-Vue（二）：Vue-Router/" rel="prev" title="React&Vue（二）：Vue-Router">
-                React&Vue（二）：Vue-Router <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -489,7 +529,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Validate——use-as-a-RegExp-object"><span class="nav-number">1.</span> <span class="nav-text">Validate——use as a RegExp object</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Replace——use-as-a-parameter"><span class="nav-number">2.</span> <span class="nav-text">Replace——use as a parameter</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Slice——use-its-inner-parameter"><span class="nav-number">3.</span> <span class="nav-text">Slice——use its inner parameter</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#History和Hash"><span class="nav-number">1.</span> <span class="nav-text">History和Hash</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Vue-Router"><span class="nav-number">2.</span> <span class="nav-text">Vue-Router</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#route包含的对象属性"><span class="nav-number">2.1.</span> <span class="nav-text">route包含的对象属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#html-tag"><span class="nav-number">2.2.</span> <span class="nav-text">html-tag</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#内部对象"><span class="nav-number">2.3.</span> <span class="nav-text">内部对象</span></a></li></ol></li></ol></div>
             
 
           </div>
