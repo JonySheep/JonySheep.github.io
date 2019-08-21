@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="面试相关,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="今年从四月份开始准备春招实习面试，刚开始准备的时候真的是毫无头绪，前端涉及的方面很多，除了最基础的JavaScript、HTML、CSS，还有两个现今大火的框架React和Vue，以及浏览器的渲染原理和支持其与服务器通信的网络原理，这些都是前端技术中最最基础的部分。虽然在这之前已经完成过六七个前端项目，但会写并不代表掌握，相反的，我在这些基础知识方面超级薄弱，2个月面试的过程就是从前端小小白变成前">
+<meta name="keywords" content="面试相关">
+<meta property="og:type" content="article">
+<meta property="og:title" content="多次被虐后整理的前端面试题">
+<meta property="og:url" content="http://yikuyang.cn/2019/08/22/多次被虐后整理的前端面试题/index.html">
+<meta property="og:site_name" content="YikuYang">
+<meta property="og:description" content="今年从四月份开始准备春招实习面试，刚开始准备的时候真的是毫无头绪，前端涉及的方面很多，除了最基础的JavaScript、HTML、CSS，还有两个现今大火的框架React和Vue，以及浏览器的渲染原理和支持其与服务器通信的网络原理，这些都是前端技术中最最基础的部分。虽然在这之前已经完成过六七个前端项目，但会写并不代表掌握，相反的，我在这些基础知识方面超级薄弱，2个月面试的过程就是从前端小小白变成前">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://ww2.sinaimg.cn/large/006tNc79gy1g66knwtodkj30fz0gn75b.jpg">
+<meta property="og:image" content="http://yikuyang.cn/Users/yangyang/Library/Application%20Support/typora-user-images/image-20190821220528745.png">
+<meta property="og:image" content="http://ww4.sinaimg.cn/large/006y8mN6gy1g67peuv706j312g046q38.jpg">
+<meta property="og:image" content="http://ww3.sinaimg.cn/large/006y8mN6gy1g67pgcr0xhj312c0iiwgl.jpg">
+<meta property="og:image" content="http://ww3.sinaimg.cn/large/006y8mN6gy1g67ppsn8d6j30yw0u042p.jpg">
+<meta property="og:image" content="http://ww4.sinaimg.cn/large/006y8mN6gy1g67qaru5j7j312i0eimz4.jpg">
+<meta property="og:image" content="http://ww4.sinaimg.cn/large/006y8mN6gy1g67qma6mqcj30ys08igmj.jpg">
+<meta property="og:image" content="http://ww2.sinaimg.cn/large/006y8mN6gy1g67qrh1wsoj30k00eudhe.jpg">
+<meta property="og:updated_time" content="2019-08-21T16:01:24.696Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="多次被虐后整理的前端面试题">
+<meta name="twitter:description" content="今年从四月份开始准备春招实习面试，刚开始准备的时候真的是毫无头绪，前端涉及的方面很多，除了最基础的JavaScript、HTML、CSS，还有两个现今大火的框架React和Vue，以及浏览器的渲染原理和支持其与服务器通信的网络原理，这些都是前端技术中最最基础的部分。虽然在这之前已经完成过六七个前端项目，但会写并不代表掌握，相反的，我在这些基础知识方面超级薄弱，2个月面试的过程就是从前端小小白变成前">
+<meta name="twitter:image" content="http://ww2.sinaimg.cn/large/006tNc79gy1g66knwtodkj30fz0gn75b.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yikuyang.cn/2019/08/22/多次被虐后整理的前端面试题/">
+
+
+
+
+
+  <title>多次被虐后整理的前端面试题 | YikuYang</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">YikuYang</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">Welcome to my blog~</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-主页">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            主页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-全部文字">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            全部文字
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yikuyang.cn/2019/08/22/多次被虐后整理的前端面试题/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yiku Yang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="YikuYang">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">多次被虐后整理的前端面试题</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-22T00:01:24+08:00">
+                2019-08-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/08/22/多次被虐后整理的前端面试题/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/08/22/多次被虐后整理的前端面试题/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>今年从四月份开始准备春招实习面试，刚开始准备的时候真的是毫无头绪，前端涉及的方面很多，除了最基础的JavaScript、HTML、CSS，还有两个现今大火的框架React和Vue，以及浏览器的渲染原理和支持其与服务器通信的网络原理，这些都是前端技术中最最基础的部分。虽然在这之前已经完成过六七个前端项目，但会写并不代表掌握，相反的，我在这些基础知识方面超级薄弱，2个月面试的过程就是从前端小小白变成前端新手的过程。（最后还是没有面上大厂，害！）</p>
+<p><img src="http://ww2.sinaimg.cn/large/006tNc79gy1g66knwtodkj30fz0gn75b.jpg" alt></p>
+<p>在你开始投简历之前，甚至是寒假决定要实习的时候就要认识到：面试是可以准备的！并且想要通过面试是需要细心准备的！（那段时间我甚至有种高考的感觉，疯狂地整理资料）特别是前端的知识比较散乱，更加需要自己进行归纳整理，把各个知识点连接起来。</p>
+<p>下面我结合我的面试血泪史，整理出了前端面试题涉及到的几个方向以及我遇到过的题目<em>(´ཀ`」 ∠)</em>。先写个目录：</p>
+<ol>
+<li>JavaScript</li>
+<li>HTML</li>
+<li>CSS</li>
+<li>浏览器原理/计算机网络/前端优化</li>
+<li>前端框架</li>
+<li>代码题</li>
+<li>其他</li>
+</ol>
+<a id="more"></a>
+<h3 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h3><p>一个合格的前端开发者，必须是一个优秀的JavaScript Coder，因此每一个面试官都会重点考核我的JavaScript代码能力。从最底层的内存分配、事件循环原理，到具体函数的使用方式，到使用JavaScript解决实际问题，都要牢牢掌握！比如说<strong>原型链的解释和应用</strong>，我一共在面试中遇到过4次，几率大概是80%，因为这个知识点理解起来稍有难度且在实践中应用的机会不多，比较能体现被面试者的水平。</p>
+<p>想要对JavaScript有全面并且深入了解的旁友，推荐一下《JavaScript权威指南》这本书，我也正在啃<em>(:з」∠)</em></p>
+<p><img src="/Users/yangyang/Library/Application Support/typora-user-images/image-20190821220528745.png" alt></p>
+<h3 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h3><p>HTML的全称是HyperText Makeup Language，作为一种展示性的语言，它没有什么逻辑性。因此在面试中问到的概率很小，HTML5的新特性算是一个重点，其中的Canvas和Svg在实际应用中经常被用到，HTML语义化也是一个有趣的新扩展。</p>
+<p><img src="http://ww4.sinaimg.cn/large/006y8mN6gy1g67peuv706j312g046q38.jpg" alt></p>
+<h3 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h3><p>CSS层叠样式表是学习前端的过程中最容易忽略，也是最容易出错的部分。它涉及到前端界面最重要的——布局，BFC、IFC、Flex-box等等都是布局中的重要概念，如果你不知道这些，你也完全可以写出一个系统，但你写出的css绝不是最简洁、最直观的优美的代码。</p>
+<p>与CSS相关的面试题中，我遇到的最多的一个是<strong>实现垂直水平居中</strong>：这个题目除了考察我对弹性盒子模型(Flex-box)的理解，面试官更想听到一些其他的解决方案（网上可以搜到好多答案，建议大家都回去试试），有一次面试我已经说了4种实现方式了面试官还在问我有没有别的方案…… 另一个经常碰到的题目是<strong>实现左栏定款右栏自适应布局</strong>，最简单的方式也是使用Flex-box，当然也有用display:table的各种骚操作，自己回去试试，听我的！</p>
+<p>在面试某A公司的时候，被问到有关rem的概念以及它和px的关系，这个涉及到移动端适配，我之前完全没有接触过，面完过后了解了一下，发现还是蛮有趣的( ･᷄ὢ･᷅ )</p>
+<p><img src="http://ww3.sinaimg.cn/large/006y8mN6gy1g67pgcr0xhj312c0iiwgl.jpg" alt></p>
+<h3 id="浏览器原理-计算机网络-前端优化"><a href="#浏览器原理-计算机网络-前端优化" class="headerlink" title="浏览器原理/计算机网络/前端优化"></a>浏览器原理/计算机网络/前端优化</h3><p>浏览器原理和计算机网络这两个方面，是面试中必问的部分，所以它的题库还是比较固定的，理解之后稍微理顺语言，就能在面试中回答得很好了。<strong>浏览器从输入网址到渲染页面经过的过程</strong>这个问题，在听到三四次之后我已经内心os：为啥又是这个问题，能不能有点新意（不是……）</p>
+<p>除此之外，面试官也会结合做过的项目，问一下有没有对前端做过优化。这个嘛，相信我们在做学校的作业项目的时候，很少会想到要优化前端性能，因为数据量真的很小。前端优化最终的目的还是要提高界面流畅度，减少加载时间，所以预加载、懒加载、利用浏览器缓存都是优化前端的方式。把自己的优化思路和面试官说一说，也是能拿到这部分分数的。</p>
+<p><img src="http://ww3.sinaimg.cn/large/006y8mN6gy1g67ppsn8d6j30yw0u042p.jpg" alt></p>
+<h3 id="前端框架"><a href="#前端框架" class="headerlink" title="前端框架"></a>前端框架</h3><p>对于前端框架，面试官的重点会放在你对它原理的理解，以及你的选型思路。这部分的问题一般会和项目经历结合着问，面试官是不会挑着你不会的框架一直问的，我的面试记录中react-native被问到的频率特别高，是因为我把这个项目放在我项目经历的第一个，面试官就特别喜欢问……并且我每次都回答得不太好……（这说明你的简历是能够从一定程度上主导面试方向的，自己不太了解、或是只简单用过的技术，最好还是不要写在简历里了，容易翻车）</p>
+<p><img src="http://ww4.sinaimg.cn/large/006y8mN6gy1g67qaru5j7j312i0eimz4.jpg" alt></p>
+<h3 id="代码题"><a href="#代码题" class="headerlink" title="代码题"></a>代码题</h3><p>在前端面试中，代码题的占比并不大，如果是全程电话面试的话，根本都不会问到代码题。视频面试时会即时出题在线上IDE里写，题目难度基本都是Leetcode Simple级别，我感觉只要稍微刷过几十道，好好复习一遍数据结构与算法，就没啥问题了。对了，面试官经常问排序算法（小声）。</p>
+<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><p>这边为什么会放一个其他呢，因为这里列出的问题是一些开放性的问题，我觉得这些问题也能反映出面试官心仪的“合格的前端工程师”应该具备的特点：热情、探索、高效学习。</p>
+<p><img src="http://ww4.sinaimg.cn/large/006y8mN6gy1g67qma6mqcj30ys08igmj.jpg" alt></p>
+<p>写完这些，我也还是一个前端fresh man，不知道什么时候能成为一个合格的前端工程师，希望那一天早点来吧∠( ᐛ 」∠)＿</p>
+<p><img src="http://ww2.sinaimg.cn/large/006y8mN6gy1g67qrh1wsoj30k00eudhe.jpg" alt></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/面试相关/" rel="tag"># 面试相关</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/08/12/React-Vue（二）：Vue-Router/" rel="next" title="React&Vue（二）：Vue-Router">
+                <i class="fa fa-chevron-left"></i> React&Vue（二）：Vue-Router
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Yiku Yang</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#JavaScript"><span class="nav-number">1.</span> <span class="nav-text">JavaScript</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HTML"><span class="nav-number">2.</span> <span class="nav-text">HTML</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CSS"><span class="nav-number">3.</span> <span class="nav-text">CSS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#浏览器原理-计算机网络-前端优化"><span class="nav-number">4.</span> <span class="nav-text">浏览器原理/计算机网络/前端优化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#前端框架"><span class="nav-number">5.</span> <span class="nav-text">前端框架</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码题"><span class="nav-number">6.</span> <span class="nav-text">代码题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他"><span class="nav-number">7.</span> <span class="nav-text">其他</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">解释权归作者所有，欢迎和我交流鸭～</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: true,
+        appId: 'S5lxTXykdLyqQY4C0Ck2r89c-gzGzoHsz',
+        appKey: 'XJn3bqNJqCB4GNPbr2QAPHvw',
+        placeholder: 'Write some comment to this article ~',
+        avatar:'wavatar',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
