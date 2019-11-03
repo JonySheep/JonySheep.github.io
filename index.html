@@ -232,6 +232,142 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yikuyang.cn/2019/11/03/this的指向问题/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yiku Yang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="YikuYang">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/11/03/this的指向问题/" itemprop="url">this的指向问题</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-11-03T14:59:18+08:00">
+                2019-11-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/11/03/this的指向问题/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/11/03/this的指向问题/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>首先看这样一个题目，思考一下最终会打印出什么？</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> number = <span class="number">10</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.number);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">    number: <span class="number">2</span>,</span><br><span class="line">    show: <span class="function"><span class="keyword">function</span>(<span class="params">fn</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.number = <span class="number">3</span>;</span><br><span class="line">        fn();</span><br><span class="line">        <span class="built_in">arguments</span>[<span class="number">0</span>]();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">obj.show(fn);</span><br></pre></td></tr></table></figure>
+<p>我当时给出的答案是：3和undefined，但是在IDE里运行了之后，打印出的结果却是undefined和undefined。想要清楚的解答这个问题，首先需要了解this究竟是如何确定它的指向的。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/11/03/this的指向问题/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yikuyang.cn/2019/11/03/【代码之外】2019观剧汇总/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1452,154 +1588,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yikuyang.cn/2019/05/04/对于React和Vue，你应该知道这些(一)md/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Yiku Yang">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="YikuYang">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/05/04/对于React和Vue，你应该知道这些(一)md/" itemprop="url">对于React和Vue，你应该知道这些:P(一)——React Virtual DOM</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-05-04T23:44:49+08:00">
-                2019-05-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/05/04/对于React和Vue，你应该知道这些(一)md/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/04/对于React和Vue，你应该知道这些(一)md/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <blockquote>
-<p>​    在软件工程的发展过程中，从前后端不分的时代，到MVC中视图的分离，再到如今前端已经完全分离成独立的项目进行开发。前端技术正在飞速发展，而不同框架的诞生和繁荣则是最佳的见证者。</p>
-</blockquote>
-<p>​    React是一个JavaScript的框架，而Vue是一个MVVM的模型，这两者各有优劣，也有不同的适用环境。这里有一个在知乎上看到的<a href="https://www.zhihu.com/question/301860721/answer/545031906" target="_blank" rel="noopener">尤大神对React和Vue的看法</a>，我们没必要对他们分出个上下来，作为一个前端开发者，对这两个框架的原理和使用都应该有清晰的认识:-P，不能只会写代码写项目，对其内部实现一窍不通，虽然这是现在大部分前端初学者的一大弊病。</p>
-<p>​    我结合面试中问到的问题，总结了一些我们入门者应该了解和掌握的React、Vue的原理和实现，这篇博客会涵盖一下知识点，一篇写下来的话可能会太长，就按照下面的知识点慢慢写慢慢学吧～：</p>
-<ul>
-<li>React Virtual DOM</li>
-<li>React的组件化和高阶组件</li>
-<li>React的生命周期</li>
-<li>React如何进行状态管理 ，Redux的原理</li>
-<li>React Router</li>
-<li>Vue的双向绑定原理</li>
-<li>利用Proxy实现Vue的双向绑定（Vue3.0）</li>
-<li>Vue Router</li>
-</ul>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/05/04/对于React和Vue，你应该知道这些(一)md/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1650,7 +1638,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
