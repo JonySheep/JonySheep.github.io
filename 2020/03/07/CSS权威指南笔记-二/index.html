@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="YikuYang">
 <meta property="og:description" content="第二章 选择符1. 元素选择符1h1 &amp;#123; color: black &amp;#125; 2. 群组选择符群组选择符可以为多个元素设置相同的样式 1h1,p &amp;#123; color: black &amp;#125; 3. 类选择符12.title &amp;#123; color: black &amp;#125;.title.prompt &amp;#123; color: black &amp;#125;">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-03-07T09:21:11.392Z">
+<meta property="og:updated_time" content="2020-03-07T09:24:02.249Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CSS权威指南笔记(二) ">
 <meta name="twitter:description" content="第二章 选择符1. 元素选择符1h1 &amp;#123; color: black &amp;#125; 2. 群组选择符群组选择符可以为多个元素设置相同的样式 1h1,p &amp;#123; color: black &amp;#125; 3. 类选择符12.title &amp;#123; color: black &amp;#125;.title.prompt &amp;#123; color: black &amp;#125;">
@@ -364,13 +364,13 @@
 </li>
 </ul>
 <ul>
-<li><p>UI状态伪类</p>
-<ul>
-<li>:require, :enabled, :disabled, :checked, :default, :valid, :invalid……<h2 id="11-伪元素选择符"><a href="#11-伪元素选择符" class="headerlink" title="11. 伪元素选择符"></a>11. 伪元素选择符</h2></li>
+<li>UI状态伪类<ul>
+<li>:require, :enabled, :disabled, :checked, :default, :valid, :invalid……</li>
 </ul>
 </li>
-<li><p>原理是在文档中插入虚构的元素，用::来表示</p>
-</li>
+</ul>
+<h2 id="11-伪元素选择符"><a href="#11-伪元素选择符" class="headerlink" title="11. 伪元素选择符"></a>11. 伪元素选择符</h2><ul>
+<li>原理是在文档中插入虚构的元素，用::来表示</li>
 <li>常用伪元素：<pre><code>* ::first-letter 用于装饰元素首字母
 </code></pre><ul>
 <li>::first-line 用于装饰元素首行</li>
@@ -394,13 +394,17 @@
 </li>
 <li><p>特指度的比较可以参考二进制数的比较，如“1，0，0，0”高于“0，10，10，10”，左边的数优先比较</p>
 </li>
-<li>⚠️具有<code>!important</code>的声明为重要声明，其优先级高于所有不重要声明<h2 id="2-继承"><a href="#2-继承" class="headerlink" title="2. 继承"></a>2. 继承</h2></li>
+<li>⚠️具有<code>!important</code>的声明为重要声明，其优先级高于所有不重要声明</li>
+</ul>
+<h2 id="2-继承"><a href="#2-继承" class="headerlink" title="2. 继承"></a>2. 继承</h2><ul>
 <li>某些声明的样式不仅应用到当前所指的元素上，也会应用到元素的后代上</li>
 <li>关键点⚠️<ul>
 <li>不是所有样式都会被继承，如border、以及盒模型的大多属性都不会被继承</li>
-<li>继承后的值没有特指度！所以若对子元素样式进行了直接声明，将会覆盖继承的样式<h2 id="3-层叠"><a href="#3-层叠" class="headerlink" title="3. 层叠"></a>3. 层叠</h2></li>
+<li>继承后的值没有特指度！所以若对子元素样式进行了直接声明，将会覆盖继承的样式</li>
 </ul>
 </li>
+</ul>
+<h2 id="3-层叠"><a href="#3-层叠" class="headerlink" title="3. 层叠"></a>3. 层叠</h2><ul>
 <li>层叠机制是CSS组合样式的机制，它结合了继承和特指度的规则，最终计算出元素的展示样式</li>
 <li>规则：<ol>
 <li>找到匹配特定元素的所有规则</li>
