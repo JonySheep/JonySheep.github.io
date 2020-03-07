@@ -312,85 +312,17 @@
 
       
         
-          
-            <h1 id="第二章-选择符"><a href="#第二章-选择符" class="headerlink" title="第二章 选择符"></a>第二章 选择符</h1><h2 id="1-元素选择符"><a href="#1-元素选择符" class="headerlink" title="1. 元素选择符"></a>1. 元素选择符</h2><pre><code>`h1 { color: black }`
-</code></pre><h2 id="2-群组选择符"><a href="#2-群组选择符" class="headerlink" title="2. 群组选择符"></a>2. 群组选择符</h2><pre><code>* 群组选择符可以为多个元素设置相同的样式
-`h1,p { color: black }`
-</code></pre><h2 id="3-类选择符"><a href="#3-类选择符" class="headerlink" title="3. 类选择符"></a>3. 类选择符</h2><pre><code>`.title { color: black }`
-`.title.prompt { color: black }`
-</code></pre><h2 id="4-ID选择符"><a href="#4-ID选择符" class="headerlink" title="4. ID选择符"></a>4. ID选择符</h2><pre><code>`#input-name { color: yellow }`
-</code></pre><h2 id="5-属性选择符"><a href="#5-属性选择符" class="headerlink" title="5. 属性选择符"></a>5. 属性选择符</h2><pre><code>* 简单属性选择符
-`[moons] {  color: yellow }` 
-具有moons属性的pml-planet元素应用此样式
-* 根据精准属性值选择
-`a[href]=&quot;http://baidu.com&quot;] { color: yellow }`
-`p[class=&quot;urgent warning&quot;] 等于 p.urgent.warning`
-* 根据部分属性值选择
-`*[lang|=&quot;en&quot;]` 选择lang属性以”en-“开头的元素
-`p[class~=&quot;warning&quot;]` 选择class属性中包含”warning”的p元素，与`p.warning等效`
-`a[href*=&quot;.com&quot;]` 选择href属性中包含”.com”子串的a元素，注意和~区分！
-`a[href^=&quot;https&quot;]` 选择href以“https”开头的a元素
-`a[href$=&quot;.com&quot;]` 选择href以”.com”结尾的a元素
-</code></pre><h2 id="6-后代选择符"><a href="#6-后代选择符" class="headerlink" title="6. 后代选择符"></a>6. 后代选择符</h2><pre><code>`div p { color: yellow }`
-</code></pre><h2 id="7-子元素选择符"><a href="#7-子元素选择符" class="headerlink" title="7. 子元素选择符"></a>7. 子元素选择符</h2><pre><code>`h1 &gt; strong { color: yellow }`
-</code></pre><h2 id="8-紧邻同胞选择符"><a href="#8-紧邻同胞选择符" class="headerlink" title="8. 紧邻同胞选择符"></a>8. 紧邻同胞选择符</h2><pre><code>`h1 + p { margin: 0 }`
-* 这里选择的紧邻同胞必须是紧跟在h1后面，且只能选择一个元素！因此以下代码中的p无法匹配此样式
-</code></pre><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">h1</span>&gt;</span>Title<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">h2</span>&gt;</span>A Description<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">p</span>&gt;</span>Content<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h2 id="9-同胞选择符"><a href="#9-同胞选择符" class="headerlink" title="9. 同胞选择符"></a>9. 同胞选择符</h2><pre><code>* 同胞选择符可以选择一个元素后的所有匹配元素，只要他们属于同一个父元素
-`h1 ~ p { margin: 0 }`
-</code></pre><h2 id="10-伪类选择符"><a href="#10-伪类选择符" class="headerlink" title="10. 伪类选择符"></a>10. 伪类选择符</h2><pre><code>* 为文档中不一定真实存在的结构指定样式，或为某些元素的特定状态设置 _幽灵类_
-* ⚠️伪类是依附于当前元素上的
-* 常用结构伪类：
-    * :root 选择根元素
-    * :empty 选择没有任何子代的元素，包括文本节点、空白和换行符都不允许存在
-    * :only-child 选择是唯一子代的元素，该元素不能有同胞元素
-    * :only-of-type 选择是唯一一种子代元素，例如`a[href] img:only-of-type`选择具有href属性的a元素子代中的唯一图像，但a元素可以有其他子元素
-    * :first-child 选择第一个元素，常用于li
-    * :last-child 选择最后一个元素
-    * :nth-child() 常用的伪类！选择每第n个元素，如在列表中，使用`li:nth-child(2n)`选择偶数列表项，常用于装饰间隔样式
-* 常用动态伪类：
-    * :link 选择未访问过的链接
-    * :visited 选择已访问的超链接，与:link互斥
-    * :focus 选择当前获得输入焦点的元素
-    * :hover 选择鼠标指针放置其上的元素
-    * :active 选择由用户激活的元素
-    * 推荐排列顺序：link-visited-focus-hover-active
-* UI状态伪类
-    * :require, :enabled, :disabled, :checked, :default, :valid, :invalid……
-</code></pre><h2 id="11-伪元素选择符"><a href="#11-伪元素选择符" class="headerlink" title="11. 伪元素选择符"></a>11. 伪元素选择符</h2><pre><code>* 原理是在文档中插入虚构的元素，用::来表示
-* 常用伪元素：
-    * ::first-letter 用于装饰元素首字母
-    * ::first-line 用于装饰元素首行
-    * ::before 用于插入前置元素
-    * ::after 用于插入后置元素
-</code></pre><h1 id="第三章-特指度"><a href="#第三章-特指度" class="headerlink" title="第三章 特指度"></a>第三章 特指度</h1><h2 id="1-特指度"><a href="#1-特指度" class="headerlink" title="1. 特指度"></a>1. 特指度</h2><pre><code>* 特指度可以理解为一组样式的优先级。样式加载时，用户代理会计算每个样式规则中选择符的特指度，将其依附到规则中的每个声明上，若多个属性声明有冲突，特指度高的胜出。
-* 一个特指度值由四部分构成0，0，0，0，特指度规则如下：
-    1. 若样式在行内声明，特指度加1，0，0，0
-    2. 选择符中的每个ID属性值，特指度加0，1，0，0
-    3. 选择符中的每个类属性值、属性选择、伪类，特指度加0，0，1，0
-    4. 选择符中每个元素选择、伪元素，特指度加0，0，0，1
-    5. 连结符和通用选择符不增加特指度
-* 例子
-</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">p em &#123; ... &#125;							/* 特指度 = 0，0，0，2 */</span><br><span class="line">*.bright &#123; ... &#125;						/* 特指度 = 0，0，1，0 */</span><br><span class="line">p.bright em.dark &#123; ... &#125;			/* 特指度 = 0，0，2，2 */</span><br><span class="line">div#sidebar *[href] &#123; ... &#125;		/* 特指度 = 0，1，1，1 */</span><br></pre></td></tr></table></figure>
-<pre><code>* 特指度的比较可以参考二进制数的比较，如“1，0，0，0”高于“0，10，10，10”，左边的数优先比较
-* ⚠️具有`!important`的声明为重要声明，其优先级高于所有不重要声明
-</code></pre><h2 id="2-继承"><a href="#2-继承" class="headerlink" title="2. 继承"></a>2. 继承</h2><pre><code>* 某些声明的样式不仅应用到当前所指的元素上，也会应用到元素的后代上
-* 关键点⚠️
-    * 不是所有样式都会被继承，如border、以及盒模型的大多属性都不会被继承
-    * 继承后的值没有特指度！所以若对子元素样式进行了直接声明，将会覆盖继承的样式
-</code></pre><h2 id="3-层叠"><a href="#3-层叠" class="headerlink" title="3. 层叠"></a>3. 层叠</h2><pre><code>* 层叠机制是CSS组合样式的机制，它结合了继承和特指度的规则，最终计算出元素的展示样式
-* 规则
-    1. 找到匹配特定元素的所有规则
-    2. 按显式权重和来源排序：!important标记的权重最高，来源包括：创作人员、读者、用户代理，以下按权重从高到低列出：
-        1. 读者提供的样式中以!important标记的声明
-        2. 创作人员编写的样式中以!important标记的声明
-        3. 创作人员编写的常规声明
-        4. 读者提供的常规声明
-        5. 用户代理的默认声明
-    3. 按特指度排序
-    4. 按前后位置排序：样式表中靠后的声明权重较高，导入的声明权重低于样式表声明
-</code></pre>
-          
+          <h1 id="第二章-选择符"><a href="#第二章-选择符" class="headerlink" title="第二章 选择符"></a>第二章 选择符</h1><h2 id="1-元素选择符"><a href="#1-元素选择符" class="headerlink" title="1. 元素选择符"></a>1. 元素选择符</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">h1</span> &#123; <span class="attribute">color</span>: black &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="2-群组选择符"><a href="#2-群组选择符" class="headerlink" title="2. 群组选择符"></a>2. 群组选择符</h2><p>群组选择符可以为多个元素设置相同的样式</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">h1</span>,<span class="selector-tag">p</span> &#123; <span class="attribute">color</span>: black &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="3-类选择符"><a href="#3-类选择符" class="headerlink" title="3. 类选择符"></a>3. 类选择符</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.title</span> &#123; <span class="attribute">color</span>: black &#125;</span><br><span class="line"><span class="selector-class">.title</span><span class="selector-class">.prompt</span> &#123; <span class="attribute">color</span>: black &#125;</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/03/07/CSS权威指南笔记-二/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -517,8 +449,7 @@
 
       
         
-          
-            <h1 id="第一章-CSS基础"><a href="#第一章-CSS基础" class="headerlink" title="第一章 CSS基础"></a>第一章 CSS基础</h1><p>本章主要介绍了CSS的引用方法和CSS中的查询方法。首先，CSS（层叠样式表）依赖于HTML元素而存在，HTML元素有两种分类方式：</p>
+          <h1 id="第一章-CSS基础"><a href="#第一章-CSS基础" class="headerlink" title="第一章 CSS基础"></a>第一章 CSS基础</h1><p>本章主要介绍了CSS的引用方法和CSS中的查询方法。首先，CSS（层叠样式表）依赖于HTML元素而存在，HTML元素有两种分类方式：</p>
 <p><strong>按内容</strong></p>
 <pre><code>* 置换元素：文档的内容不直接表示元素内容，如img、video、input
 * 非置换元素：元素内容由用户代理在元素自身生成的框中显示（书中是这样写的很绕，我的理解就是所见即所得），如span、div等几乎所有元素
@@ -526,24 +457,14 @@
 <pre><code>* 块元素：默认生成一个填满父区域的框，且前后都断行，最常见的有p、div
 * 行内元素：在一行文本内生成元素框，如a、strong
     &gt; HTML中不允许行内元素嵌套块元素，但可以使用CSS来打破这种常规
-</code></pre><h2 id="1-如何引入CSS："><a href="#1-如何引入CSS：" class="headerlink" title="1. 如何引入CSS："></a>1. 如何引入CSS：</h2><ol>
-<li><p>外部样式表：link标签<br> <code>&lt;link rel=“stylesheet” type=“text/css” href=“color.css” media=“all”&gt;</code></p>
-<pre><code>* 使用`rel=“alternate stylesheet”`创建候选样式表，用于为浏览器提供候选样式选择
-</code></pre></li>
-<li><p>文档样式表：style元素<br> <code>&lt;style type=“text/css” &gt; .... &lt;/style&gt;</code></p>
-</li>
-<li>@Import指令<br> <code>@import url(color.css) screen</code></li>
-<li>行内样式</li>
-<li>HTTP链接：在HTTP首部引用css文件</li>
-</ol>
-<h2 id="2-媒体查询"><a href="#2-媒体查询" class="headerlink" title="2. 媒体查询"></a>2. 媒体查询</h2><p>用于根据指定的媒体类型来选择特定样式</p>
-<p><strong>媒体类型</strong><br>    all，screen，print<br><strong>使用场景</strong><br>    link元素的media属性<br>    style元素的media属性<br>    @import声明<br>    @media声明<br><strong>媒体描述符</strong><br>    由一个媒体类型和一个或多个特性组成<br><strong>媒体特性描述符</strong><br>    常见的max-width、min-width、color、grid等等</p>
-<p><strong>例子</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@media print and (min-width: 800px)&#123;…&#125;</span><br><span class="line">/*当媒体为打印机且大屏时使用此声明块*/</span><br><span class="line">@import url(nocolor.css) not (color) and (min-device-width:800px)</span><br><span class="line">/*当媒体无颜色且大屏时使用nocolor样式表*/</span><br></pre></td></tr></table></figure>
-<h2 id="3-特性查询"><a href="#3-特性查询" class="headerlink" title="3. 特性查询"></a>3. 特性查询</h2><p>基本逻辑与媒体查询相似，根据用户代理是否支持特定的css属性和值来应用样式，并且媒体查询和特性查询可以嵌套使用</p>
-<p><strong>例子</strong>:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@supports(display: grid)&#123;</span><br><span class="line">	/*支持栅格时使用此样式*/</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          
+</code></pre>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/03/07/CSS权威指南笔记-一/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
