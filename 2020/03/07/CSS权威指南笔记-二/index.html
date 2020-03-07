@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="YikuYang">
 <meta property="og:description" content="第二章 选择符1. 元素选择符1h1 &amp;#123; color: black &amp;#125; 2. 群组选择符群组选择符可以为多个元素设置相同的样式 1h1,p &amp;#123; color: black &amp;#125; 3. 类选择符12.title &amp;#123; color: black &amp;#125;.title.prompt &amp;#123; color: black &amp;#125;">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-03-07T09:24:02.249Z">
+<meta property="og:updated_time" content="2020-03-07T12:07:47.046Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CSS权威指南笔记(二) ">
 <meta name="twitter:description" content="第二章 选择符1. 元素选择符1h1 &amp;#123; color: black &amp;#125; 2. 群组选择符群组选择符可以为多个元素设置相同的样式 1h1,p &amp;#123; color: black &amp;#125; 3. 类选择符12.title &amp;#123; color: black &amp;#125;.title.prompt &amp;#123; color: black &amp;#125;">
@@ -370,9 +370,13 @@
 </li>
 </ul>
 <h2 id="11-伪元素选择符"><a href="#11-伪元素选择符" class="headerlink" title="11. 伪元素选择符"></a>11. 伪元素选择符</h2><ul>
-<li>原理是在文档中插入虚构的元素，用::来表示</li>
-<li>常用伪元素：<pre><code>* ::first-letter 用于装饰元素首字母
-</code></pre><ul>
+<li><p>原理是在文档中插入虚构的元素，用::来表示</p>
+</li>
+<li><p>常用伪元素：</p>
+<ul>
+<li>::first-letter 用于装饰元素首字母</li>
+</ul>
+<ul>
 <li>::first-line 用于装饰元素首行</li>
 <li>::before 用于插入前置元素</li>
 <li>::after 用于插入后置元素</li>
@@ -390,7 +394,7 @@
 </ol>
 </li>
 <li><p>例子</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">p em &#123; ... &#125;							/* 特指度 = 0，0，0，2 */</span><br><span class="line">*.bright &#123; ... &#125;						/* 特指度 = 0，0，1，0 */</span><br><span class="line">p.bright em.dark &#123; ... &#125;			/* 特指度 = 0，0，2，2 */</span><br><span class="line">div#sidebar *[href] &#123; ... &#125;		/* 特指度 = 0，1，1，1 */</span><br></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">p em &#123; ... &#125;	 /* 特指度 = 0，0，0，2 */</span><br><span class="line">*.bright &#123; ... &#125;	/* 特指度 = 0，0，1，0 */</span><br><span class="line">p.bright em.dark &#123; ... &#125;	/* 特指度 = 0，0，2，2 */</span><br><span class="line">div#sidebar *[href] &#123; ... &#125;	 /* 特指度 = 0，1，1，1 */</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>特指度的比较可以参考二进制数的比较，如“1，0，0，0”高于“0，10，10，10”，左边的数优先比较</p>
 </li>
