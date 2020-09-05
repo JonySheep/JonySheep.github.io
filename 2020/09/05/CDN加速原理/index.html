@@ -79,20 +79,20 @@
 
 
 
-<meta name="description" content="1. CDN简介 全称：Content Delivery Network 内容分发网络  功能：通过在现有的Internet中增加一层新的cache层，将网站的内容发布到最接近用户的网络“边缘”节点，从而使用户就近取得所需内容。  优点：  解决了服务器端“第一公里”的问题 提高用户访问网站的响应速度 从技术上全面解决由于网络带宽小、用户访问量大、网点分布不均等问题   “第一公里”：指网站内容从">
+<meta name="description" content="1. CDN简介 全称：Content Delivery Network 内容分发网络  功能：通过在现有的Internet中增加一层新的cache层，将网站的内容发布到最接近用户的网络“边缘”节点，从而使用户就近取得所需内容。  优点：  解决了服务器端“第一公里”的问题 提高用户访问网站的响应速度 从技术上全面解决由于网络带宽小、用户访问量大、网点分布不均等问题">
 <meta name="keywords" content="基础知识">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CDN加速原理">
 <meta property="og:url" content="http://yikuyang.cn/2020/09/05/CDN加速原理/index.html">
 <meta property="og:site_name" content="YikuYang">
-<meta property="og:description" content="1. CDN简介 全称：Content Delivery Network 内容分发网络  功能：通过在现有的Internet中增加一层新的cache层，将网站的内容发布到最接近用户的网络“边缘”节点，从而使用户就近取得所需内容。  优点：  解决了服务器端“第一公里”的问题 提高用户访问网站的响应速度 从技术上全面解决由于网络带宽小、用户访问量大、网点分布不均等问题   “第一公里”：指网站内容从">
+<meta property="og:description" content="1. CDN简介 全称：Content Delivery Network 内容分发网络  功能：通过在现有的Internet中增加一层新的cache层，将网站的内容发布到最接近用户的网络“边缘”节点，从而使用户就近取得所需内容。  优点：  解决了服务器端“第一公里”的问题 提高用户访问网站的响应速度 从技术上全面解决由于网络带宽小、用户访问量大、网点分布不均等问题">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://mmbiz.qpic.cn/mmbiz/1NOXMW586ut7gkN7yRApcCcicIIE1uGNwsNt5wzNMbQo2afoX9kAWK5YJB86bltF30hFNuFTw8OQpWMG4EXzfZA/640?wx_fmt=other&wxfrom=5&wx_lazy=1&wx_co=1">
 <meta property="og:image" content="http://mmbiz.qpic.cn/mmbiz/1NOXMW586ut7gkN7yRApcCcicIIE1uGNwWMmKQRhKnBOe7HibMS1odCp9Pq6ibRj2TRFb9AGJbVhQIfKNjFH7vaDg/640?wx_fmt=other&wxfrom=5&wx_lazy=1&wx_co=1">
-<meta property="og:updated_time" content="2020-09-05T09:36:25.052Z">
+<meta property="og:updated_time" content="2020-09-05T09:43:12.365Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CDN加速原理">
-<meta name="twitter:description" content="1. CDN简介 全称：Content Delivery Network 内容分发网络  功能：通过在现有的Internet中增加一层新的cache层，将网站的内容发布到最接近用户的网络“边缘”节点，从而使用户就近取得所需内容。  优点：  解决了服务器端“第一公里”的问题 提高用户访问网站的响应速度 从技术上全面解决由于网络带宽小、用户访问量大、网点分布不均等问题   “第一公里”：指网站内容从">
+<meta name="twitter:description" content="1. CDN简介 全称：Content Delivery Network 内容分发网络  功能：通过在现有的Internet中增加一层新的cache层，将网站的内容发布到最接近用户的网络“边缘”节点，从而使用户就近取得所需内容。  优点：  解决了服务器端“第一公里”的问题 提高用户访问网站的响应速度 从技术上全面解决由于网络带宽小、用户访问量大、网点分布不均等问题">
 <meta name="twitter:image" content="http://mmbiz.qpic.cn/mmbiz/1NOXMW586ut7gkN7yRApcCcicIIE1uGNwsNt5wzNMbQo2afoX9kAWK5YJB86bltF30hFNuFTw8OQpWMG4EXzfZA/640?wx_fmt=other&wxfrom=5&wx_lazy=1&wx_co=1">
 
 
@@ -324,12 +324,10 @@
 <li>提高用户访问网站的响应速度</li>
 <li>从技术上全面解决由于网络带宽小、用户访问量大、网点分布不均等问题</li>
 </ul>
-<blockquote>
-<p>“第一公里”：指网站内容从源头通过链路接入互联网的过程。当这个链路的带宽较小时，访问的用户量一变大，就会导致访问拥堵，从而影响网站的访问速度。</p>
-<p>“最后一公里”：指用户接入互联网获取信息的过程。其影响因素为用户的带宽。</p>
-</blockquote>
 </li>
 </ul>
+<a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">“第一公里”：指网站内容从源头通过链路接入互联网的过程。当这个链路的带宽较小时，访问的用户量一变大，就会导致访问拥堵，从而影响网站的访问速度。</span><br><span class="line"></span><br><span class="line">“最后一公里”：指用户接入互联网获取信息的过程。其影响因素为用户的带宽。</span><br></pre></td></tr></table></figure>
 <p><img src="http://mmbiz.qpic.cn/mmbiz/1NOXMW586ut7gkN7yRApcCcicIIE1uGNwsNt5wzNMbQo2afoX9kAWK5YJB86bltF30hFNuFTw8OQpWMG4EXzfZA/640?wx_fmt=other&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img"></p>
 <h2 id="2-CDN工作原理"><a href="#2-CDN工作原理" class="headerlink" title="2. CDN工作原理"></a>2. CDN工作原理</h2><p><img src="http://mmbiz.qpic.cn/mmbiz/1NOXMW586ut7gkN7yRApcCcicIIE1uGNwWMmKQRhKnBOe7HibMS1odCp9Pq6ibRj2TRFb9AGJbVhQIfKNjFH7vaDg/640?wx_fmt=other&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img"></p>
 <h3 id="CDN访问过程"><a href="#CDN访问过程" class="headerlink" title="CDN访问过程"></a><strong>CDN访问过程</strong></h3><p>（下划线部分为涉及CDN的过程，其余部分为传统访问过程）</p>
@@ -353,9 +351,8 @@
 <li>获得分配的CNAME域名</li>
 <li>将域名指向新CNAME域名，将请求转到CDN节点</li>
 </ol>
-<blockquote>
-<p>CNAME即别名( Canonical Name )；可以用来把一个域名解析到另一个域名，当 DNS 系统在查询 CNAME 左面的名称的时候，都会转向 CNAME 右面的名称再进行查询，一直追踪到最后的 PTR 或 A 名称，成功查询后才会做出回应，否则失败。</p>
-</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CNAME即别名( Canonical Name )；可以用来把一个域名解析到另一个域名，当 DNS 系统在查询 CNAME 左面的名称的时候，都会转向 CNAME 右面的名称再进行查询，一直追踪到最后的 PTR 或 A 名称，成功查询后才会做出回应，否则失败。</span><br></pre></td></tr></table></figure>
+<p>Reference：</p>
 <blockquote>
 <p>前端必会：CDN加速原理 <a href="https://mp.weixin.qq.com/s/Df9kYNquukRCwwocgRblcQ" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/Df9kYNquukRCwwocgRblcQ</a></p>
 <p>超过10秒，你可能会丢失40%的用户 <a href="https://www.jianshu.com/p/e4b712fd01b2" target="_blank" rel="noopener">https://www.jianshu.com/p/e4b712fd01b2</a></p>

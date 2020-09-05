@@ -312,8 +312,7 @@
 
       
         
-          
-            <h2 id="1-CDN简介"><a href="#1-CDN简介" class="headerlink" title="1. CDN简介"></a>1. CDN简介</h2><ul>
+          <h2 id="1-CDN简介"><a href="#1-CDN简介" class="headerlink" title="1. CDN简介"></a>1. CDN简介</h2><ul>
 <li><p>全称：Content Delivery Network 内容分发网络</p>
 </li>
 <li><p>功能：通过在现有的Internet中增加一层新的cache层，将网站的内容发布到最接近用户的网络“边缘”节点，从而使用户<strong>就近</strong>取得所需内容。</p>
@@ -324,44 +323,15 @@
 <li>提高用户访问网站的响应速度</li>
 <li>从技术上全面解决由于网络带宽小、用户访问量大、网点分布不均等问题</li>
 </ul>
-<blockquote>
-<p>“第一公里”：指网站内容从源头通过链路接入互联网的过程。当这个链路的带宽较小时，访问的用户量一变大，就会导致访问拥堵，从而影响网站的访问速度。</p>
-<p>“最后一公里”：指用户接入互联网获取信息的过程。其影响因素为用户的带宽。</p>
-</blockquote>
 </li>
 </ul>
-<p><img src="http://mmbiz.qpic.cn/mmbiz/1NOXMW586ut7gkN7yRApcCcicIIE1uGNwsNt5wzNMbQo2afoX9kAWK5YJB86bltF30hFNuFTw8OQpWMG4EXzfZA/640?wx_fmt=other&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img"></p>
-<h2 id="2-CDN工作原理"><a href="#2-CDN工作原理" class="headerlink" title="2. CDN工作原理"></a>2. CDN工作原理</h2><p><img src="http://mmbiz.qpic.cn/mmbiz/1NOXMW586ut7gkN7yRApcCcicIIE1uGNwWMmKQRhKnBOe7HibMS1odCp9Pq6ibRj2TRFb9AGJbVhQIfKNjFH7vaDg/640?wx_fmt=other&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img"></p>
-<h3 id="CDN访问过程"><a href="#CDN访问过程" class="headerlink" title="CDN访问过程"></a><strong>CDN访问过程</strong></h3><p>（下划线部分为涉及CDN的过程，其余部分为传统访问过程）</p>
-<p>（1）用户输入访问的域名,操作系统向 LocalDns 查询域名的ip地址.</p>
-<p>（2）LocalDns向 ROOT DNS 查询域名的授权服务器(这里假设LocalDns缓存过期)</p>
-<p>（3）ROOT DNS将域名授权dns记录回应给 LocalDns</p>
-<p>（4）LocalDns得到域名的授权dns记录后,继续向域名授权dns查询域名的ip地址</p>
-<p>（5）域名授权dns 查询域名记录后(一般是CNAME)，回应给 LocalDns</p>
-<p>（6）<u>LocalDns 得到域名记录后,向智能调度DNS查询域名的ip地址</u></p>
-<p>（7）<u>智能调度DNS 根据一定的算法和策略(比如静态拓扑，容量等),将最适合的CDN节点ip地址回应给 LocalDns</u></p>
-<p>（8）LocalDns 将得到的域名ip地址，回应给 用户端</p>
-<p>（9）<u>用户通过域名ip地址访问CDN节点服务器</u></p>
-<p>（10）<u>CDN节点服务器应答请求，将内容返回给客户端.(缓存服务器一方面在本地进行保存，以备以后使用，二方面把获取的数据返回给客户端，完成数据服务过程)</u></p>
-<h3 id="CDN组成要素"><a href="#CDN组成要素" class="headerlink" title="CDN组成要素"></a>CDN组成要素</h3><ul>
-<li>智能调度DNS</li>
-<li>CDN节点</li>
-<li>缓存功能服务：负载均衡设备、内容cache、共享存储</li>
-</ul>
-<h2 id="3-CDN的接入"><a href="#3-CDN的接入" class="headerlink" title="3. CDN的接入"></a>3. CDN的接入</h2><ol>
-<li>在CDN提供商（如阿里云）控制台添加加速域名</li>
-<li>获得分配的CNAME域名</li>
-<li>将域名指向新CNAME域名，将请求转到CDN节点</li>
-</ol>
-<blockquote>
-<p>CNAME即别名( Canonical Name )；可以用来把一个域名解析到另一个域名，当 DNS 系统在查询 CNAME 左面的名称的时候，都会转向 CNAME 右面的名称再进行查询，一直追踪到最后的 PTR 或 A 名称，成功查询后才会做出回应，否则失败。</p>
-</blockquote>
-<blockquote>
-<p>前端必会：CDN加速原理 <a href="https://mp.weixin.qq.com/s/Df9kYNquukRCwwocgRblcQ" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/Df9kYNquukRCwwocgRblcQ</a></p>
-<p>超过10秒，你可能会丢失40%的用户 <a href="https://www.jianshu.com/p/e4b712fd01b2" target="_blank" rel="noopener">https://www.jianshu.com/p/e4b712fd01b2</a></p>
-</blockquote>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/09/05/CDN加速原理/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
