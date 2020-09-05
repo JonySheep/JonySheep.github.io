@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Life,">
+  <meta name="keywords" content="基础知识,">
 
 
 
@@ -79,19 +79,21 @@
 
 
 
-<meta name="keywords" content="Life">
+<meta name="description" content="1. CDN简介 全称：Content Delivery Network 内容分发网络  功能：通过在现有的Internet中增加一层新的cache层，将网站的内容发布到最接近用户的网络“边缘”节点，从而使用户就近取得所需内容。  优点：  解决了服务器端“第一公里”的问题 提高用户访问网站的响应速度 从技术上全面解决由于网络带宽小、用户访问量大、网点分布不均等问题   “第一公里”：指网站内容从">
+<meta name="keywords" content="基础知识">
 <meta property="og:type" content="article">
-<meta property="og:title" content="【Life】去GDD见世面啦！">
-<meta property="og:url" content="http://yikuyang.cn/2019/09/11/【Life】去GDD见世面啦！/index.html">
+<meta property="og:title" content="CDN加速原理">
+<meta property="og:url" content="http://yikuyang.cn/2020/09/05/CDN加速原理/index.html">
 <meta property="og:site_name" content="YikuYang">
+<meta property="og:description" content="1. CDN简介 全称：Content Delivery Network 内容分发网络  功能：通过在现有的Internet中增加一层新的cache层，将网站的内容发布到最接近用户的网络“边缘”节点，从而使用户就近取得所需内容。  优点：  解决了服务器端“第一公里”的问题 提高用户访问网站的响应速度 从技术上全面解决由于网络带宽小、用户访问量大、网点分布不均等问题   “第一公里”：指网站内容从">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://tva1.sinaimg.cn/large/006y8mN6gy1g6vvq7ezraj30sg0lcq6h.jpg">
-<meta property="og:image" content="https://tva1.sinaimg.cn/large/006y8mN6gy1g6vx3cbnnnj30sg0lcgot.jpg">
-<meta property="og:image" content="https://tva1.sinaimg.cn/large/006y8mN6gy1g6vz4la75dj30wq0ijmzx.jpg">
-<meta property="og:updated_time" content="2019-09-11T15:11:53.404Z">
+<meta property="og:image" content="http://mmbiz.qpic.cn/mmbiz/1NOXMW586ut7gkN7yRApcCcicIIE1uGNwsNt5wzNMbQo2afoX9kAWK5YJB86bltF30hFNuFTw8OQpWMG4EXzfZA/640?wx_fmt=other&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="http://mmbiz.qpic.cn/mmbiz/1NOXMW586ut7gkN7yRApcCcicIIE1uGNwWMmKQRhKnBOe7HibMS1odCp9Pq6ibRj2TRFb9AGJbVhQIfKNjFH7vaDg/640?wx_fmt=other&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:updated_time" content="2020-09-05T09:36:25.052Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="【Life】去GDD见世面啦！">
-<meta name="twitter:image" content="https://tva1.sinaimg.cn/large/006y8mN6gy1g6vvq7ezraj30sg0lcq6h.jpg">
+<meta name="twitter:title" content="CDN加速原理">
+<meta name="twitter:description" content="1. CDN简介 全称：Content Delivery Network 内容分发网络  功能：通过在现有的Internet中增加一层新的cache层，将网站的内容发布到最接近用户的网络“边缘”节点，从而使用户就近取得所需内容。  优点：  解决了服务器端“第一公里”的问题 提高用户访问网站的响应速度 从技术上全面解决由于网络带宽小、用户访问量大、网点分布不均等问题   “第一公里”：指网站内容从">
+<meta name="twitter:image" content="http://mmbiz.qpic.cn/mmbiz/1NOXMW586ut7gkN7yRApcCcicIIE1uGNwsNt5wzNMbQo2afoX9kAWK5YJB86bltF30hFNuFTw8OQpWMG4EXzfZA/640?wx_fmt=other&wxfrom=5&wx_lazy=1&wx_co=1">
 
 
 
@@ -121,13 +123,13 @@
 
 
 
-  <link rel="canonical" href="http://yikuyang.cn/2019/09/11/【Life】去GDD见世面啦！/">
+  <link rel="canonical" href="http://yikuyang.cn/2020/09/05/CDN加速原理/">
 
 
 
 
 
-  <title>【Life】去GDD见世面啦！ | YikuYang</title>
+  <title>CDN加速原理 | YikuYang</title>
   
 
 
@@ -234,7 +236,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yikuyang.cn/2019/09/11/【Life】去GDD见世面啦！/">
+    <link itemprop="mainEntityOfPage" href="http://yikuyang.cn/2020/09/05/CDN加速原理/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Yiku Yang">
@@ -251,7 +253,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">【Life】去GDD见世面啦！</h2>
+          <h2 class="post-title" itemprop="name headline">CDN加速原理</h2>
         
 
         <div class="post-meta">
@@ -263,8 +265,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-11T23:09:07+08:00">
-                2019-09-11
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-09-05T15:42:33+08:00">
+                2020-09-05
               </time>
             
 
@@ -282,8 +284,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/09/11/【Life】去GDD见世面啦！/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/09/11/【Life】去GDD见世面啦！/" itemprop="commentCount"></span>
+                <a href="/2020/09/05/CDN加速原理/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/09/05/CDN加速原理/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -311,51 +313,53 @@
       
 
       
-        <p><img src="https://tva1.sinaimg.cn/large/006y8mN6gy1g6vvq7ezraj30sg0lcq6h.jpg" alt></p>
-<a id="more"></a>
-<p>嘻嘻，先说一下我怎么报名的。</p>
-<p>本来其实没想着要报名的，偶然在年级群里看到了Google的女性工程师分享会，觉得挺有意思遂至公众号提交了报名表，然后在公众号里看到了<strong>Google开发者大会</strong>的报名信息，也就顺便填了一下。我应该本来是不能通过报名的，毕竟之前没参加过Google的其他活动，自己也比较菜，但是在参加分享会的时候，我和可爱hr小姐姐提了一嘴我也报名了GDD，于是我就在发邀请的最后几天收到了mail，嘿嘿。（所以个人认为可以多去参加一下Google的线下活动刷刷脸，hr小姐姐都会记住我们的！）</p>
-<h5 id="主旨演讲"><a href="#主旨演讲" class="headerlink" title="主旨演讲"></a>主旨演讲</h5><p>第一天的人流量比第二天多了可能有一倍，我去的时候排队入场+签到用了半个小时，在主旨演讲开始前5分钟才坐进主会场，会场有三块大屏，演讲的时候只会打屏幕的光，特别沉浸式体验，比在屏幕前看回放更容易专注吧。</p>
-<p>主旨演讲主要是不同产品的负责人上来介绍产品，以及这一年内做的improvement，还会发布一些最新的技术，在这记录一下主旨演讲的重点！</p>
-<ul>
-<li><a href="https://grow.google/" target="_blank" rel="noopener">Grow with Google</a>： 除了对开发者提供的帮助，更对企业、困难人群提供了技术支持与教育机会。</li>
-<li>Android10：5G支持，深色主题，改进用户安全隐私保护</li>
-<li>TensorFlow：发布TensorFlow 2.0 RC版本</li>
-<li>Flutter：正式上线1.9版本，将Flutter网页版并入主代码库，实现了进一步的跨平台应用</li>
-<li>Google Art &amp; Culture：“观妙中国”APP</li>
-<li>Chrome：使用Lighthouse tool监测PWA网页性能</li>
-<li>还有一些产品没有发布重大更新，只是做了简单介绍：ARCore &amp; Google Play，Firebase，WearOS……</li>
-</ul>
-<p>ps. 上来讲TensorFlow的小姐姐很漂亮，虽然她是歪国小姐姐，还是非常努力的在用中文演讲，想说其实用英文我们可能会听着舒服一些2333</p>
-<p><img src="https://tva1.sinaimg.cn/large/006y8mN6gy1g6vx3cbnnnj30sg0lcgot.jpg" alt="刘看山在听主旨演讲"></p>
-<h5 id="主题演讲"><a href="#主题演讲" class="headerlink" title="主题演讲"></a>主题演讲</h5><p>数了一下2天的大会一共有69场主题演讲，分别在四个分会场举行，每场演讲之间大约间隔15分钟，时间还是非常赶的。因为这些演讲在网站上（bilibili）都会有回放，所以我们只去听了一些比较有意思、感兴趣的主题，没有整天都在会场里赶着听完每一场。说一下自己印象比较深的几个演讲吧（还是以web技术为主了）</p>
-<ul>
-<li><p><a href="https://developers.google.com/web/progressive-web-apps/" target="_blank" rel="noopener">渐进式Web应用：从移动设备到桌面设备</a></p>
-<p>PWA（Progressive Web App）不再是传统的网页或是app应用，他可以看作是网页与桌面/移动应用的Hybrid，浅显地讲，当你浏览到一个非常喜欢的网页，你就可以将它install到你的桌面上（这个桌面可以是电脑或是移动应用），将来便可以直接把它当成一个App打开，这样的一个网页就是PWA。</p>
-<p>Pete提到了三个词：Reliable、Fast、Engaging，演讲中提到的另一个PWA的特性就是离线加载，我们可以使用ServiceWorker，把预先写好的offline.html文件放入缓存中，当检测到offline状态时即加载这个网页。</p>
-<p>其中的原理我也没有了解透彻（🤦‍♀️）今天在Codelab做了这个<a href="https://codelabs.developers.google.com/codelabs/your-first-pwapp/#4" target="_blank" rel="noopener">Your First PWA</a>的入门实验，非常适合入门！</p>
+        <h2 id="1-CDN简介"><a href="#1-CDN简介" class="headerlink" title="1. CDN简介"></a>1. CDN简介</h2><ul>
+<li><p>全称：Content Delivery Network 内容分发网络</p>
 </li>
-<li><p>利用Chrome Dev更快速的构建出色的网站</p>
-<p>Chrome不仅是浏览器，也是大部分前端开发者使用的开发工具，Kayce向我们介绍了一些使用Chrome进行开发调试的小tips，他真的，好帅。</p>
-<ul>
-<li>使用Inspect工具检查和调试CSS（这个很简单啦，肯定大家都用过）</li>
-<li>模拟不同屏幕尺寸的设备</li>
-<li>使用Sensor进行Location测试和模拟</li>
-<li>使用console.assert代替条件判断型的console.log</li>
-<li>使用audits工具监测网页性能</li>
-<li>在Coverage中检查资源覆盖率</li>
-</ul>
+<li><p>功能：通过在现有的Internet中增加一层新的cache层，将网站的内容发布到最接近用户的网络“边缘”节点，从而使用户<strong>就近</strong>取得所需内容。</p>
 </li>
-<li><p>TensorFlow.js: JavaScript平台的机器学习</p>
-<p>因为之前一直不太了解机器学习相关的东西，所以这也是我第一次知道TensorFlow居然在去年发布了支持JavaScript的版本，并且做到了客户端(浏览器)、服务器(node.js)的跨平台兼容。在其框架内部已经为我们写好了一些模型，比如图像分类，面部识别，文本识别等等。这是<a href="https://www.tensorflow.org/js" target="_blank" rel="noopener">官方教程</a>，最近我应该也会学一学！</p>
-<p>下图为我们简单的展示了TensorFlow.js的内部架构：</p>
-<p><img src="https://tva1.sinaimg.cn/large/006y8mN6gy1g6vz4la75dj30wq0ijmzx.jpg" alt></p>
-<p>演讲中其实没有深入讲技术实现，而是讲了一些实际的应用场景。例如虚拟试妆微信小程序，应该是基于TensorFlow.js的人脸识别库做的，其中做了一些对性能与源文件大小的优化。</p>
+<li><p>优点：</p>
+<ul>
+<li>解决了服务器端“第一公里”的问题</li>
+<li>提高用户访问网站的响应速度</li>
+<li>从技术上全面解决由于网络带宽小、用户访问量大、网点分布不均等问题</li>
+</ul>
+<blockquote>
+<p>“第一公里”：指网站内容从源头通过链路接入互联网的过程。当这个链路的带宽较小时，访问的用户量一变大，就会导致访问拥堵，从而影响网站的访问速度。</p>
+<p>“最后一公里”：指用户接入互联网获取信息的过程。其影响因素为用户的带宽。</p>
+</blockquote>
 </li>
 </ul>
-<p>别的演讲也零零碎碎听了不少，因为有的是偏介绍性的，而有的技术讲得比较深入的我又没太听懂🤦‍♀️，这两天应该会再看看回放，看一下Flutter相关的内容。</p>
-<h5 id="展台"><a href="#展台" class="headerlink" title="展台"></a>展台</h5><p>展台毕竟是大会限定，所以我们可能花了有两三个小时，体验各种技术，嘿嘿。印象比较深的是Google Art &amp; Culture的展台，几个AR小游戏做得超级精致，结合了瓷器、皮影等等中国文化，很nice。第二天的时候大部分第一天的演讲嘉宾都会在展台和大家交流，还看到了帅气小哥哥，可惜我之前确实没怎么用过谷歌的产品，不知道该和他们聊些啥<em>(:з」∠)</em>希望下次去的时候可以多talk一下！</p>
-<p>暂时，就写这些8⃣️，希望明年再见鸭！</p>
+<p><img src="http://mmbiz.qpic.cn/mmbiz/1NOXMW586ut7gkN7yRApcCcicIIE1uGNwsNt5wzNMbQo2afoX9kAWK5YJB86bltF30hFNuFTw8OQpWMG4EXzfZA/640?wx_fmt=other&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img"></p>
+<h2 id="2-CDN工作原理"><a href="#2-CDN工作原理" class="headerlink" title="2. CDN工作原理"></a>2. CDN工作原理</h2><p><img src="http://mmbiz.qpic.cn/mmbiz/1NOXMW586ut7gkN7yRApcCcicIIE1uGNwWMmKQRhKnBOe7HibMS1odCp9Pq6ibRj2TRFb9AGJbVhQIfKNjFH7vaDg/640?wx_fmt=other&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img"></p>
+<h3 id="CDN访问过程"><a href="#CDN访问过程" class="headerlink" title="CDN访问过程"></a><strong>CDN访问过程</strong></h3><p>（下划线部分为涉及CDN的过程，其余部分为传统访问过程）</p>
+<p>（1）用户输入访问的域名,操作系统向 LocalDns 查询域名的ip地址.</p>
+<p>（2）LocalDns向 ROOT DNS 查询域名的授权服务器(这里假设LocalDns缓存过期)</p>
+<p>（3）ROOT DNS将域名授权dns记录回应给 LocalDns</p>
+<p>（4）LocalDns得到域名的授权dns记录后,继续向域名授权dns查询域名的ip地址</p>
+<p>（5）域名授权dns 查询域名记录后(一般是CNAME)，回应给 LocalDns</p>
+<p>（6）<u>LocalDns 得到域名记录后,向智能调度DNS查询域名的ip地址</u></p>
+<p>（7）<u>智能调度DNS 根据一定的算法和策略(比如静态拓扑，容量等),将最适合的CDN节点ip地址回应给 LocalDns</u></p>
+<p>（8）LocalDns 将得到的域名ip地址，回应给 用户端</p>
+<p>（9）<u>用户通过域名ip地址访问CDN节点服务器</u></p>
+<p>（10）<u>CDN节点服务器应答请求，将内容返回给客户端.(缓存服务器一方面在本地进行保存，以备以后使用，二方面把获取的数据返回给客户端，完成数据服务过程)</u></p>
+<h3 id="CDN组成要素"><a href="#CDN组成要素" class="headerlink" title="CDN组成要素"></a>CDN组成要素</h3><ul>
+<li>智能调度DNS</li>
+<li>CDN节点</li>
+<li>缓存功能服务：负载均衡设备、内容cache、共享存储</li>
+</ul>
+<h2 id="3-CDN的接入"><a href="#3-CDN的接入" class="headerlink" title="3. CDN的接入"></a>3. CDN的接入</h2><ol>
+<li>在CDN提供商（如阿里云）控制台添加加速域名</li>
+<li>获得分配的CNAME域名</li>
+<li>将域名指向新CNAME域名，将请求转到CDN节点</li>
+</ol>
+<blockquote>
+<p>CNAME即别名( Canonical Name )；可以用来把一个域名解析到另一个域名，当 DNS 系统在查询 CNAME 左面的名称的时候，都会转向 CNAME 右面的名称再进行查询，一直追踪到最后的 PTR 或 A 名称，成功查询后才会做出回应，否则失败。</p>
+</blockquote>
+<blockquote>
+<p>前端必会：CDN加速原理 <a href="https://mp.weixin.qq.com/s/Df9kYNquukRCwwocgRblcQ" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/Df9kYNquukRCwwocgRblcQ</a></p>
+<p>超过10秒，你可能会丢失40%的用户 <a href="https://www.jianshu.com/p/e4b712fd01b2" target="_blank" rel="noopener">https://www.jianshu.com/p/e4b712fd01b2</a></p>
+</blockquote>
 
       
     </div>
@@ -373,7 +377,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Life/" rel="tag"># Life</a>
+            <a href="/tags/基础知识/" rel="tag"># 基础知识</a>
           
         </div>
       
@@ -386,8 +390,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/08/22/多次被虐后整理的前端面试题/" rel="next" title="多次被虐后整理的前端面试题">
-                <i class="fa fa-chevron-left"></i> 多次被虐后整理的前端面试题
+              <a href="/2020/03/14/CSS权威指南笔记-三/" rel="next" title="CSS权威指南笔记(三)">
+                <i class="fa fa-chevron-left"></i> CSS权威指南笔记(三)
               </a>
             
           </div>
@@ -395,10 +399,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/11/03/【代码之外】2019观剧汇总/" rel="prev" title="【代码之外】2019观剧汇总">
-                【代码之外】2019观剧汇总 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -524,7 +524,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#主旨演讲"><span class="nav-number">1.</span> <span class="nav-text">主旨演讲</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#主题演讲"><span class="nav-number">2.</span> <span class="nav-text">主题演讲</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#展台"><span class="nav-number">3.</span> <span class="nav-text">展台</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-CDN简介"><span class="nav-number">1.</span> <span class="nav-text">1. CDN简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-CDN工作原理"><span class="nav-number">2.</span> <span class="nav-text">2. CDN工作原理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#CDN访问过程"><span class="nav-number">2.1.</span> <span class="nav-text">CDN访问过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CDN组成要素"><span class="nav-number">2.2.</span> <span class="nav-text">CDN组成要素</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-CDN的接入"><span class="nav-number">3.</span> <span class="nav-text">3. CDN的接入</span></a></li></ol></div>
             
 
           </div>

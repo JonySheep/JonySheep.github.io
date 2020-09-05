@@ -232,6 +232,362 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yikuyang.cn/2020/09/05/CDN加速原理/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yiku Yang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="YikuYang">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/09/05/CDN加速原理/" itemprop="url">CDN加速原理</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-09-05T15:42:33+08:00">
+                2020-09-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/09/05/CDN加速原理/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/09/05/CDN加速原理/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="1-CDN简介"><a href="#1-CDN简介" class="headerlink" title="1. CDN简介"></a>1. CDN简介</h2><ul>
+<li><p>全称：Content Delivery Network 内容分发网络</p>
+</li>
+<li><p>功能：通过在现有的Internet中增加一层新的cache层，将网站的内容发布到最接近用户的网络“边缘”节点，从而使用户<strong>就近</strong>取得所需内容。</p>
+</li>
+<li><p>优点：</p>
+<ul>
+<li>解决了服务器端“第一公里”的问题</li>
+<li>提高用户访问网站的响应速度</li>
+<li>从技术上全面解决由于网络带宽小、用户访问量大、网点分布不均等问题</li>
+</ul>
+<blockquote>
+<p>“第一公里”：指网站内容从源头通过链路接入互联网的过程。当这个链路的带宽较小时，访问的用户量一变大，就会导致访问拥堵，从而影响网站的访问速度。</p>
+<p>“最后一公里”：指用户接入互联网获取信息的过程。其影响因素为用户的带宽。</p>
+</blockquote>
+</li>
+</ul>
+<p><img src="http://mmbiz.qpic.cn/mmbiz/1NOXMW586ut7gkN7yRApcCcicIIE1uGNwsNt5wzNMbQo2afoX9kAWK5YJB86bltF30hFNuFTw8OQpWMG4EXzfZA/640?wx_fmt=other&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img"></p>
+<h2 id="2-CDN工作原理"><a href="#2-CDN工作原理" class="headerlink" title="2. CDN工作原理"></a>2. CDN工作原理</h2><p><img src="http://mmbiz.qpic.cn/mmbiz/1NOXMW586ut7gkN7yRApcCcicIIE1uGNwWMmKQRhKnBOe7HibMS1odCp9Pq6ibRj2TRFb9AGJbVhQIfKNjFH7vaDg/640?wx_fmt=other&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img"></p>
+<h3 id="CDN访问过程"><a href="#CDN访问过程" class="headerlink" title="CDN访问过程"></a><strong>CDN访问过程</strong></h3><p>（下划线部分为涉及CDN的过程，其余部分为传统访问过程）</p>
+<p>（1）用户输入访问的域名,操作系统向 LocalDns 查询域名的ip地址.</p>
+<p>（2）LocalDns向 ROOT DNS 查询域名的授权服务器(这里假设LocalDns缓存过期)</p>
+<p>（3）ROOT DNS将域名授权dns记录回应给 LocalDns</p>
+<p>（4）LocalDns得到域名的授权dns记录后,继续向域名授权dns查询域名的ip地址</p>
+<p>（5）域名授权dns 查询域名记录后(一般是CNAME)，回应给 LocalDns</p>
+<p>（6）<u>LocalDns 得到域名记录后,向智能调度DNS查询域名的ip地址</u></p>
+<p>（7）<u>智能调度DNS 根据一定的算法和策略(比如静态拓扑，容量等),将最适合的CDN节点ip地址回应给 LocalDns</u></p>
+<p>（8）LocalDns 将得到的域名ip地址，回应给 用户端</p>
+<p>（9）<u>用户通过域名ip地址访问CDN节点服务器</u></p>
+<p>（10）<u>CDN节点服务器应答请求，将内容返回给客户端.(缓存服务器一方面在本地进行保存，以备以后使用，二方面把获取的数据返回给客户端，完成数据服务过程)</u></p>
+<h3 id="CDN组成要素"><a href="#CDN组成要素" class="headerlink" title="CDN组成要素"></a>CDN组成要素</h3><ul>
+<li>智能调度DNS</li>
+<li>CDN节点</li>
+<li>缓存功能服务：负载均衡设备、内容cache、共享存储</li>
+</ul>
+<h2 id="3-CDN的接入"><a href="#3-CDN的接入" class="headerlink" title="3. CDN的接入"></a>3. CDN的接入</h2><ol>
+<li>在CDN提供商（如阿里云）控制台添加加速域名</li>
+<li>获得分配的CNAME域名</li>
+<li>将域名指向新CNAME域名，将请求转到CDN节点</li>
+</ol>
+<blockquote>
+<p>CNAME即别名( Canonical Name )；可以用来把一个域名解析到另一个域名，当 DNS 系统在查询 CNAME 左面的名称的时候，都会转向 CNAME 右面的名称再进行查询，一直追踪到最后的 PTR 或 A 名称，成功查询后才会做出回应，否则失败。</p>
+</blockquote>
+<blockquote>
+<p>前端必会：CDN加速原理 <a href="https://mp.weixin.qq.com/s/Df9kYNquukRCwwocgRblcQ" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/Df9kYNquukRCwwocgRblcQ</a></p>
+<p>超过10秒，你可能会丢失40%的用户 <a href="https://www.jianshu.com/p/e4b712fd01b2" target="_blank" rel="noopener">https://www.jianshu.com/p/e4b712fd01b2</a></p>
+</blockquote>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yikuyang.cn/2020/03/14/CSS权威指南笔记-三/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yiku Yang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="YikuYang">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/03/14/CSS权威指南笔记-三/" itemprop="url">CSS权威指南笔记(三)</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-03-14T21:43:34+08:00">
+                2020-03-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/03/14/CSS权威指南笔记-三/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/03/14/CSS权威指南笔记-三/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="第四章-值与单位"><a href="#第四章-值与单位" class="headerlink" title="第四章 值与单位"></a>第四章 值与单位</h1><h2 id="1-CSS中的全局关键字"><a href="#1-CSS中的全局关键字" class="headerlink" title="1. CSS中的全局关键字"></a>1. CSS中的全局关键字</h2><ul>
+<li>inherit：强制继承父元素样式，包括不能继承的样式</li>
+<li>initial：把属性值设为预定义的初始值，比如一些属性的“normal”</li>
+<li>unset：unset和inherit的通用替身。若属性可继承，设为inherit；否则设为initial</li>
+</ul>
+<h2 id="2-距离单位"><a href="#2-距离单位" class="headerlink" title="2. 距离单位"></a>2. 距离单位</h2><ul>
+<li>绝对长度单位<ul>
+<li>in：英寸</li>
+<li>cm：厘米</li>
+<li>mm：毫米</li>
+<li>q：四分之一毫米，1cm=40q</li>
+<li>pt：点，标准印刷度量单位，按惯例1英寸有72点</li>
+<li>pc：派卡，印刷单位，按惯例1英寸有6派卡</li>
+<li><strong>px</strong>：像素，是一个较抽象的定义，可以把它理解为屏幕上的一个小点</li>
+</ul>
+</li>
+<li>分辨率单位<ul>
+<li>ppi：像素每英寸，描述每个英寸的像素数，ppi越大，每英寸中的像素数越多，屏幕显示就会更为细节。</li>
+<li>dpi：点每英寸</li>
+<li>dpcm：点每厘米</li>
+<li>dppx：点每像素</li>
+</ul>
+</li>
+<li>相对长度单位<ul>
+<li>em：1em=父元素的font-size值</li>
+<li>ex：1ex=所用字体中’x’字母的高度值</li>
+<li>rem：1rem=根元素的font-size值</li>
+<li>【CSS3新增】ch：1ch=渲染时所用字体中’0’字形的进距，可以理解为‘00’两个零起点之间的距离</li>
+<li>【CSS3新增】vw：1vw=当前视区宽度/100</li>
+<li>【CSS3新增】vh：1vg=当前视区高度/100</li>
+<li>【CSS3新增】vmin：1vmin=min(当前视区宽度, 当前视区高度)/100</li>
+<li>【CSS3新增】vmax：1vmax=max(当前视区宽度, 当前视区高度)/100</li>
+</ul>
+</li>
+</ul>
+<h2 id="3-计算值"><a href="#3-计算值" class="headerlink" title="3. 计算值"></a>3. 计算值</h2><p>使用calc()，在css中可以进行简单的数字运算（但不能做指数运算），例如</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">p</span> &#123; <span class="attribute">width</span>: <span class="built_in">calc</span>(90% - 2em) &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="4-属性值"><a href="#4-属性值" class="headerlink" title="4. 属性值"></a>4. 属性值</h2><p>使用attr()，在css中可以获取当前元素的属性值，例如</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">p</span><span class="selector-pseudo">::before</span> &#123; <span class="attribute">content</span>: <span class="string">"["</span> <span class="built_in">attr</span>(id) <span class="string">"]"</span>&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="5-自定义值"><a href="#5-自定义值" class="headerlink" title="5. 自定义值"></a>5. 自定义值</h2><p>使用var()，在css中创建变量，例如</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">html</span> &#123;</span><br><span class="line">  <span class="attribute">--base-color</span>: <span class="number">#639</span>;</span><br><span class="line">  <span class="attribute">--highliang-color</span>: <span class="number">#AEA</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">h1</span> &#123; <span class="attribute">color</span>: <span class="built_in">var</span>(--base-color) &#125;</span><br></pre></td></tr></table></figure>
+<h1 id="第六章-文本属性"><a href="#第六章-文本属性" class="headerlink" title="第六章 文本属性"></a>第六章 文本属性</h1><h2 id="1-text-indent-缩进文本"><a href="#1-text-indent-缩进文本" class="headerlink" title="1. text-indent 缩进文本"></a>1. text-indent 缩进文本</h2><ul>
+<li>取值：<length> | <percentage></percentage></length></li>
+<li>初始值：0</li>
+<li>适用于：块级元素</li>
+</ul>
+<h2 id="2-text-align-文本行内对齐"><a href="#2-text-align-文本行内对齐" class="headerlink" title="2. text-align 文本行内对齐"></a>2. text-align 文本行内对齐</h2><ul>
+<li>取值：start | end | left | right | center | justify | match-parent | start end</li>
+<li>初始值：0</li>
+<li>适用于：块级元素</li>
+</ul>
+<h2 id="3-vertical-align-纵向对齐"><a href="#3-vertical-align-纵向对齐" class="headerlink" title="3. vertical-align 纵向对齐"></a>3. vertical-align 纵向对齐</h2>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yikuyang.cn/2020/03/07/CSS权威指南笔记-二/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1318,279 +1674,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yikuyang.cn/2019/07/13/TCP的拥塞预防和控制/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Yiku Yang">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="YikuYang">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/07/13/TCP的拥塞预防和控制/" itemprop="url">TCP的拥塞预防和控制</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-13T18:10:46+08:00">
-                2019-07-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/07/13/TCP的拥塞预防和控制/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/07/13/TCP的拥塞预防和控制/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>​    在学习计算机网络知识的过程中，我们知道对所有网络通信都有决定性影响的两个方面分别是<strong>延迟</strong>和<strong>带宽</strong>。而TCP（Transmission Control Protocol 传输控制协议）作为因特网中的核心协议，其负责在不可靠的传输信道之上提供可靠的抽象层，为了确保可靠性，TCP协议会产生大量的连接延迟，并且由于发送端与接收端中数据传输的不可控性，将会产生拥塞问题。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/07/13/TCP的拥塞预防和控制/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yikuyang.cn/2019/05/18/JavaScript操作数组方法总结/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Yiku Yang">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="YikuYang">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/05/18/JavaScript操作数组方法总结/" itemprop="url">JavaScript操作数组方法总结</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-05-18T14:36:41+08:00">
-                2019-05-18
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/05/18/JavaScript操作数组方法总结/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/18/JavaScript操作数组方法总结/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>​    数组是我们在开发过程中最常用的数据结构，利用数组我们可以进行多个数据的集中处理，例如数据排序、数据增删改查等操作，也可以使用数组来进行字符串处理。</p>
-<p>​    在JavaScript中数组对应的内置对象是<strong>Array</strong>，它的原型是<strong>Object</strong>对象。因此数组不属于JS中的基本数据类型，而是对象类型。本篇博客将涉及以下内容：</p>
-<ol>
-<li>判断Array对象的方法</li>
-<li>Array对象相关操作API总结</li>
-</ol>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/05/18/JavaScript操作数组方法总结/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1641,7 +1724,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">16</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
